@@ -18,8 +18,7 @@ public class ParseData  {
                     Pattern regex = Pattern.compile
                     ("\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.* [0-9]{2}\\b|([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|([AaPp][Mm])\\b|TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b/g");
 
-                   // ("\b[A-Z]{3}\b.\b[0-9]{3}\b.* [0-9]{2}\b|([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|([AaPp][Mm])\b|TR\b|MW\b|MWF\b|M\b|T\b|W\b|R\b|F\b/g");
-                    // A FileReader (see the I/O chapter)
+                    // A FileReader 
                      BufferedReader r = new BufferedReader(new FileReader("TestFile.txt"));
 
                     // matching lines with regex expression
