@@ -1,2 +1,2 @@
-# Schedule-Maker
+# Schedule Creator
 ## 
