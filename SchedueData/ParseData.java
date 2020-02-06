@@ -9,7 +9,7 @@ public class ParseData  {
                                       
 	 static void String() throws IOException {
                     
-                    
+                    //Hard code example, 2 is 2020, and 22 is CSC on the uncg webiste
                     FileWriter FileW = SchedueData.SaveData.WriteFile("TestFile.txt",2,22);
                     BufferedWriter BufferW = new BufferedWriter(FileW);
 
