@@ -1,16 +1,14 @@
-package SchedueData;
+package ScheduleCreator;
 
 import java.io.*;
 import java.util.regex.*;
-
-
 
 public class ParseData  {
                                       
 	 static void String() throws IOException {
                     
                     //Hard code example, 2 is 2020, and 22 is CSC on the uncg webiste
-                    FileWriter FileW = SchedueData.SaveData.WriteFile("TestFile.txt",2,22);
+                    FileWriter FileW = ScheduleCreator.SaveData.WriteFile("TestFile.txt",2,22);
                     BufferedWriter BufferW = new BufferedWriter(FileW);
 
                     //this it the regex expression it grabs abbreviated class name with section, time, and day of the class
