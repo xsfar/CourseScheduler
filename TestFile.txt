@@ -1,0 +1,916 @@
+Sections Found
+Introduction to Computer Programming for Non-Majors - 12935 - CSC 120 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 9:30 am - 10:45 am R Petty Building 222 Jan 13, 2020 - Apr 29, 2020 Lecture Christine Marie Kikuchi (P)
+Class 9:30 am - 10:45 am T Petty Building 227 Jan 14, 2020 - Apr 28, 2020 Lecture Christine Marie Kikuchi (P)
+
+ 
+Introduction to Computer Science - 12949 - CSC 130 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 10:00 am - 11:50 am M School of Education Building 120 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+Class 10:00 am - 11:50 am W Petty Building 222 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+
+ 
+Introduction to Computer Science - 12975 - CSC 130 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 10:00 am - 11:50 am M School of Education Building 120 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+Class 1:00 pm - 2:50 pm W Petty Building 222 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+
+ 
+Introduction to Computer Science - 12979 - CSC 130 - 03
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 10:00 am - 11:50 am M School of Education Building 120 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+Class 3:30 pm - 5:20 pm W Petty Building 222 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+
+ 
+Introduction to Computer Science - 15097 - CSC 130 - 04
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 10:00 am - 11:50 am M School of Education Building 120 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+Class 8:00 am - 9:50 am W Petty Building 222 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Chandana Ariyawansa (P)
+
+ 
+Elementary Data Structures and Algorithms - 12991 - CSC 230 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 9:30 am - 10:45 am TR Patricia A Sullivan Science 233 Jan 13, 2020 - Apr 29, 2020 Lecture Mohammad Faridul Siddiqui (P)
+
+ 
+Elementary Data Structures and Algorithms - 12996 - CSC 230 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Spencer Jaehoon Lee (P)
+
+ 
+Elementary Data Structures and Algorithms - 13001 - CSC 230 - 03
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm MW Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Spencer Jaehoon Lee (P)
+
+ 
+Foundations of Computer Science I - 13009 - CSC 250 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Approved Online Delivery 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm MW Patricia A Sullivan Science 103 Jan 13, 2020 - Apr 29, 2020 Lecture Mark V. Armstrong (P)
+
+ 
+Foundations of Computer Science I - 13037 - CSC 250 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Approved Online Delivery 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm MW Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Mark V. Armstrong (P)
+
+ 
+Computer Organization and Assembly Language - 13043 - CSC 261 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm TR Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Mark V. Armstrong (P)
+
+ 
+Computer Organization and Assembly Language - 13046 - CSC 261 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm TR Nursing Building, Moore 330 Jan 13, 2020 - Apr 29, 2020 Lecture Mark V. Armstrong (P)
+
+ 
+Advanced Data Structures - 13048 - CSC 330 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 12:30 pm - 1:45 pm TR Eberhart Building 161 Jan 13, 2020 - Apr 29, 2020 Lecture Mohammad Faridul Siddiqui (P)
+
+ 
+Advanced Data Structures - 13050 - CSC 330 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Mohammad Faridul Siddiqui (P)
+
+ 
+Concepts of Programming Languages - 13186 - CSC 339 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 10:00 am - 10:50 am MWF Petty Building 007 Jan 13, 2020 - Apr 29, 2020 Lecture Spencer Jaehoon Lee (P)
+
+ 
+Concepts of Programming Languages - 13191 - CSC 339 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 1:00 pm - 1:50 pm MWF Petty Building 007 Jan 13, 2020 - Apr 29, 2020 Lecture Spencer Jaehoon Lee (P)
+
+ 
+Software Engineering - 13193 - CSC 340 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: WI - Writing Intensive 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm MW Eberhart Building 554 Jan 13, 2020 - Apr 29, 2020 Lecture Richard I Quigley (P)
+
+ 
+Software Engineering - 13198 - CSC 340 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: WI - Writing Intensive 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm TR Petty Building 007 Jan 13, 2020 - Apr 29, 2020 Lecture Richard I Quigley (P)
+
+ 
+Foundations of Computer Science II - 13201 - CSC 350 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Approved Online Delivery 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 11:00 am - 12:15 pm TR Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Sami Khuri (P)
+
+ 
+Foundations of Computer Science II - 13206 - CSC 350 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Approved Online Delivery 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 12:30 pm - 1:45 pm TR Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Sami Khuri (P)
+
+ 
+Big Data and Machine Learning - 13358 - CSC 410 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 9:30 am - 10:45 am TR Petty Building 213 Jan 13, 2020 - Apr 29, 2020 Lecture Sami Khuri (P)
+
+ 
+Digital Image Processing - 13369 - CSC 416 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 11:00 am - 12:15 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Min Jeong Kim (P)
+
+ 
+Bioinformatics - 13380 - CSC 425 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 12:30 pm - 1:45 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Prashanti Manda (P)
+
+ 
+Numerical Analysis and Computing - 14374 - CSC 427 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 9:00 am - 9:50 am MWF Petty Building 007 Jan 13, 2020 - Apr 29, 2020 Lecture Thomas L. Lewis (P)
+
+ 
+Artificial Intelligence - 13388 - CSC 429 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm TR Petty Building 313 Jan 13, 2020 - Apr 29, 2020 Lecture Nancy L. Green (P)
+
+ 
+Theory of Computation - 13589 - CSC 452 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm MW Nursing Building, Moore 329 Jan 13, 2020 - Apr 29, 2020 Lecture Stephen R. Tate (P)
+
+ 
+Algorithm Analysis and Design - 13601 - CSC 454 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Stephen R. Tate (P)
+
+ 
+Principles of Computer Architecture - 13606 - CSC 461 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 8:00 am - 9:15 am TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Edmundson David Effort (P)
+
+ 
+Principles of Operating Systems - 13622 - CSC 462 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm TR Petty Building 313 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Jing Deng (P)
+
+ 
+Principles of Database Systems - 13221 - CSC 471 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 12:30 pm - 1:45 pm MW Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Regis Augusto Poli Kopper (P)
+
+ 
+Senior Capstone - 13313 - CSC 490 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required, SI - Speaking Intensive, WI - Writing Intensive 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm MW Petty Building 217 Jan 13, 2020 - Apr 29, 2020 Lecture Min Jeong Kim (P)
+
+ 
+Senior Capstone - 13317 - CSC 490 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required, SI - Speaking Intensive, WI - Writing Intensive 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm TR Petty Building 217 Jan 13, 2020 - Apr 29, 2020 Lecture Mohammad Faridul Siddiqui (P)
+
+ 
+Directed Study in Computer Science - 14958 - CSC 492 - 11
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 1.000 TO 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Sami Khuri (P)
+
+ 
+Data Mining - 13321 - CSC 495 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Prashanti Manda (P)
+
+ 
+Artificial Intelligence Ethics - 13333 - CSC 495 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 11:00 am - 12:15 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Nancy L. Green (P)
+
+ 
+Virtual Reality - 13345 - CSC 495 - 03
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Undergraduate 
+ Attributes: Written Permission Required 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm MW Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Regis Augusto Poli Kopper (P)
+
+ 
+Big Data and Machine Learning - 13364 - CSC 610 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 9:30 am - 10:45 am TR Petty Building 213 Jan 13, 2020 - Apr 29, 2020 Lecture Sami Khuri (P)
+
+ 
+Digital Image Processing - 13373 - CSC 616 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 11:00 am - 12:15 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Min Jeong Kim (P)
+
+ 
+Bioinformatics - 13384 - CSC 625 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 12:30 pm - 1:45 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Prashanti Manda (P)
+
+ 
+Artificial Intelligence - 13390 - CSC 629 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm TR Petty Building 313 Jan 13, 2020 - Apr 29, 2020 Lecture Nancy L. Green (P)
+
+ 
+Theory of Computation - 13593 - CSC 652 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 3:30 pm - 4:45 pm MW Nursing Building, Moore 329 Jan 13, 2020 - Apr 29, 2020 Lecture Stephen R. Tate (P)
+
+ 
+Algorithm Analysis and Design - 13608 - CSC 654 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm MW Petty Building 227 Jan 13, 2020 - Apr 29, 2020 Lecture Stephen R. Tate (P)
+
+ 
+Principles of Computer Architecture - 13614 - CSC 661 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 8:00 am - 9:15 am TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Edmundson David Effort (P)
+
+ 
+Principles of Operating Systems - 13632 - CSC 662 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Crse has Prereq or Coreq reqrm 
+ 
+ Greensboro Main Campus 
+ Lecture and lab Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 5:30 pm - 6:45 pm TR Petty Building 313 Jan 13, 2020 - Apr 29, 2020 Lecture and lab Jing Deng (P)
+
+ 
+Virtual Reality - 13352 - CSC 693 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm MW Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Regis Augusto Poli Kopper (P)
+
+ 
+Artificial Intelligence Ethics - 13340 - CSC 693 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 11:00 am - 12:15 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Nancy L. Green (P)
+
+ 
+Data Mining - 13329 - CSC 693 - 03
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Lecture Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class 2:00 pm - 3:15 pm TR Petty Building 223 Jan 13, 2020 - Apr 29, 2020 Lecture Prashanti Manda (P)
+
+ 
+Directed Study in Computer Science - 14653 - CSC 694 - 08
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Variable hrs see Rgstrtn Guide, GRS Approval Required 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 1.000 TO 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Fereidoon Sadri (P)
+
+ 
+Project in Computer Science - 14761 - CSC 698 - 02
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Lixin Fu (P)
+
+ 
+Project in Computer Science - 14974 - CSC 698 - 05
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Min Jeong Kim (P)
+
+ 
+Project in Computer Science - 15271 - CSC 698 - 06
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Prashanti Manda (P)
+
+ 
+Project in Computer Science - 14732 - CSC 698 - 07
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Somya Darsan Mohanty (P)
+
+ 
+Project in Computer Science - 14729 - CSC 698 - 09
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Written Permission Required, Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 3.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Shanmugathasan Suthaharan (P)
+
+ 
+Thesis - 15286 - CSC 699 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Variable hrs see Rgstrtn Guide 
+ 
+ Greensboro Main Campus 
+ Dissertation or Thesis Schedule Type 
+ Face-to-face Instructional Method 
+ 1.000 TO 6.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Dissertation or Thesis Jing Deng (P)
+
+ 
+Research Extension - 15319 - CSC 803 - 01
+Associated Term: Spring 2020 
+ Registration Dates: Oct 28, 2019 to Jan 17, 2020 
+ Levels: Graduate 
+ Attributes: Variable hrs see Rgstrtn Guide, SDM(CC1) - Masters 
+ 
+ Greensboro Main Campus 
+ Individual Study Schedule Type 
+ Face to Face Instructional Method 
+ 1.000 TO 3.000 Credits 
+ View Catalog Entry 
+ 
+Scheduled Meeting Times
+Type Time Days Where Date Range Schedule Type Instructors
+Class TBA   TBA Jan 13, 2020 - Apr 29, 2020 Individual Study Jing Deng (P)
+
