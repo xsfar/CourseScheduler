@@ -14,7 +14,6 @@ public class Tests {
             ParseData.parse();
         } catch (IOException ex) {
             Logger.getLogger(Tests.class.getName()).log(Level.SEVERE, null, ex);
-            
         }
         
     }
