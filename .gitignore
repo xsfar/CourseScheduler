@@ -6,3 +6,4 @@
 *.mf
 
 /nbproject
+/dist/

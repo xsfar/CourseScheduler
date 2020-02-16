@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/1" fx:controller="PrimaryController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/1" fx:controller="ScheduleCreator.PrimaryController">
     <children>
          <Button layoutX="245.0" layoutY="123.0" onAction="#changeToBrowseClasses" prefHeight="37.0" prefWidth="111.0" text="Browse Classes" />
       <Button layoutX="245.0" layoutY="213.0" onAction="#changeToRegistrationScreen" prefHeight="37.0" prefWidth="111.0" text="myRegistration" />
