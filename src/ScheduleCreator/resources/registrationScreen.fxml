@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/1" fx:controller="PrimaryController">
+   <children>
+      <AnchorPane layoutX="151.0" layoutY="100.0" prefHeight="200.0" prefWidth="285.0">
+         <children>
+            <Label layoutX="23.0" layoutY="108.0" text="Advising Code:" />
+            <Label layoutX="23.0" layoutY="56.0" text="Registration Date and Time:" />
+            <Label layoutX="23.0" layoutY="83.0" text="My Advisor:" />
+            <Button text="Back" onAction="#backToPrimary" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
