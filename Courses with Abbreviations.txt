@@ -1,0 +1,105 @@
+(ARS) Academic Recovery Seminar 
+(ACC) Accounting 
+(ADS) African Amrcn/African Diaspora 
+(ASL) American Sign Language 
+(ATY) Anthropology 
+(APD) Apparel Product Design 
+(ARB) Arabic 
+(ART) Art 
+(ARE) Art Education 
+(ARH) Art History 
+(AST) Astronomy 
+(BIO) Biology 
+(BUS) Business Administration 
+(CHE) Chemistry 
+(CHI) Chinese 
+(CCI) Classical Civilization 
+(CSD) Comm Sciences and Disorders 
+(CTR) Comm Therap/Recr Studies 
+(CST) Communication Studies 
+(CTP) Comp Trans/Post Second Ed 
+(CSC) Computer Science 
+(CNS) Consortium 
+(CRS) Consumer, Apparel, Retail Stds 
+(CED) Counseling and Ed Devlp 
+(DCE) Dance 
+(ECO) Economics 
+(ELC) Educ Ldrship and Cultrl Fndts 
+(ERM) Educatnl Research Methodology 
+(ENG) English 
+(ENS) Ensemble 
+(ENT) Entrepreneurship 
+(ENV) Environmental Studies 
+(FIN) Finance 
+(FFL) Foundations for Learning 
+(FRE) French 
+(FMS) Freshman Seminars Program 
+(GEN) Genetic Counseling 
+(GEO) Geography 
+(GER) German 
+(GRO) Gerontology 
+(GRK) Greek 
+(GRC) Grogan College 
+(HHS) Health and Human Sciences 
+(HED) Higher Education 
+(HIS) History 
+(HSS) Honors College 
+(HDF) Human Develp / Family Studies 
+(BLS) Humanities 
+(ISM) Info Sys and Operations Mngmt 
+(IPS) Integrated Professional Stds 
+(ISC) Integrated Science 
+(ISL) Integrated Studies Lab 
+(IAR) Interior Architecture 
+(ITD) Interior Design 
+(ITL) Interlink 
+(IPC) International Programs Center 
+(ISE) International Stu Exchange 
+(IGS) International/Global Studies 
+(ITA) Italian 
+(JNS) Japanese Studies 
+(JYA) Junior Year Abroad 
+(KIN) Kinesiology 
+(LLC) Lang, Lit, & Cultures 
+(LAT) Latin 
+(LIS) Library/Information Studies 
+(MGT) Management 
+(MKT) Marketing 
+(MBA) Master's in Business Admin 
+(MAT) Mathematics 
+(MST) Media Studies 
+(MCP) Middle College 
+(MSC) Military Science 
+(MUE) Music Education 
+(MUP) Music Performance 
+(MUS) Music Studies 
+(NAN) Nanoscience 
+(NUR) Nursing 
+(NTR) Nutrition 
+(ONC) Online NC Interinstitutional 
+(PCS) Peace and Conflict Studies 
+(PHI) Philosophy 
+(PHY) Physics 
+(PSC) Political Science 
+(POR) Portuguese 
+(PSY) Psychology 
+(HEA) Public Health 
+(REL) Religious Studies 
+(RCO) Residential College 
+(RCS) Retailing and Consumer Stds 
+(RUS) Russian 
+(SSC) Social Science Course 
+(SWK) Social Work 
+(SOC) Sociology 
+(SPA) Spanish 
+(SES) Specialized Education Services 
+(STA) Statistics 
+(STR) Strong College 
+(SCM) Supply Chain Management 
+(STH) Sustainable Tourism/Hosptlty 
+(TED) Teacher Education 
+(THR) Theatre 
+(UNCX) UNC Exchange 
+(VPA) Visual and Performing Arts 
+(WCV) Western Civilization 
+(WGS) Women's and Gender Studies 
