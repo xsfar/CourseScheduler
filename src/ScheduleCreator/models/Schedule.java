@@ -1,10 +1,13 @@
+package ScheduleCreator.models;
 
 /**
+ * This class keeps track of added course sections and produces CRNs.
  *
- * @author jamis
+ * @author @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  */
+
 public class Schedule {
-    
+
     protected Section[] sections;
     protected int credits;
     //checkConflicts
@@ -14,9 +17,9 @@ public class Schedule {
     //saveSchedule
     //resetSchedule
     //generateRandomSchedules
-    
+
     public Schedule() {
-    
+
     }
-    
+
 }
