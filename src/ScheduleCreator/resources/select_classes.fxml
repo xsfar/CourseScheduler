@@ -12,8 +12,8 @@
       <StackPane layoutX="200.0" layoutY="131.0" prefHeight="150.0" prefWidth="200.0">
          <children>
             <ChoiceBox prefWidth="150.0" />
-            <ListView></ListView>
-            
+            <ListView /> 
+
          </children>
       </StackPane>
    </children>

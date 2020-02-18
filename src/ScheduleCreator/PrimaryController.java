@@ -1,5 +1,13 @@
 package ScheduleCreator;
 
+/**
+ * This class serves as the controller for the primary view
+ * 
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * 
+ * Last Updated: 2/17/2020
+ */
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,40 +23,37 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-
 public class PrimaryController implements Initializable {
-
-              
-        public void changeToBrowseClasses(ActionEvent event) throws Exception {
+    
+        public void changeToSelectClasses(ActionEvent _event) throws Exception {
             
             //new FXML loader and scene for new screen
-            Parent root = FXMLLoader.load(getClass().getResource("resources/ClassView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("resources/select_classes.fxml"));
             Scene classViewScene = new Scene(root);
             
             //Get information from primary stage
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage window = (Stage)((Node)_event.getSource()).getScene().getWindow();
             window.setScene(classViewScene);
             window.show();
-            
         }
         
-        public void backToPrimary(ActionEvent event) throws Exception {
+        public void backToPrimary(ActionEvent _event) throws Exception {
             
             Parent root = FXMLLoader.load(getClass().getResource("resources/primary.fxml"));
             Scene primaryScene = new Scene(root);
             
             //Get information from primary stage
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage window = (Stage)((Node)_event.getSource()).getScene().getWindow();
             window.setScene(primaryScene);
-            window.show();            
+            window.show();
         }
         
-        public void changeToRegistrationScreen(ActionEvent event) throws Exception {
+        public void changeToRegistrationScreen(ActionEvent _event) throws Exception {
             
-            Parent root = FXMLLoader.load(getClass().getResource("resources/registrationScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("resources/registration_screen.fxml"));
             Scene scene = new Scene(root);
             
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage)((Node)_event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         }
@@ -56,9 +61,5 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             
-        
-        
-    }         
-
-    
+    }
 }

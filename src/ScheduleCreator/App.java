@@ -1,5 +1,13 @@
 package ScheduleCreator;
 
+/**
+ * This class is used to start and initialize the application
+ * 
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * 
+ * Last Updated: 2/17/2020
+ */
+
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,21 +21,28 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     
+    /**
+     * Starts application and opens to first window/stage.
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         
+        // loads GUI components from primary.xml
         Parent root = FXMLLoader.load(getClass().getResource("resources/primary.fxml"));
         
+        // adds components to Scene
         Scene primaryScene = new Scene(root);
         
+        // set title of application window
         primaryStage.setTitle("Schedule Creator");
+        
+        // sets primary scene
         primaryStage.setScene(primaryScene);
+        
+        // shows window on screen
         primaryStage.show();
-        }    
+        }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
