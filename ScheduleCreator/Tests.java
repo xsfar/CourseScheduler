@@ -11,12 +11,9 @@ import java.util.logging.Logger;
 public class Tests {
     public static void main(String[] args) {    
         try {        
-            ParseData.parse();
+            ParseData.parse("raw/spring2020");
         } catch (IOException ex) {
             Logger.getLogger(Tests.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-
-    
+        }   
+    } 
 }
