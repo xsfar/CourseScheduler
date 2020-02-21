@@ -21,13 +21,17 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class PrimaryController implements Initializable {
     
         public void changeToSelectClasses(ActionEvent _event) throws Exception {
-            
+           
             //new FXML loader and scene for new screen
             Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/select_courses.fxml"));
             Scene classViewScene = new Scene(root);
