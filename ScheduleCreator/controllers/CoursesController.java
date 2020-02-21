@@ -45,7 +45,7 @@ public class CoursesController implements Initializable {
          */
         public void backToPrimary(ActionEvent _event) throws Exception {
             
-            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/primary.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/primary.fxml"));
             Scene primaryScene = new Scene(root);
             
             //Get information from primary stage

@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  * 
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  * 
- * Last Updated: 2/20/2020
+ * Last Updated: 2/21/2020
  */
 
 import ScheduleCreator.*;
@@ -33,7 +33,7 @@ public class PrimaryController implements Initializable {
         public void changeToSelectClasses(ActionEvent _event) throws Exception {
            
             //new FXML loader and scene for new screen
-            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/select_courses.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
             Scene classViewScene = new Scene(root);
             
             //Get information from primary stage
@@ -44,7 +44,7 @@ public class PrimaryController implements Initializable {
         
         public void backToPrimary(ActionEvent _event) throws Exception {
             
-            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/primary.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/primary.fxml"));
             Scene primaryScene = new Scene(root);
             
             //Get information from primary stage

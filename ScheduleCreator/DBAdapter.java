@@ -27,7 +27,7 @@ public class DBAdapter {
      * @throws Exception 
      */   
     public static void saveCourse(String _course) throws Exception {
-            file = new File("user_selected_courses.txt");
+            file = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
             
             //Open file to add new classes.
             FileWriter output = new FileWriter(file, true);
@@ -39,7 +39,7 @@ public class DBAdapter {
     }
     
     public static ArrayList<String> getSelectedCourses() throws Exception {
-        file = new File("user_selected_courses.txt");
+        file = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
         Scanner input = new Scanner(file);
         
         //Load courses from text file to be returned as a list. 
