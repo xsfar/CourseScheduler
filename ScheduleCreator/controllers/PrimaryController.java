@@ -55,7 +55,7 @@ public class PrimaryController implements Initializable {
         
         public void changeToRegistrationScreen(ActionEvent _event) throws Exception {
             
-            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/registration_screen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
             Scene scene = new Scene(root);
             
             Stage stage = (Stage)((Node)_event.getSource()).getScene().getWindow();
