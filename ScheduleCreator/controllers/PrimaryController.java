@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  * 
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  * 
- * Last Updated: 2/20/2020
+ * Last Updated: 2/21/2020
  */
 
 import ScheduleCreator.*;
