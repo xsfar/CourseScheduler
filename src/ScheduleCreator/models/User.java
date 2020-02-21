@@ -8,17 +8,20 @@ package ScheduleCreator.models;
  * Last Updated: 2/17/2020
  */
 
+import java.util.TreeSet;
+
 public class User {
 
     protected String advisor;
     protected Schedule schedule; 
     protected int advisingCode;
+    protected TreeSet selectedCourses;
 
     public User() {
 
     }
 
-    public void selectCourse(Course _course) {
-        
+    public void selectCourse(String _course) {
+        selectedCourses.add(_course);
     }
 }

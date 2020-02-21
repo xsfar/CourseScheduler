@@ -38,6 +38,17 @@ public class PrimaryController implements Initializable {
             window.show();
         }
         
+        public void backToPrimary(ActionEvent _event) throws Exception {
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/primary.fxml"));
+            Scene primaryScene = new Scene(root);
+            
+            //Get information from primary stage
+            Stage window = (Stage)((Node)_event.getSource()).getScene().getWindow();
+            window.setScene(primaryScene);
+            window.show();
+        }        
+        
         public void changeToRegistrationScreen(ActionEvent _event) throws Exception {
             
             Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/registration_screen.fxml"));

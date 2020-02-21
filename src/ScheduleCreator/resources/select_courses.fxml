@@ -13,7 +13,7 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.CoursesController">
    <children>
        <Button layoutX="14.0" layoutY="22.0" onAction="#backToPrimary" text="Back" />
-       <Button layoutX="71.0" layoutY="22.0" onAction="#addCourse" text="Add Course" />
+       <Button layoutX="193.0" layoutY="80.0" onAction="#addCourse" text="Add Course" />
       <StackPane layoutX="200.0" layoutY="131.0" prefHeight="150.0" prefWidth="200.0" />
       <AnchorPane layoutX="386.0" layoutY="16.0" prefHeight="368.0" prefWidth="200.0">
          <children>
@@ -36,5 +36,6 @@
                </children></GridPane>
          </content>
       </ScrollPane>
+      <TextField fx:id="courseText" layoutX="35.0" layoutY="81.0" />
    </children>
 </AnchorPane>
