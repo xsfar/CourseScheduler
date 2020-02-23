@@ -4,3 +4,8 @@
     -fx-border-radius: 5;
     -fx-padding: 3 6 6 6;
 }
+
+.HBox{
+    -fx-border-color: blue;
+}
+

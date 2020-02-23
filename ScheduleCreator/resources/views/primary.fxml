@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.PrimaryController">
+    <children>
+         <Button layoutX="245.0" layoutY="123.0" onAction="#changeToSelectClasses" prefHeight="37.0" prefWidth="130.0" text="Find/Select Classes" />
+      <Button layoutX="245.0" layoutY="213.0" onAction="#changeToRegistrationScreen" prefHeight="37.0" prefWidth="130.0" text="myRegistration" />
+    </children>
+</AnchorPane>

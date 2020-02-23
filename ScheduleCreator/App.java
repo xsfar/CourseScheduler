@@ -28,7 +28,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         
         // loads GUI components from primary.xml
-        Parent root = FXMLLoader.load(getClass().getResource("resources/primary.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/views/primary.fxml"));
         
         // adds components to Scene
         Scene primaryScene = new Scene(root);
