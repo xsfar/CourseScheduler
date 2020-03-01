@@ -56,6 +56,7 @@ public class DBAdapter {
             line = input.nextLine();
             selectedCourses.add(line.trim());
         }
+        
         input.close();
         return selectedCourses;
     }

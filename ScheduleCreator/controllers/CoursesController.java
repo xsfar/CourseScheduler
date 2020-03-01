@@ -1,5 +1,6 @@
 package ScheduleCreator.controllers;
 
+import ScheduleCreator.DBAdapter;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,16 +38,18 @@ public class CoursesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
         loadAllCourses();
+        loadSelectedCourses();
         }
         catch (Exception e) {};
         
     }
     
-    public void addSelectedCourse(ActionEvent _event) {
+    public void addSelectedCourse(ActionEvent _event) throws Exception {
         String choice = comboBox.getValue();
         List<String> courseList = new ArrayList();
         courseList.add(choice);
-        selectedCourses.setItems(FXCollections.observableList(courseList));
+        selectedCourses.getItems().add(choice);
+        DBAdapter.saveCourse(choice);
     }
     
     public void loadAllCourses() throws Exception {
@@ -59,6 +62,12 @@ public class CoursesController implements Initializable {
                courses.add(line);
            }
            comboBox.setItems(FXCollections.observableList(courses));
+    }
+    
+    public void loadSelectedCourses() throws Exception {
+        
+        List<String> courses = DBAdapter.getSelectedCourses();
+        selectedCourses.setItems(FXCollections.observableList(courses));
     }
 }
 
