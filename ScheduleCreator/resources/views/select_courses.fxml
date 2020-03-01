@@ -23,7 +23,7 @@
       
       <ListView fx:id="selectedCourses" layoutX="126.0" layoutY="403.0" prefHeight="85.0" prefWidth="262.0" />
       <Button fx:id="getSectionsButton" layoutX="125.0" layoutY="497.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Get Sections" />
-      <Button fx:id="removeCourseButton" layoutX="257.0" layoutY="497.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Remove" />
+      <Button fx:id="removeCourseButton" onAction="#removeSelectedCourse" layoutX="257.0" layoutY="497.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Remove" />
         
       <ComboBox fx:id="sectionBox" layoutX="126.0" layoutY="596.0" prefHeight="25.0" prefWidth="262.0" promptText="Select Section" />
       <Button fx:id="AddSectionButton" layoutX="407.0" layoutY="596.0" mnemonicParsing="false" text="Add" />
