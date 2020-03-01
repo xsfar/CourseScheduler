@@ -17,27 +17,18 @@ import java.util.Scanner;
 
 public class DBAdapter {
     
-    protected static Scanner input;
-    protected static File file;
-    protected static int currentLineNumber = 0;
-    protected static String currentLine = "";
+    protected static File selectedCourseFile = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");;
     
     /**
      * Saves a selected course (abbreviation and number) and saves to database.
      * @param _course
      * @throws Exception 
      */   
-    
-    public static void main(String[] args) {
-        System.out.println("db adapter");
-    }
-
-    
+        
     public static void saveCourse(String _course) throws Exception {
-            file = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
             
             //Open file to add new classes.
-            FileWriter output = new FileWriter(file, true);
+            FileWriter output = new FileWriter(selectedCourseFile, true);
             
             //Adds new selected course to new line. 
             output.append(_course + "\n");
@@ -45,9 +36,28 @@ public class DBAdapter {
             output.close();
     }
     
+    public static void removeCourse(String _course) throws Exception {
+        
+            Scanner input = new Scanner(selectedCourseFile);
+            StringBuffer newContents = new StringBuffer();
+            String line = "";
+            
+            while (input.hasNext()) {
+                   line = input.nextLine();
+            if (line.contains(""));
+            if (!line.contains(_course))
+                newContents.append(_course + '\n');                   
+            }
+            
+            FileWriter writer = new FileWriter(selectedCourseFile);
+            writer.append(newContents.toString());
+            writer.close();
+            
+    }
+    
     public static ArrayList<String> getSelectedCourses() throws Exception {
-        file = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
-        Scanner input = new Scanner(file);
+
+        Scanner input = new Scanner(selectedCourseFile);
         
         //Load courses from text file to be returned as a list. 
         ArrayList<String> selectedCourses = new ArrayList();

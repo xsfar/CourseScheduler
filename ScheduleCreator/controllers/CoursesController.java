@@ -33,6 +33,7 @@ public class CoursesController implements Initializable {
     @FXML private ListView selectedCourses;
     
     @FXML private Button courseButton;
+    @FXML private Button removeCourseButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,6 +51,13 @@ public class CoursesController implements Initializable {
         courseList.add(choice);
         selectedCourses.getItems().add(choice);
         DBAdapter.saveCourse(choice);
+    }
+    
+    public void removeSelectedCourse(ActionEvent _event) throws Exception {
+        Object itemToRemove = selectedCourses.getSelectionModel().getSelectedItem();
+        String courseToDelete = (String)itemToRemove;
+        selectedCourses.getItems().remove(itemToRemove);
+        DBAdapter.removeCourse(courseToDelete);
     }
     
     public void loadAllCourses() throws Exception {
