@@ -71,7 +71,7 @@
                           </rowConstraints>
                            <children>       
                               
-                              <ComboBox fx:id="comboBox" prefHeight="26.0" prefWidth="760.0" promptText="-" />
+                              <ComboBox fx:id="courseComboBox" prefHeight="26.0" prefWidth="760.0" promptText="-" />
                            </children>
                         </GridPane>
                         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
