@@ -4,13 +4,12 @@ import ScheduleCreator.DBAdapter;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -55,7 +54,16 @@ public class CoursesController implements Initializable {
 		DBAdapter.saveCourse(choice);
 	}
 	public void switchSemester(ActionEvent _event) {
-		System.out.println("dummye");
+		clearCalendar();
+		clearSectionList();
+	}
+
+	public void clearCalendar() {
+		System.out.println("Dummy function to clear the calendar for when we switch semesters");
+	}
+
+	protected void clearSectionList() {
+		System.out.println("Dummy function to clear the list of available sections for when we switch semesters");
 	}
 
 	
@@ -79,13 +87,12 @@ public class CoursesController implements Initializable {
 	}
 
 	public void loadSemesters() {
-		List<String> semesters = ScheduleCreator.DBAdapter.getSemesters();
+		List<String> semesters = DBAdapter.getSemesters();
 		semesterComboBox.setItems(FXCollections.observableList(semesters));
 	}
-	
+
     
 	public void loadSelectedCourses() throws Exception {
-        
 		List<String> courses = DBAdapter.getSelectedCourses();
 		selectedCourses.setItems(FXCollections.observableList(courses));
 	}
