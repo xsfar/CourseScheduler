@@ -41,7 +41,7 @@ public class PrimaryController implements Initializable {
             Stage window = (Stage)((Node)_event.getSource()).getScene().getWindow();
             window.setScene(classViewScene);
             window.setMinHeight(600);
-            window.setMinWidth(1000);xs
+            window.setMinWidth(1000);
             window.show();
         }
         
