@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * application.
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
- * 
+ *
  * Last Updated: 3/3/2020
  */
 public class DBAdapter {
@@ -41,30 +41,31 @@ public class DBAdapter {
 
         output.close();
     }
-    
+
     /**
-     * Removes the selected course from the database. 
+     * Removes the selected course from the database.
+     *
      * @param _course
-     * @throws Exception 
+     * @throws Exception
      */
-    
     public static void removeCourse(String _course) throws Exception {
-        
-            Scanner input = new Scanner(selectedCourseFile);
-            StringBuffer newContents = new StringBuffer();
-            String line = "";
-            
-            /**
-             * Gets all of the courses except the selected one 
-             * and appends to a new file to be saved.              * 
-             */
-            while (input.hasNext()) {
-                   line = input.nextLine();
 
-            if (!line.contains(_course))
-                newContents.append(_course + '\n');                   
+        Scanner input = new Scanner(selectedCourseFile);
+        StringBuffer newContents = new StringBuffer();
+        String line = "";
 
+        /**
+         * Gets all of the courses except the selected one and appends to a new
+         * file to be saved. *
+         */
+        while (input.hasNext()) {
+            line = input.nextLine();
+
+            if (!line.contains(_course)) {
+                newContents.append(_course + '\n');
             }
+
+        }
 
         FileWriter writer = new FileWriter(selectedCourseFile);
         writer.append(newContents.toString());
@@ -72,28 +73,28 @@ public class DBAdapter {
 
     }
 
-    	// get a list of semesters (which can be used as an argument to DBAdapter.getCourses)
-	public static List<String> getSemesters() {
-		List<String> semesters = new ArrayList();
+    // get a list of semesters (which can be used as an argument to DBAdapter.getCourses)
+    public static List<String> getSemesters() {
+        List<String> semesters = new ArrayList();
 
-		File dir = ScheduleCreator.Boilerplate.GetResourceFile("raw/semesters");
-		String[] pathnames;
-		pathnames = dir.list();
+        File dir = ScheduleCreator.Boilerplate.GetResourceFile("raw/semesters");
+        String[] pathnames;
+        pathnames = dir.list();
 
-		for (String pathname : pathnames) {
-			System.out.println(pathname);
-			File f = new File(pathname);
-			semesters.add(f.getName());
-		}
-                return semesters;
-	}
-    
+        for (String pathname : pathnames) {
+            System.out.println(pathname);
+            File f = new File(pathname);
+            semesters.add(f.getName());
+        }
+        return semesters;
+    }
+
     /**
      * Returns a list of the selected courses.
+     *
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-
     public static List<String> getSelectedCourses() throws Exception {
 
         Scanner input = new Scanner(selectedCourseFile);
@@ -116,15 +117,15 @@ public class DBAdapter {
         Scanner input = new Scanner(file);
         input.useDelimiter("\\Z");
         String contents = input.next();
-        
+
         List<String> courses = Arrays.asList(contents.split("\n"));
         return courses;
     }
 
     /**
      * given a class name (ex CSC 230) the times for all sections are returned.
-     * given a class name with section (ex. CSC 230 - 01) only the time for that section is returned
-     * If a online class is requested TBA is returned.
+     * given a class name with section (ex. CSC 230 - 01) only the time for that
+     * section is returned If a online class is requested TBA is returned.
      *
      * @param _abbreviation Class name that the time is being requested for
      * @throws Exception
@@ -151,11 +152,12 @@ public class DBAdapter {
     }
 
     /**
-     * 
-     * given a class name returns the day(s) the class is on
-     * If a online class is requested TBA is returned.
+     *
+     * given a class name returns the day(s) the class is on If a online class
+     * is requested TBA is returned.
+     *
      * @param _abbreviation Class name that the day is being requested for
-     * @throws Exception 
+     * @throws Exception
      */
     public static void getDay(String _abbreviation) throws Exception {
         //regex expression to get time from the current format
@@ -178,4 +180,3 @@ public class DBAdapter {
     }
 
 }
-
