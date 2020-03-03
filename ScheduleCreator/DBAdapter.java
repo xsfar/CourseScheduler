@@ -1,20 +1,11 @@
 package ScheduleCreator;
 
-import java.util.TreeSet;
-import ScheduleCreator.models.Course;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -25,8 +16,8 @@ import java.util.regex.Pattern;
  * application.
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
- *
- * Last Updated: 2/21/2020
+ * 
+ * Last Updated: 3/3/2020
  */
 public class DBAdapter {
 
@@ -35,7 +26,7 @@ public class DBAdapter {
     ;
 
     /**
-     * Saves a selected course (abbreviation and number) and saves to database.
+     * Saves the selected course (abbreviation and number) and saves to database.
      * @param _course
      * @throws Exception
      */
@@ -50,20 +41,30 @@ public class DBAdapter {
 
         output.close();
     }
-
+    
+    /**
+     * Removes the selected course from the database. 
+     * @param _course
+     * @throws Exception 
+     */
+    
     public static void removeCourse(String _course) throws Exception {
+        
+            Scanner input = new Scanner(selectedCourseFile);
+            StringBuffer newContents = new StringBuffer();
+            String line = "";
+            
+            /**
+             * Gets all of the courses except the selected one 
+             * and appends to a new file to be saved.              * 
+             */
+            while (input.hasNext()) {
+                   line = input.nextLine();
 
-        Scanner input = new Scanner(selectedCourseFile);
-        StringBuffer newContents = new StringBuffer();
-        String line = "";
+            if (!line.contains(_course))
+                newContents.append(_course + '\n');                   
 
-        while (input.hasNext()) {
-            line = input.nextLine();
-            if (line.contains(""));
-            if (!line.contains(_course)) {
-                newContents.append(_course + '\n');
             }
-        }
 
         FileWriter writer = new FileWriter(selectedCourseFile);
         writer.append(newContents.toString());
@@ -71,7 +72,29 @@ public class DBAdapter {
 
     }
 
-    public static ArrayList<String> getSelectedCourses() throws Exception {
+    	// get a list of semesters (which can be used as an argument to DBAdapter.getCourses)
+	public static List<String> getSemesters() {
+		List<String> semesters = new ArrayList();
+
+		File dir = ScheduleCreator.Boilerplate.GetResourceFile("raw/semesters");
+		String[] pathnames;
+		pathnames = dir.list();
+
+		for (String pathname : pathnames) {
+			System.out.println(pathname);
+			File f = new File(pathname);
+			semesters.add(f.getName());
+		}
+                return semesters;
+	}
+    
+    /**
+     * Returns a list of the selected courses.
+     * @return
+     * @throws Exception 
+     */
+
+    public static List<String> getSelectedCourses() throws Exception {
 
         Scanner input = new Scanner(selectedCourseFile);
 
@@ -87,40 +110,15 @@ public class DBAdapter {
         return selectedCourses;
     }
 
-    public static void getCourses(String _abbreviation) throws Exception {
+    public static List<String> getCourses(String _semester) throws Exception {
 
-        File file = new File("src/ScheduleCreator/resources/raw/spring2020.txt");
+        File file = new File("src/ScheduleCreator/resources/raw/" + _semester + "courses.txt");
         Scanner input = new Scanner(file);
-        String line;
-
-        TreeSet<String> availableCourses = new TreeSet();
-        FileWriter writer = new FileWriter(new File("src/ScheduleCreator/resources/raw/courses.txt"));
-        int start = 0;
-        int end = 0;
-        while (input.hasNext()) {
-
-            //add whitespace to start and end of abbreviation
-            _abbreviation = " " + _abbreviation + " ";
-            _abbreviation.toUpperCase();
-
-            while (input.hasNext()) {
-                line = input.nextLine();
-                if (line.contains(_abbreviation)) {
-
-                    start = line.indexOf(_abbreviation);
-                    end = start + 8;
-                    String courseTitle = line.subSequence(start, end).toString();
-                    if (!availableCourses.contains(courseTitle)) {
-                        availableCourses.add(courseTitle);
-                    }
-
-                }
-            }
-        }
-
-        writer.append(availableCourses.toString());
-        input.close();
-        writer.close();
+        input.useDelimiter("\\Z");
+        String contents = input.next();
+        
+        List<String> courses = Arrays.asList(contents.split("\n"));
+        return courses;
     }
 
     //given a class name (ex CSC 230) the times for all sections are resturned.
@@ -146,3 +144,4 @@ public class DBAdapter {
     }
 
 }
+

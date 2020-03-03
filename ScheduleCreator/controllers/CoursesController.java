@@ -28,7 +28,7 @@ public class CoursesController implements Initializable {
 	@FXML private Button semesterButton;
 	@FXML private ComboBox<String> semesterComboBox;    
   
-	@FXML private ComboBox<String> comboBox;    
+	@FXML private ComboBox<String> courseComboBox;    
 
 	@FXML private ListView selectedCourses;
     
@@ -39,23 +39,25 @@ public class CoursesController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		try {
 			loadSemesters();
-			loadAllCourses();
-			loadSelectedCourses();
 		}
 		catch (Exception e) {};
         
 	}
     
 	public void addSelectedCourse(ActionEvent _event) throws Exception {
-		String choice = comboBox.getValue();
+		String choice = courseComboBox.getValue();
 		List<String> courseList = new ArrayList();
 		courseList.add(choice);
 		selectedCourses.getItems().add(choice);
 		DBAdapter.saveCourse(choice);
 	}
-	public void switchSemester(ActionEvent _event) {
+	public void switchSemester(ActionEvent _event) throws Exception {
 		clearCalendar();
 		clearSectionList();
+                String[] temp = semesterComboBox.getValue().split(" ");
+                String semester = temp[0].toLowerCase() + temp[1];
+                loadAllCourses(semester);
+                
 	}
 
 	public void clearCalendar() {
@@ -74,16 +76,10 @@ public class CoursesController implements Initializable {
 		DBAdapter.removeCourse(courseToDelete);
 	}
     
-	public void loadAllCourses() throws Exception {
-		File file = new File("src/ScheduleCreator/resources/raw/courses.txt");
-		Scanner input = new Scanner(file);
-		List<String> courses = new ArrayList();
-		String line = "";
-		while (input.hasNext()) {
-			line = input.nextLine();
-			courses.add(line);
-		}
-		comboBox.setItems(FXCollections.observableList(courses));
+	public void loadAllCourses(String _semester) throws Exception {
+                List<String> courses = DBAdapter.getCourses(_semester);
+                System.out.println(courses.toString());
+		courseComboBox.setItems(FXCollections.observableList(courses));
 	}
 
 	public void loadSemesters() {
