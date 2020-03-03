@@ -38,10 +38,10 @@ public class ParseData {
 
             //go through all matches, put them in a string and send it to another method to be formatted
             while (match.find()) {
-              
+
                 //put all matching results to new string
                 String input = (match.group(0));
-                
+
                 /**
                  * This if else statement will format the output based on which regex was used, currently
                  * there is only a method to format one of the regexs outputs.
