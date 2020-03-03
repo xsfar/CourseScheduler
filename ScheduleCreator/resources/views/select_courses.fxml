@@ -86,11 +86,11 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="AddSectionButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="164.0" text="Add Class" GridPane.rowIndex="1" />
+                              <Button fx:id="addClassButton" mnemonicParsing="false" prefHeight="76.0" prefWidth="164.0" text="Add Class" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <Button fx:id="semesterButton" mnemonicParsing="false" onAction="#switchSemester" text="Switch Semester" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <TextField fx:id="semesterComboBox" prefHeight="25.0" prefWidth="262.0" promptText="Search" />
+                        <ComboBox fx:id="semesterComboBox" prefHeight="28.0" prefWidth="906.0" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
