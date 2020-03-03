@@ -121,11 +121,45 @@ public class DBAdapter {
         return courses;
     }
 
-    //given a class name (ex CSC 230) the times for all sections are resturned.
-    //given a class name with section (ex. CSC 230 - 01) only the time for the class is returned
+    /**
+     * given a class name (ex CSC 230) the times for all sections are returned.
+     * given a class name with section (ex. CSC 230 - 01) only the time for that section is returned
+     * If a online class is requested TBA is returned.
+     *
+     * @param _abbreviation Class name that the time is being requested for
+     * @throws Exception
+     */
     public static void getTime(String _abbreviation) throws Exception {
         //regex expression to get time from the current format
-        final String time = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA.*TBA\\b)))\\b)";
+        final String time = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(	 	TBA\\b))))";
+        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/CoursesTimeDate.txt"));
+        //Go through file to find match using regex
+        for (String line : lines) {
+            if (line.contains(_abbreviation)) {
+                String results = line;
+                Matcher match = Pattern.compile(time).matcher(results);
+                while (match.find()) {
+                    String output = (match.group());
+
+                    //should be return statment
+                    System.out.println(output);
+
+                }
+
+            }
+        }
+    }
+
+    /**
+     * 
+     * given a class name returns the day(s) the class is on
+     * If a online class is requested TBA is returned.
+     * @param _abbreviation Class name that the day is being requested for
+     * @throws Exception 
+     */
+    public static void getDay(String _abbreviation) throws Exception {
+        //regex expression to get time from the current format
+        final String time = "\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b";
         List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/CoursesTimeDate.txt"));
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
