@@ -133,7 +133,7 @@ public class DBAdapter {
     public static void getTime(String _abbreviation) throws Exception {
         //regex expression to get time from the current format
         final String time = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(	 	TBA\\b))))";
-        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/CoursesTimeDate.txt"));
+        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/Spring2020coursesTimeDate.txt"));
         //Go through file to find match using regex
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
@@ -162,7 +162,7 @@ public class DBAdapter {
     public static void getDay(String _abbreviation) throws Exception {
         //regex expression to get time from the current format
         final String time = "\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b";
-        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/CoursesTimeDate.txt"));
+        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/Spring2020coursesTimeDate.txt"));
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
                 String results = line;
