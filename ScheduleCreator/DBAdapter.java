@@ -22,15 +22,18 @@ import java.util.regex.Pattern;
 public class DBAdapter {
 
     protected static File selectedCourseFile = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
-
-    ;
+    //regex expression to get day from the current format
+    final static String getDay = "\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b";
+    //regex expression to get time from the current format
+    final static String getTime = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(	 	TBA\\b))))";
 
     /**
-     * Saves the selected course (abbreviation and number) and saves to database.
+     * Saves the selected course (abbreviation and number) and saves to
+     * database.
+     *
      * @param _course
      * @throws Exception
      */
-
     public static void saveCourse(String _course) throws Exception {
 
         //Open file to add new classes.
@@ -123,28 +126,30 @@ public class DBAdapter {
     }
 
     /**
-     * given a class name (ex CSC 230) the times for all sections are returned.
-     * given a class name with section (ex. CSC 230 - 01) only the time for that
-     * section is returned If a online class is requested TBA is returned.
+     * Returns the time a given class is on. given a class name (ex CSC 230) the
+     * times for all sections are returned. given a class name with section (ex.
+     * CSC 230 - 01) only the time for that section is returned If a online
+     * class is requested TBA is returned.
      *
      * @param _abbreviation Class name that the time is being requested for
      * @throws Exception
      */
-    public static void getTime(String _abbreviation) throws Exception {
-        //regex expression to get time from the current format
-        final String time = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(	 	TBA\\b))))";
-        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/Spring2020coursesTimeDate.txt"));
-        //Go through file to find match using regex
+    public static void getTime(String _abbreviation, String _semester) throws Exception {
+        List<String> lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesTimeDate.txt")));
+        /**
+         * iterate over text to see what lines match, if a line matches the
+         * given courses, it it copied and the time for the course(s) is
+         * extracted using a regex
+         */
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
                 String results = line;
-                Matcher match = Pattern.compile(time).matcher(results);
+                //If a line matches from above then a regex is applied to that line
+                Matcher match = Pattern.compile(getTime).matcher(results);
                 while (match.find()) {
                     String output = (match.group());
-
-                    //should be return statment
+                    //should be return statment, but for now is a print
                     System.out.println(output);
-
                 }
 
             }
@@ -152,25 +157,27 @@ public class DBAdapter {
     }
 
     /**
-     *
-     * given a class name returns the day(s) the class is on If a online class
-     * is requested TBA is returned.
+     * Returns the day a given class is on. given a class name returns the
+     * day(s) the class is on. If a online class is requested TBA is returned.
      *
      * @param _abbreviation Class name that the day is being requested for
      * @throws Exception
      */
-    public static void getDay(String _abbreviation) throws Exception {
-        //regex expression to get time from the current format
-        final String time = "\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b";
-        List<String> lines = Files.readAllLines(Paths.get("src/ScheduleCreator/resources/raw/Spring2020coursesTimeDate.txt"));
+    public static void getDay(String _abbreviation, String _semester) throws Exception {
+        List<String> lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesTimeDate.txt")));
+        /**
+         * iterate over text to see what lines match, if a line matches the
+         * given courses, it it copied and the day for the course(s) is
+         * extracted using a regex
+         */
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
                 String results = line;
-
-                Matcher match = Pattern.compile(time).matcher(results);
+                //If a line matches from above then a regex is applied to that line
+                Matcher match = Pattern.compile(getDay).matcher(results);
                 while (match.find()) {
-
                     String output = (match.group());
+                    //should be return statment, but for now is a print
                     System.out.println(output);
 
                 }
