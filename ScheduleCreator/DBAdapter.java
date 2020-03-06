@@ -22,10 +22,18 @@ import java.util.regex.Pattern;
 public class DBAdapter {
 
     protected static File selectedCourseFile = new File("src/ScheduleCreator/resources/raw/user_selected_courses.txt");
-    //regex expression to get day from the current format
+    //Regex expression to get day from the current format.
     final static String getDay = "\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b";
-    //regex expression to get time from the current format
+    //Regex expression to get time from the current format.
     final static String getTime = "(?<=([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)).+?(?=\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(	 	TBA\\b))))";
+    //Regex expression to get CRN from the current format.
+    final static String getCRN = "[0-9]{5}";
+    //Regex expression to get building from the current format.
+    final static String getBuilding = "(?<=\\b([	](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA\\b)))\\b).*(?=\\=)";
+    //Regex expression to get instructor from the current format.
+    final static String getInstructor = "(?<=\\=).*(?= )";
+    //Temporary holding place for course information while being parsed for requested information.
+    private static List<String> lines;
 
     /**
      * Saves the selected course (abbreviation and number) and saves to
@@ -126,64 +134,126 @@ public class DBAdapter {
     }
 
     /**
-     * Returns the time a given class is on. given a class name (ex CSC 230) the
-     * times for all sections are returned. given a class name with section (ex.
-     * CSC 230 - 01) only the time for that section is returned If a online
+     * Returns the time for a given course in a given semester. If a online
      * class is requested TBA is returned.
      *
      * @param _abbreviation Class name that the time is being requested for
      * @throws Exception
      */
     public static void getTime(String _abbreviation, String _semester) throws Exception {
-        List<String> lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesTimeDate.txt")));
-        /**
-         * iterate over text to see what lines match, if a line matches the
-         * given courses, it it copied and the time for the course(s) is
-         * extracted using a regex
-         */
-        for (String line : lines) {
-            if (line.contains(_abbreviation)) {
-                String results = line;
-                //If a line matches from above then a regex is applied to that line
-                Matcher match = Pattern.compile(getTime).matcher(results);
-                while (match.find()) {
-                    String output = (match.group());
-                    //should be return statment, but for now is a print
-                    System.out.println(output);
-                }
+        String TimeCourse = getInfoBase(_abbreviation, _semester, getTime);
+        //Should be return, for now print.
+        System.out.println(TimeCourse);
 
-            }
-        }
     }
 
     /**
-     * Returns the day a given class is on. given a class name returns the
-     * day(s) the class is on. If a online class is requested TBA is returned.
+     * Returns the day for a given course in a given semester. Given a class
+     * name returns the day(s) the class is on. If a online class is requested
+     * TBA is returned.
      *
-     * @param _abbreviation Class name that the day is being requested for
+     *
+     * @param _abbreviation Class name that the day is being requested for.
+     * @param _semester Which semester the class being requested is in.
      * @throws Exception
      */
     public static void getDay(String _abbreviation, String _semester) throws Exception {
-        List<String> lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesTimeDate.txt")));
+        String DayCourse = getInfoBase(_abbreviation, _semester, getDay);
+        //Should be return, for now print.
+        System.out.println(DayCourse);
+    }
+
+    /**
+     * Returns the CRN for a given course in a given semester.
+     *
+     * @param _abbreviation Class name that the CRN is being requested for.
+     * @param _semester Which semester the class being requested is in.
+     * @throws Exception
+     */
+    public static void getCRN(String _abbreviation, String _semester) throws Exception {
+        String CRNCourse = getInfoBase(_abbreviation, _semester, getCRN);
+        //Should be return, for now print.
+        System.out.println(CRNCourse);
+    }
+
+    /**
+     * Returns the instructor for a given course in a given semester.
+     *
+     * @param _abbreviation
+     * @param _semester
+     * @throws Exception
+     */
+    public static void getInstructor(String _abbreviation, String _semester) throws Exception {
+        String InstructorCourse = getInfoBase(_abbreviation, _semester, getInstructor);
+        //Should be return, for now print.
+        System.out.println(InstructorCourse);
+    }
+
+    /**
+     * Returns the building name and room number for a given course in a given
+     * semester. Currently there is no safe guard against online class which
+     * have no building, so be careful when calling this method.
+     *
+     * @param _abbreviation
+     * @param _semester
+     * @throws Exception
+     */
+    public static void getBuilding(String _abbreviation, String _semester) throws Exception {
+        String BuildingCourse = getInfoBase(_abbreviation, _semester, getBuilding);
+        //Should be return, for now print.
+        System.out.println(BuildingCourse);
+    }
+
+    /**
+     * Returns information on a given course in a given semester based on which
+     * method class. This is the base method for other get methods for class
+     * information.
+     *
+     *
+     * @param _abbreviation Class name that the day is being requested for.
+     * @param _semester Which semester the class being requested is in.
+     * @param _whichRegex
+     * @throws Exception
+     */
+    public static String getInfoBase(String _abbreviation, String _semester, String _whichRegex) throws Exception {
+        /**
+         * Decides which file will be used, this is done for speed Since the
+         * time and day will be the most request, both are in a separate file
+         * for a little speed
+         */
+        if (_whichRegex == getDay | _whichRegex == getTime) {
+            lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesTimeDate.txt")));
+
+        } else {
+            lines = Files.readAllLines(Paths.get(ScheduleCreator.Boilerplate.GetResourceUrl("raw/" + _semester + "coursesAllInfo.txt")));
+
+        }
+
         /**
          * iterate over text to see what lines match, if a line matches the
-         * given courses, it it copied and the day for the course(s) is
-         * extracted using a regex
+         * given courses, it it copied and the requested information for the
+         * course(s) is extracted using a regex according to which method calls
          */
         for (String line : lines) {
             if (line.contains(_abbreviation)) {
-                String results = line;
-                //If a line matches from above then a regex is applied to that line
-                Matcher match = Pattern.compile(getDay).matcher(results);
+                String matchedLines = line;
+                /*
+                If a line matches from above then a regex is applied to that line.
+                The regex being used is decided by which method calls.
+                 */
+                Matcher match = Pattern.compile(_whichRegex).matcher(matchedLines);
                 while (match.find()) {
-                    String output = (match.group());
-                    //should be return statment, but for now is a print
-                    System.out.println(output);
+                    String parsedLines = (match.group());
+                    //return all results found.
+                    return parsedLines;
 
                 }
 
             }
         }
+        //Required return, also failsafe.
+        return "Error: Check ScheduleCreator.DBAdapter.getInfoBase";
+
     }
 
 }
