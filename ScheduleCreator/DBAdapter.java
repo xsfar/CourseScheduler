@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 3/3/2020
+ * Last Updated: 3/6/2020
  */
 public class DBAdapter {
 
@@ -137,8 +137,14 @@ public class DBAdapter {
      * Returns the time for a given course in a given semester. If a online
      * class is requested TBA is returned.
      *
-     * @param _abbreviation Class name that the time is being requested for
+     * @param _abbreviation Course name that the time is being requested for
      * @throws Exception
+     */
+    /**
+     * 
+     * @param _abbreviation Course name that the time is being requested for.
+     * @param _semester Semester the course being requested is in.
+     * @throws Exception 
      */
     public static void getTime(String _abbreviation, String _semester) throws Exception {
         String TimeCourse = getInfoBase(_abbreviation, _semester, getTime);
@@ -153,8 +159,8 @@ public class DBAdapter {
      * TBA is returned.
      *
      *
-     * @param _abbreviation Class name that the day is being requested for.
-     * @param _semester Which semester the class being requested is in.
+     * @param _abbreviation Course name that the day is being requested for.
+     * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
     public static void getDay(String _abbreviation, String _semester) throws Exception {
@@ -166,8 +172,8 @@ public class DBAdapter {
     /**
      * Returns the CRN for a given course in a given semester.
      *
-     * @param _abbreviation Class name that the CRN is being requested for.
-     * @param _semester Which semester the class being requested is in.
+     * @param _abbreviation Course name that the CRN is being requested for.
+     * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
     public static void getCRN(String _abbreviation, String _semester) throws Exception {
@@ -179,8 +185,8 @@ public class DBAdapter {
     /**
      * Returns the instructor for a given course in a given semester.
      *
-     * @param _abbreviation
-     * @param _semester
+     * @param _abbreviation Course name that the instructor is being requested for.
+     * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
     public static void getInstructor(String _abbreviation, String _semester) throws Exception {
@@ -194,8 +200,8 @@ public class DBAdapter {
      * semester. Currently there is no safe guard against online class which
      * have no building, so be careful when calling this method.
      *
-     * @param _abbreviation
-     * @param _semester
+     * @param _abbreviation Course name that the building is being requested for.
+     * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
     public static void getBuilding(String _abbreviation, String _semester) throws Exception {
@@ -210,8 +216,8 @@ public class DBAdapter {
      * information.
      *
      *
-     * @param _abbreviation Class name that the day is being requested for.
-     * @param _semester Which semester the class being requested is in.
+     * @param _abbreviation Course name that information is being requested for.
+     * @param _semester Semester the course being requested is in.
      * @param _whichRegex
      * @throws Exception
      */
