@@ -135,16 +135,11 @@ public class DBAdapter {
 
     /**
      * Returns the time for a given course in a given semester. If a online
-     * class is requested TBA is returned.
+     * course is requested TBA is returned.
      *
-     * @param _abbreviation Course name that the time is being requested for
-     * @throws Exception
-     */
-    /**
-     * 
      * @param _abbreviation Course name that the time is being requested for.
      * @param _semester Semester the course being requested is in.
-     * @throws Exception 
+     * @throws Exception
      */
     public static void getTime(String _abbreviation, String _semester) throws Exception {
         String TimeCourse = getInfoBase(_abbreviation, _semester, getTime);
@@ -154,10 +149,8 @@ public class DBAdapter {
     }
 
     /**
-     * Returns the day for a given course in a given semester. Given a class
-     * name returns the day(s) the class is on. If a online class is requested
-     * TBA is returned.
-     *
+     * Returns the day(s) for a given course in a given semester. If a online
+     * course is requested TBA is returned.
      *
      * @param _abbreviation Course name that the day is being requested for.
      * @param _semester Semester the course being requested is in.
@@ -185,7 +178,8 @@ public class DBAdapter {
     /**
      * Returns the instructor for a given course in a given semester.
      *
-     * @param _abbreviation Course name that the instructor is being requested for.
+     * @param _abbreviation Course name that the instructor is being requested
+     * for.
      * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
@@ -200,7 +194,8 @@ public class DBAdapter {
      * semester. Currently there is no safe guard against online class which
      * have no building, so be careful when calling this method.
      *
-     * @param _abbreviation Course name that the building is being requested for.
+     * @param _abbreviation Course name that the building is being requested
+     * for.
      * @param _semester Semester the course being requested is in.
      * @throws Exception
      */
@@ -214,7 +209,6 @@ public class DBAdapter {
      * Returns information on a given course in a given semester based on which
      * method class. This is the base method for other get methods for class
      * information.
-     *
      *
      * @param _abbreviation Course name that information is being requested for.
      * @param _semester Semester the course being requested is in.
