@@ -1,15 +1,15 @@
 package ScheduleCreator.controllers;
 
-import ScheduleCreator.DBAdapter;
-import java.io.File;
+import ScheduleCreator.Translator;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,11 +37,11 @@ public class CoursesController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		try {
-			loadSemesters();
-		}
-		catch (Exception e) {};
-        
+            try {
+                loadSemesters();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}
     
 	public void addSelectedCourse(ActionEvent _event) throws Exception {
@@ -49,14 +49,15 @@ public class CoursesController implements Initializable {
 		List<String> courseList = new ArrayList();
 		courseList.add(choice);
 		selectedCourses.getItems().add(choice);
-		DBAdapter.saveCourse(choice);
+		Translator.saveCourse(choice);
 	}
 	public void switchSemester(ActionEvent _event) throws Exception {
 		clearCalendar();
 		clearSectionList();
-                String[] temp = semesterComboBox.getValue().split(" ");
-                String semester = temp[0].toLowerCase() + temp[1];
-                loadAllCourses(semester);
+               // String[] temp = 
+                //String semester = temp[0].toLowerCase() + temp[1];
+//                System.out.println(semester);                
+                loadAllCourses(semesterComboBox.getValue());
                 
 	}
 
@@ -73,23 +74,24 @@ public class CoursesController implements Initializable {
 		Object itemToRemove = selectedCourses.getSelectionModel().getSelectedItem();
 		String courseToDelete = (String)itemToRemove;
 		selectedCourses.getItems().remove(itemToRemove);
-		DBAdapter.removeCourse(courseToDelete);
+		Translator.removeCourse(courseToDelete);
 	}
     
 	public void loadAllCourses(String _semester) throws Exception {
-                List<String> courses = DBAdapter.getCourses(_semester);
+            
+                List<String> courses = Translator.getCourses(_semester);
                 System.out.println(courses.toString());
 		courseComboBox.setItems(FXCollections.observableList(courses));
 	}
 
-	public void loadSemesters() {
-		List<String> semesters = DBAdapter.getSemesters();
+	public void loadSemesters() throws IOException {
+		List<String> semesters = Translator.getSemesters();
 		semesterComboBox.setItems(FXCollections.observableList(semesters));
 	}
 
     
 	public void loadSelectedCourses() throws Exception {
-		List<String> courses = DBAdapter.getSelectedCourses();
+		List<String> courses = Translator.getSelectedCourses();
 		selectedCourses.setItems(FXCollections.observableList(courses));
 	}
 }
