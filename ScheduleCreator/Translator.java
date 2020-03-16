@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 3/6/2020
+ * Last Updated: 3/16/2020
  */
 public class Translator {
 
@@ -69,6 +69,7 @@ public class Translator {
      * a leading /)
      * @return the fulltext as a String
      */
+    
     protected static String getFullText(String _resourceName) throws FileNotFoundException, IOException {
         String path = "resources/" + _resourceName;
         String content;
@@ -171,10 +172,10 @@ public class Translator {
      * @param _course
      * @throws Exception
      */
-    public static void saveCourse(String _course) throws Exception {
+    public static void saveCourse(String _course, String _semester) throws Exception {
         //Adds new selected course to new line.
         try ( //Open file to add new classes.
-                 FileWriter output = new FileWriter(selectedCourseFile, true)) {
+                 FileWriter output = new FileWriter(new File(_semester + "_selected_courses.txt"), true)) {
             //Adds new selected course to new line.
             output.append(_course + "\n");
         }
@@ -217,20 +218,24 @@ public class Translator {
      * @return
      * @throws Exception
      */
-    public static List<String> getSelectedCourses() throws Exception {
+    public static List<String> getSelectedCourses(String _semester) {
 
-        ArrayList<String> selectedCourses;
+        ArrayList<String> selectedCourses = new ArrayList();
         //Load courses from text file to be returned as a list.
-        try ( Scanner input = new Scanner(selectedCourseFile)) {
+        try ( Scanner input = new Scanner(new File(_semester + "_selected_courses.txt"))) {
             //Load courses from text file to be returned as a list.
-            selectedCourses = new ArrayList();
             String line;
             while (input.hasNext()) {
                 line = input.nextLine();
                 selectedCourses.add(line.trim());
             }
         }
-        return selectedCourses;
+        catch (FileNotFoundException ex) {
+            System.out.println(_semester + "user_selected_courses.txt file does not exist:");
+        }
+        finally {
+            return selectedCourses;
+        }
     }
 
 }
