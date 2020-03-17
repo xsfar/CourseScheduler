@@ -1,6 +1,7 @@
 package ScheduleCreator.controllers;
 
 import ScheduleCreator.Translator;
+import ScheduleCreator.models.Semester;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +38,12 @@ public class CoursesController implements Initializable {
     protected Button courseButton;
     @FXML
     protected Button removeCourseButton;
-    protected String currentSemester;
+
+    protected Semester currentSemester;
+    protected Semester spring2020 = new Semester("spring2020");
+    protected Semester summer2020 = new Semester("summer2020");
+    protected Semester fall2020 = new Semester("fall2020");
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,23 +55,36 @@ public class CoursesController implements Initializable {
     }
 
     public void addSelectedCourse(ActionEvent _event) throws Exception {
-        String choice = this.courseComboBox.getValue();
 
-        //Displays course to be added in console
-        System.out.println("Course selected: " + choice);
-        List<String> courseList = new ArrayList();
-        courseList.add(choice);
-        this.selectedCourses.getItems().add(choice);
-        Translator.saveCourse(choice, formatSemester(this.currentSemester));
+        String selectedCourse = this.courseComboBox.getValue();
+        this.courseComboBox.setValue("-");
+
+        if (selectedCourse != null && selectedCourse != "-") {
+
+            if (currentSemester.addCourse(selectedCourse)) this.selectedCourses.getItems().add(selectedCourse);
+        }
     }
 
     public void switchSemester(ActionEvent _event) throws Exception {
-        this.currentSemester = semesterComboBox.getValue();
-        clearCalendar();
-        clearSectionList();
+        String currentSemesterString = semesterComboBox.getValue();
+        this.courseComboBox.setValue("-");
 
-        loadAllCourses(this.currentSemester);
-        loadSelectedCourses(formatSemester(this.currentSemester));
+        switch (formatSemester(currentSemesterString)) {
+
+            case "spring2020":
+                this.currentSemester = spring2020;
+                break;
+            case "summer2020":
+                this.currentSemester = summer2020;
+                break;
+            case "fall2020":
+                this.currentSemester = fall2020;
+
+                break;
+        }
+
+        loadAllCourses(currentSemesterString);
+        loadSelectedCourses(this.currentSemester.getName());
 
     }
 
@@ -79,9 +98,12 @@ public class CoursesController implements Initializable {
 
     public void removeSelectedCourse(ActionEvent _event) throws Exception {
         Object itemToRemove = this.selectedCourses.getSelectionModel().getSelectedItem();
-        String courseToDelete = (String) itemToRemove;
+
         this.selectedCourses.getItems().remove(itemToRemove);
-        Translator.removeCourse(courseToDelete);
+
+        String courseToDelete = (String) itemToRemove;
+        this.currentSemester.removeCourse(courseToDelete.trim());
+
     }
 
     public void loadAllCourses(String _semester) throws Exception {
@@ -102,7 +124,9 @@ public class CoursesController implements Initializable {
 
     public String formatSemester(String _semester) {
         //Format current semester to pass as argument in appropriate Translator methods
-        String[] temp = this.currentSemester.split(" ");
+
+        String[] temp = _semester.split(" ");
+
         String formattedSemester = temp[0].toLowerCase() + temp[1];
 
         return formattedSemester;

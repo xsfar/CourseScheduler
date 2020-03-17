@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.regex.Pattern;
 public class Translator {
 
     // this is in the working directory, not the .jar
-    protected static File selectedCourseFile = new File("user_selected_courses.txt");
+    protected static File selectedCourseFile;
 
     /**
      * the type of data requested about a section
@@ -69,7 +70,7 @@ public class Translator {
      * a leading /)
      * @return the fulltext as a String
      */
-    
+
     protected static String getFullText(String _resourceName) throws FileNotFoundException, IOException {
         String path = "resources/" + _resourceName;
         String content;
@@ -172,42 +173,50 @@ public class Translator {
      * @param _course
      * @throws Exception
      */
-    public static void saveCourse(String _course, String _semester) throws Exception {
+
+    public static void saveCourse(String _course, String _semester) {
+
         //Adds new selected course to new line.
+        selectedCourseFile = new File(_semester + "_selected_courses.txt");
         try ( //Open file to add new classes.
                  FileWriter output = new FileWriter(new File(_semester + "_selected_courses.txt"), true)) {
             //Adds new selected course to new line.
             output.append(_course + "\n");
+        }
+        catch (Exception ex) {
+            System.out.println("Course was not saved succesfully");
         }
     }
 
     /**
      * Removes the selected course from the database.
      *
-     * @param _course
+     * @param _course, _semester
      * @throws Exception
      */
-    public static void removeCourse(String _course) throws Exception {
+    public static void removeCourse(String _course, String _semester) {
 
-        Scanner input = new Scanner(selectedCourseFile);
-        StringBuilder newContents = new StringBuilder();
-        String line = "";
+        selectedCourseFile = new File(_semester + "_selected_courses.txt");
 
-        /**
-         * Gets all of the courses except the selected one and appends to a new
-         * file to be saved. *
-         */
-        while (input.hasNext()) {
-            line = input.nextLine();
-
-            if (!line.contains(_course)) {
-                newContents.append(_course).append('\n');
+        try {
+            List<String> courses = Files.readAllLines(selectedCourseFile.toPath());
+            for (String course : courses) {
+                if (course.equals(_course)) {
+                    courses.remove(course);
+                    break;
+                }
             }
 
+            try ( FileWriter writer = new FileWriter(selectedCourseFile)) {
+                for (String course : courses) {
+                    writer.append(course + "\n");
+                }
+                writer.close();
+            }
+            catch (Exception ex) {}
         }
 
-        try ( FileWriter writer = new FileWriter(selectedCourseFile)) {
-            writer.append(newContents.toString());
+        catch (IOException ex) {
         }
 
     }
@@ -227,11 +236,13 @@ public class Translator {
             String line;
             while (input.hasNext()) {
                 line = input.nextLine();
-                selectedCourses.add(line.trim());
+                selectedCourses.add(line);
             }
         }
         catch (FileNotFoundException ex) {
-            System.out.println(_semester + "user_selected_courses.txt file does not exist:");
+
+            System.out.println(_semester + "user_selected_courses.txt file does not exist yet (no selected courses for semester)");
+
         }
         finally {
             return selectedCourses;

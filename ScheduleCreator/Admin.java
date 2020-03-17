@@ -20,6 +20,8 @@ import java.util.regex.Pattern;
  * pull out hardcoded paths -
  *
  * @author Nick Econopouly, Jamison Valentine, Ilyass Sfar
+ *
+ * Last Updated: 3/16/2020
  */
 public class Admin {
 
@@ -152,7 +154,7 @@ public class Admin {
             if (m.matches()) {
                 course = m.group(1);
                 if (!allCourses.contains(m.group(1))) {
-                    allCourses.add(m.group(3) + " - " + m.group(1));
+                    allCourses.add(m.group(3) + " - " + m.group(1).trim());
                 }
             }
         }
