@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
  * This class is used to retrieve and modify persistent data for the
  * application.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
  *
- * Last Updated: 3/16/2020
+ * Last Updated: 3/17/2020
  */
 public class Translator {
 
@@ -56,9 +56,25 @@ public class Translator {
     }
 
     // DUMMY
-    public static List<String> getSections(String _course, String _semesterName) {
-        ArrayList<String> sections = new ArrayList<>();
-        sections.add("CSC 250 - 01");
+    public static List<String> getSections(String _courseNumber, String _semester) {
+
+        String path = "DB/" + _semester + "/all_info";
+        ArrayList<String> sections = new ArrayList();
+
+        try {
+            String content = Translator.getFullText(path);
+            Scanner input = new Scanner(content).useDelimiter("\n");
+            String line = "";
+
+            while (input.hasNext()) {
+                line = input.next();
+                if (line.contains(_courseNumber)) {
+                    sections.add(line);
+                }
+            }
+        }
+        catch (IOException ex) {}
+
         return sections;
     }
 
@@ -92,11 +108,17 @@ public class Translator {
      *
      * @param _semesterName
      * @return a List of courses (as Strings) available for the semester
-     * @throws java.io.FileNotFoundException
+     *
      */
-    public static List<String> getCourses(String _semesterName) throws FileNotFoundException, IOException {
+    public static List<String> getCourses(String _semesterName)  {
+
+        List<String> courses = new ArrayList();
+        try {
         String contents = Translator.getFullText("DB/" + _semesterName + "/courses");
-        List<String> courses = Arrays.asList(contents.split("\n"));
+        courses = Arrays.asList(contents.split("\n"));
+        }
+        catch (Exception ex) {}
+
         return courses;
     }
 
@@ -240,9 +262,7 @@ public class Translator {
             }
         }
         catch (FileNotFoundException ex) {
-
             System.out.println(_semester + "user_selected_courses.txt file does not exist yet (no selected courses for semester)");
-
         }
         finally {
             return selectedCourses;
