@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
@@ -39,7 +40,7 @@ import javafx.scene.shape.Rectangle;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 3/18/2020
+ * Last Updated: 3/21/2020
  */
 public class CoursesController implements Initializable {
 
@@ -48,7 +49,7 @@ public class CoursesController implements Initializable {
     @FXML
     protected ListView availableCourses;
     @FXML
-    protected ListView selectedCourses;
+    protected ListView selectedCoursesListView;
     @FXML
     protected ListView sectionListView;
     @FXML
@@ -103,7 +104,7 @@ public class CoursesController implements Initializable {
         if (this.availableCourses.getFocusModel().getFocusedItem() != null) {
             String selectedCourse = this.availableCourses.getFocusModel().getFocusedItem().toString();
             if (this.currentSemester.addCourse(selectedCourse)) {
-                this.selectedCourses.getItems().add(selectedCourse);
+                this.selectedCoursesListView.getItems().add(selectedCourse);
                 this.currentSemester.generateSchedules();
             }
             regenerateSchedules();
@@ -139,21 +140,21 @@ public class CoursesController implements Initializable {
         for (BorderPane entry : entries) {
             scheduleGrid.getChildren().remove(entry);
         }
-    }
-
-    protected void clearSectionList() {
-        System.out.println("Dummy function to clear the list of available sections for when we switch semesters");
+        entries.clear();
     }
 
     // TODO: connect "delete" while in the selectedCourses ListView to this method and
     // allow for selecting and deleting multiple courses
     public void removeSelectedCourse(ActionEvent _event) throws Exception {
-        if (this.focusedCourse != null) {
-            Object itemToRemove = this.selectedCourses.getSelectionModel().getSelectedItem();
-            this.selectedCourses.getItems().remove(itemToRemove);
+
+        if (this.selectedCoursesListView.getSelectionModel().getSelectedItem() != null) {
+            Object itemToRemove = this.selectedCoursesListView.getSelectionModel().getSelectedItem();
+            this.selectedCoursesListView.getItems().remove(itemToRemove);
 
             String courseToDelete = ((String) itemToRemove).trim();
             this.currentSemester.removeCourse(courseToDelete);
+
+            if (this.focusedCourse != null && this.focusedCourse.getFullText().equalsIgnoreCase(courseToDelete)) this.sectionListView.getItems().clear();;
 
             this.currentSemester.generateSchedules();
             regenerateSchedules();
@@ -178,8 +179,8 @@ public class CoursesController implements Initializable {
 
         List<Section> courseSections = new ArrayList();
 
-        if (this.selectedCourses.getFocusModel().getFocusedItem() != null) {
-            String currentSelection = this.selectedCourses.getFocusModel().getFocusedItem().toString();
+        if (this.selectedCoursesListView.getSelectionModel().getSelectedItem() != null) {
+            String currentSelection = this.selectedCoursesListView.getSelectionModel().getSelectedItem().toString();
 
             for (Course course : this.currentSemester.getSelectedCourses()) {
                 if (course.getFullText().equals(currentSelection)) {
@@ -286,7 +287,7 @@ public class CoursesController implements Initializable {
 
     public void loadSelectedCourses(String _semester) throws Exception {
         List<String> courses = Translator.getSelectedCourses(_semester);
-        this.selectedCourses.setItems(FXCollections.observableList(courses));
+        this.selectedCoursesListView.setItems(FXCollections.observableList(courses));
         regenerateSchedules();
 
     }
@@ -316,16 +317,17 @@ public class CoursesController implements Initializable {
     }
 
     public void addSection(ActionEvent _event) {
-        if (this.focusedCourse != null) {
-            int secIndex = this.sectionListView.getFocusModel().getFocusedIndex();
-            Section focusedSection = this.focusedCourse.getSections().get(secIndex);
-            this.currentSemester.addSelectedSection(focusedCourse, focusedSection);
-            this.currentSemester.generateSchedules();
-            loadSchedule(this.currentSemester.getSchedules().get(0));
-        }
+//        if (this.focusedCourse != null) {
+//            int secIndex = this.sectionListView.getSelectionModel().getSelectedIndex();
+//            Section focusedSection = this.focusedCourse.getSections().get(secIndex);
+//            this.currentSemester.addSelectedSection(focusedCourse, focusedSection);
+//            this.currentSemester.generateSchedules();
+//            loadSchedule(this.currentSemester.getSchedules().get(0));
+//        }
     }
 
-    public void addEntry(Section _section) {
+    public void addEntry(Section _section, int _numberOfCampusCourses) {
+
 
         char[] daysString = _section.getDays().toCharArray();
         ArrayList<Integer> days = new ArrayList();
@@ -349,26 +351,59 @@ public class CoursesController implements Initializable {
 
             }
 
+            String color = "";
+            switch (_numberOfCampusCourses) {
+                case 1:
+                    //green
+                    color = "#ccffcc";
+                    break;
+                case 2:
+                    //blue
+                    color = "#b3e1ff";
+                    break;
+                case 3:
+                    //red
+                    color = "#ffb3b3 ";
+                    break;
+                case 4:
+                    //yellow
+                    color = "#e6e600";
+                    break;
+                case 5:
+                    //orange
+                    color = "#ffda75";
+                    break;
+                case 6:
+                    color = "#ff6666";
+                    break;
+
+                default:
+                    color = "lightblue";
+
+            }
+
             int row = (int) _section.getStartTime() / 100 - 7;
+            double topMargin = (_section.getStartTime() % 100 ) / 60;
             for (Integer col : days) {
-                BorderPane region = grid[row][col];
                 Label label = new Label(_section.getCourseID() + " - " + _section.getSectionNumber());
-                BorderPane cont = new BorderPane();
+                BorderPane entryContainer = new BorderPane();
+                entryContainer.paddingProperty().set(new Insets(grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
                 StackPane pane = new StackPane();
 
                 Rectangle rect = new Rectangle();
-                rect.setStyle("-fx-fill:lightblue;");
+                rect.setStyle("-fx-fill:" + color + "; -fx-stroke: black; -fx-stroke-line-cap: round; -fx-arc-height: 10; -fx-arc-width: 10;");
                 label.setAlignment(Pos.CENTER);
 
-                pane.setStyle("-fx-border-color:blue;");
+                pane.setStyle("");
                 pane.getChildren().addAll(rect, label);
-                cont.setTop(pane);
+                entryContainer.setTop(pane);
 
-                scheduleGrid.getChildren().add(cont);
-                GridPane.setConstraints(cont, col, row, 1, GridPane.REMAINING, HPos.CENTER, VPos.TOP);
+                scheduleGrid.getChildren().add(entryContainer);
+                GridPane.setConstraints(entryContainer, col, row, 1, GridPane.REMAINING, HPos.CENTER, VPos.TOP);
+                BorderPane region = grid[row][col];
                 rect.heightProperty().bind(region.heightProperty().subtract(2).multiply(_section.getDurationHours()));
                 rect.widthProperty().bind(region.widthProperty().subtract(2));
-                entries.add(cont);
+                entries.add(entryContainer);
 
             }
 
@@ -377,8 +412,11 @@ public class CoursesController implements Initializable {
 
     public void loadSchedule(Schedule _schedule) {
         clearCalendar();
+        int numberOfCampusCourses = 0;
         for (Section section : _schedule.getAddedSections()) {
-            addEntry(section);
+            if (!section.isOnline()) {
+                addEntry(section, ++numberOfCampusCourses);
+            }
         }
         scheduleLabel.setText(this.currentScheduleIndex + 1 + "/" + this.currentSemester.getNumberOfSchedules());
     }
