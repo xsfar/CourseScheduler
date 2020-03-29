@@ -7,7 +7,7 @@ package ScheduleCreator;
  *
  * Last Updated: 3/27/2020
  */
-import ScheduleCreator.API.ApiAdapter;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
