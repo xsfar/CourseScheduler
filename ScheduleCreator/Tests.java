@@ -7,7 +7,9 @@ package ScheduleCreator;
  *
  * Last Updated: 3/27/2020
  */
-
+import ScheduleCreator.API.EmailAdapter;
+import com.mailjet.client.errors.MailjetException;
+import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,21 +17,15 @@ import java.util.logging.Logger;
 
 public class Tests {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {
 
         //regen databse
         Admin.regenDB();
-        //test api call
-        //ApiAdapter testAPI = new ApiAdapter();
-        //System.out.println("API returned "+testAPI.decisionForce(""));
         //
-        // TODO: add courselist regex;
-        // fix regenDB() so that it doesn't rely on classpath resources (so tests always work the first time)
-        // getSections()
-        // regenerate the database
-        //
-        // test how DBAdapter works with current semesters
-        //testSemester();
+        //Test api call,
+        EmailAdapter testAPI = new EmailAdapter();
+        testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
+
     }
 
     public static void testSemester() throws IOException {

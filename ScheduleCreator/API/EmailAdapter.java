@@ -1,16 +1,19 @@
 package ScheduleCreator.API;
 
 /**
- * Interface for email API calls for MailJet.
+ * Adapter class for EmailAPI, so it doesn't have to be called directly.
  *
  * @author Ilyass Sfar
  *
- * Last Updated: 3/18/2020
+ * Last Updated: 3/29/2020
  */
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 
-public interface APIInterface {
+public class EmailAdapter implements APIInterface {
+
+    protected static final APIInterface thisApi = new EmailAPI();
+
     /**
      * Send email's using an API.
      *
@@ -20,5 +23,9 @@ public interface APIInterface {
      * @throws MailjetException
      * @throws MailjetSocketTimeoutException
      */
-    public void SendEmail(String _email, String _message)throws MailjetException, MailjetSocketTimeoutException;
+    @Override
+    public void SendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
+        EmailAdapter.thisApi.SendEmail(_email, _message);
+    }
+
 }
