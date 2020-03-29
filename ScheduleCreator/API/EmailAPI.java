@@ -41,7 +41,7 @@ public class EmailAPI implements APIInterface {
                         .put(new JSONObject()
                                 //The email that is being used to send, this is controled from the mailjet webiste
                                 .put(Emailv31.Message.FROM, new JSONObject()
-                                        .put("Email", "isfar314@gmail.com")
+                                        .put("Email", "ScheduleCreatorUNCG@gmail.com")
                                         .put("Name", "Schedule Creator"))
                                 //The email that is being send to
                                 .put(Emailv31.Message.TO, new JSONArray()
