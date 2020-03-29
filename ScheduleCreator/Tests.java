@@ -19,7 +19,6 @@ public class Tests {
 
         //regen databse
         Admin.regenDB();
-
         //test api call
         //ApiAdapter testAPI = new ApiAdapter();
         //System.out.println("API returned "+testAPI.decisionForce(""));
