@@ -100,7 +100,7 @@ public class CoursesController implements Initializable {
             grid = new BorderPane[NUM_ROWS][NUM_COLS];
             this.drawGrid();
             this.CRNPane.toFront();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(CoursesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
