@@ -1,6 +1,6 @@
 package ScheduleCreator.models;
 
-import ScheduleCreator.Translator;
+import ScheduleCreator.Adapter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,11 +18,12 @@ public class Semester {
     protected final List<String> allCourses;
     protected List<Schedule> schedules;
     protected LinkedHashMap<Course, List<Section>> selectedSections;
+    protected Adapter adapter = new Adapter();
 
 
     public Semester(String _name) {
         this.name = _name;
-        this.allCourses = Translator.getCourses(this.name);
+        this.allCourses = this.adapter.getCourses(this.name);
         this.schedules = new ArrayList();
         this.selectedSections = new LinkedHashMap();
         this.loadSelectedCoursesFromFile();
@@ -49,7 +50,7 @@ public class Semester {
     public Boolean addCourse(Course _course) {
         if (!this.selectedSections.keySet().contains(_course)) {
             this.selectedSections.put(_course, _course.getSections());
-            Translator.saveCourse(_course.getFullText(), this.name);
+            this.adapter.saveCourse(_course.getFullText(), this.name);
             return true;
         }
         return false;
@@ -110,7 +111,7 @@ public class Semester {
 
     private void loadSelectedCoursesFromFile() {
 
-        List<String> list = Translator.getSelectedCourses(this.name);
+        List<String> list = this.adapter.getSelectedCourses(this.name);
         if (!list.isEmpty()) {
             for (String courseName : list) {
                 Course course = new Course(courseName, this.name);
@@ -128,7 +129,7 @@ public class Semester {
             }
         }
 
-        Translator.removeCourse(_course, this.name);
+        this.adapter.removeCourse(_course, this.name);
     }
 
     @Override
@@ -155,6 +156,6 @@ public class Semester {
     }
 
     public List<String> getSelectedCourseStrings() {
-        return Translator.getSelectedCourses(this.name);
+        return this.adapter.getSelectedCourses(this.name);
     }
 }

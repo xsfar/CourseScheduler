@@ -1,5 +1,6 @@
 package ScheduleCreator.controllers;
 
+import ScheduleCreator.Adapter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ import javafx.scene.shape.Rectangle;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- *         Last Updated: 3/29/2020
+ *         Last Updated: 04/02/2020
  */
 public class CoursesController implements Initializable {
 
@@ -81,6 +82,7 @@ public class CoursesController implements Initializable {
     protected Semester currentSemester;
     protected Course focusedCourse;
     protected Course currentCourse;
+    protected Adapter adapter = new Adapter();
 
     protected int NUM_ROWS;
     protected int NUM_COLS;
@@ -346,7 +348,7 @@ public class CoursesController implements Initializable {
     }
 
     public void loadSemesters() throws IOException {
-        List<String> semesters = Translator.getSemesters();
+        List<String> semesters = adapter.getSemesters();
 
         List<String> newList = new ArrayList();
         Pattern p = Pattern.compile("([a-z]*)([0-9]{4})");
