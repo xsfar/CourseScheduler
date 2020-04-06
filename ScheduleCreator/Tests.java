@@ -24,8 +24,8 @@ public class Tests {
         Admin.regenDB();
         //
         //Test api call,
-        EmailAdapter testAPI = new EmailAdapter();
-        testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
+        //EmailAdapter testAPI = new EmailAdapter();
+        //testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
     }
 
     public static void testSemester() throws IOException {
