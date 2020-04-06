@@ -5,15 +5,13 @@ package ScheduleCreator;
  *
  * @author Nick Econopouly, Ilyass Sfar
  *
- * Last Updated: 3/27/2020
+ * Last Updated: 4/6/2020
  */
-
 import ScheduleCreator.API.EmailAdapter;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Tests {

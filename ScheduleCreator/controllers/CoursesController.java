@@ -1,5 +1,12 @@
 package ScheduleCreator.controllers;
 
+/**
+ * This class controls interactions in the Courses View.
+ *
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ *
+ * Last Updated: 4/6/2020
+ */
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,13 +53,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-/**
- * This class controls interactions in the Courses View.
- *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
- *
- * Last Updated: 3/29/2020
- */
 public class CoursesController implements Initializable {
 
     @FXML
@@ -626,7 +626,8 @@ public class CoursesController implements Initializable {
             loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
         }
     }
-        
+    
+    //Calls popup fxml for the email api
     public void popupAction(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

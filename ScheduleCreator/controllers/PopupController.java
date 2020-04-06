@@ -1,5 +1,12 @@
 package ScheduleCreator.controllers;
 
+/**
+ * Controller for email api popup
+ *
+ * @author Ilyass Sfar
+ *
+ * Last Updated: 4/6/2020
+ */
 import ScheduleCreator.API.EmailAdapter;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
@@ -16,7 +23,8 @@ public class PopupController {
 
     @FXML
     private Button sendBtn;
-
+    
+    //Calls email api 
     @FXML
     public void sendEmail(ActionEvent event) throws MailjetException, MailjetSocketTimeoutException {
         EmailAdapter testAPI = new EmailAdapter();
