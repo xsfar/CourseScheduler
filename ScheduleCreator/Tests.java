@@ -5,9 +5,8 @@ package ScheduleCreator;
  *
  * @author Nick Econopouly, Ilyass Sfar
  *
- * Last Updated: 3/27/2020
+ * Last Updated: 4/6/2020
  */
-
 import ScheduleCreator.API.EmailAdapter;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
@@ -24,8 +23,8 @@ public class Tests {
         Admin.regenDB();
         //
         //Test api call,
-        EmailAdapter testAPI = new EmailAdapter();
-        testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
+        //EmailAdapter testAPI = new EmailAdapter();
+        //testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
     }
 
     public static void testSemester() throws IOException {
