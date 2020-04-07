@@ -461,6 +461,7 @@ public class CoursesController implements Initializable {
     }
 
     public void showCRNs(ActionEvent _event) {
+        if (this.currentSemester == null) return; 
         if (this.currentSemester.getSelectedCourses().size() == 0) return;
         this.CRNContainer.getChildren().clear();
         StringBuilder content = new StringBuilder();
