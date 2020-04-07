@@ -128,8 +128,6 @@ public class CoursesController implements Initializable {
 
     public void setSections(ActionEvent _event) {
 
-        int index = this.sectionTabPane.getSelectionModel().getSelectedIndex();
-
         Course course;
         Tab tab;
         for (int i = 0; i < this.sectionTabPane.getTabs().size(); i++) {
@@ -178,9 +176,7 @@ public class CoursesController implements Initializable {
     public String semesterDirName(String _semester) {
 
         String[] temp = _semester.split(" ");
-
         String formattedSemester = temp[0].toLowerCase() + temp[1];
-
         return formattedSemester;
     }
 
@@ -188,10 +184,10 @@ public class CoursesController implements Initializable {
      * Clears the current displayed schedule.
      */
     public void clearScheduleGrid() {
-        for (BorderPane entry : entries) {
+        for (BorderPane entry : this.entries) {
             scheduleGridPane.getChildren().remove(entry);
         }
-        entries.clear();
+        this.entries.clear();
     }
 
     /**
@@ -267,7 +263,6 @@ public class CoursesController implements Initializable {
         // Get the corresponding course to reference for sections
         for (Course course : this.currentSemester.getSelectedCourses()) {
             if (course.getFullText().equals(currentSelection)) {
-
                 this.focusedCourse = course;
                 break;
             }
@@ -361,8 +356,7 @@ public class CoursesController implements Initializable {
             m = p.matcher(semester);
 
             if (m.matches()) {
-                formattedSemester = m.group(1).substring(0, 1).toUpperCase() + m.group(1).substring(1) + " "
-                        + m.group(2);
+                formattedSemester = m.group(1).substring(0, 1).toUpperCase() + m.group(1).substring(1) + " " + m.group(2);
             }
             newList.add(formattedSemester);
         }
@@ -372,8 +366,7 @@ public class CoursesController implements Initializable {
 
     public void loadSelectedCourses() {
         this.sectionTabPane.getTabs().clear();
-        this.selectedCoursesListView
-                .setItems(FXCollections.observableList(this.currentSemester.getSelectedCourseStrings()));
+        this.selectedCoursesListView.setItems(FXCollections.observableList(this.currentSemester.getSelectedCourseStrings()));
 
         for (Course course : this.currentSemester.getSelectedCourses()) {
             this.createNewTab(course);
@@ -424,11 +417,8 @@ public class CoursesController implements Initializable {
         int index = this.sectionTabPane.getSelectionModel().getSelectedIndex();
         Tab currentTab = this.sectionTabPane.getTabs().get(index);
 
-        if (this.allUnselected(currentTab)) {
-            setSelectAll(true, currentTab);
-        } else {
-            setSelectAll(false, currentTab);
-        }
+        if (this.allUnselected(currentTab)) this.setSelectAll(true, currentTab);
+        else this.setSelectAll(false, currentTab);
     }
 
     /**
@@ -464,13 +454,14 @@ public class CoursesController implements Initializable {
             for (int j = 1; j < NUM_COLS; j++) {
                 BorderPane region = new BorderPane();
                 region.setStyle(("-fx-border-color: black; -fx-border-width: .5;"));
-                grid[i][j] = region;
-                scheduleGridPane.add(region, j, i);
+                this.grid[i][j] = region;
+                this.scheduleGridPane.add(region, j, i);
             }
         }
     }
 
     public void showCRNs(ActionEvent _event) {
+        if (this.currentSemester.getSelectedCourses().size() == 0) return;
         this.CRNContainer.getChildren().clear();
         StringBuilder content = new StringBuilder();
         for (Section section : this.currentSemester.getSchedules().get(this.currentScheduleIndex).getAddedSections()) {
@@ -489,20 +480,18 @@ public class CoursesController implements Initializable {
 
     public void addEntry(Section _section, int _numberOfCampusCourses) {
 
-        String color = assignColor(_numberOfCampusCourses);
+        String color = this.assignColor(_numberOfCampusCourses);
 
         int row = (int) _section.getStartTime() / 100 - 7;
         double topMargin = (_section.getStartTime() % 100) / 60;
         for (Integer col : getDays(_section)) {
             Label label = new Label(_section.getCourseID() + " - " + _section.getSectionNumber());
             BorderPane entryContainer = new BorderPane();
-            entryContainer.paddingProperty()
-                    .set(new Insets(grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
+            entryContainer.paddingProperty().set(new Insets(grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
             StackPane pane = new StackPane();
 
             Rectangle rect = new Rectangle();
-            rect.setStyle("-fx-fill:" + color
-                    + "; -fx-stroke: black; -fx-stroke-line-cap: round; -fx-arc-height: 10; -fx-arc-width: 10;");
+            rect.setStyle("-fx-fill:" + color + "; -fx-stroke: black; -fx-stroke-line-cap: round; -fx-arc-height: 10; -fx-arc-width: 10;");
             label.setAlignment(Pos.CENTER);
 
             pane.setStyle("");
@@ -544,7 +533,6 @@ public class CoursesController implements Initializable {
                 case 'F':
                     days.add(5);
                     break;
-
             }
         }
         return days;
@@ -592,13 +580,13 @@ public class CoursesController implements Initializable {
 
     public void loadSchedule(Schedule _schedule) {
         this.hideCRNs();
-        clearScheduleGrid();
+        this.clearScheduleGrid();
         int numberOfCampusCourses = 0;
         int onlineCourses = 0;
         StringBuilder label = new StringBuilder("Online Classes: ");
         for (Section section : _schedule.getAddedSections()) {
             if (!section.isOnline()) {
-                addEntry(section, ++numberOfCampusCourses);
+                this.addEntry(section, ++numberOfCampusCourses);
             } else {
                 if (onlineCourses >= 1) {
                     label.append(" | ");
@@ -607,15 +595,15 @@ public class CoursesController implements Initializable {
                 onlineCourses++;
             }
         }
-        scheduleLabel.setText(this.currentScheduleIndex + 1 + "/" + this.currentSemester.getNumberOfSchedules());
-        onlineClassesLabel.setText(label.toString());
+        this.scheduleLabel.setText(this.currentScheduleIndex + 1 + "/" + this.currentSemester.getNumberOfSchedules());
+        this.onlineClassesLabel.setText(label.toString());
     }
 
     public void loadNextSchedule(ActionEvent _event) {
         if (this.currentSemester != null) {
             if (this.currentScheduleIndex < this.currentSemester.getSchedules().size() - 1) {
                 this.currentScheduleIndex++;
-                loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
+                this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
             }
         }
     }
@@ -623,7 +611,7 @@ public class CoursesController implements Initializable {
     public void loadPrevSchedule(ActionEvent _event) {
         if (this.currentScheduleIndex > 0) {
             this.currentScheduleIndex--;
-            loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
+            this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
         }
     }
     
