@@ -1,5 +1,12 @@
 package ScheduleCreator.controllers;
 
+/**
+ * This class controls interactions in the Courses View.
+ *
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ *
+ * Last Updated: 4/6/2020
+ */
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,11 +27,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -42,14 +51,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
-/**
- * This class controls interactions in the Courses View.
- *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
- *
- * Last Updated: 3/31/2020
- */
 public class CoursesController implements Initializable {
 
     @FXML
@@ -243,7 +246,8 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Gets sections for a selected course and adds them to the sections listview.
+     * Gets sections for a selected course and adds them to the sections
+     * listview.
      *
      * @param _event
      */
@@ -401,14 +405,15 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * If there are no selections, force select all; if there are any selections,
-     * unselect all of them.
+     * If there are no selections, force select all; if there are any
+     * selections, unselect all of them.
      *
      * @param _event
      */
     public void selectAll(ActionEvent _event) {
-        if (this.sectionTabPane.getSelectionModel().getSelectedItem() == null)
+        if (this.sectionTabPane.getSelectionModel().getSelectedItem() == null) {
             return;
+        }
         int index = this.sectionTabPane.getSelectionModel().getSelectedIndex();
         Tab currentTab = this.sectionTabPane.getTabs().get(index);
 
@@ -456,6 +461,7 @@ public class CoursesController implements Initializable {
     }
 
     public void showCRNs(ActionEvent _event) {
+        if (this.currentSemester == null) return; 
         if (this.currentSemester.getSelectedCourses().size() == 0) return;
         this.CRNContainer.getChildren().clear();
         StringBuilder content = new StringBuilder();
@@ -583,8 +589,9 @@ public class CoursesController implements Initializable {
             if (!section.isOnline()) {
                 this.addEntry(section, ++numberOfCampusCourses);
             } else {
-                if (onlineCourses >= 1)
+                if (onlineCourses >= 1) {
                     label.append(" | ");
+                }
                 label.append(section.getID());
                 onlineCourses++;
             }
@@ -608,4 +615,21 @@ public class CoursesController implements Initializable {
             this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
         }
     }
+    
+    //Calls popup fxml for the email api
+    public void popupAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/ScheduleCreator/resources/views/email_popup.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 450, 150);
+            Stage stage = new Stage();
+            stage.setTitle("Email Course Information");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
 }
