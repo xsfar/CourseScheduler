@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  *
  * Last Updated: 3/17/2020
  */
-public class Translator {
+public class Translator implements TranslatorInterface {
 
     // this is in the working directory, not the .jar
     protected static File selectedCourseFile;
@@ -45,24 +45,24 @@ public class Translator {
      * in all other DBAdapter methods
      * @throws java.io.FileNotFoundException
      */
-    public static List<String> getSemesters() throws FileNotFoundException, IOException {
+    public List<String> getSemesters() throws FileNotFoundException, IOException {
         String path = "DB/semester_list";
 
-        String contents = Translator.getFullText(path);
+        String contents = new Translator().getFullText(path);
 
         List<String> semesters = Arrays.asList(contents.split("\n"));
 
         return semesters;
     }
-
     // DUMMY
-    public static List<String> getSections(String _courseNumber, String _semester) {
+    @Override
+    public List<String> getSections(String _courseNumber, String _semester) {
 
         String path = "DB/" + _semester + "/all_info";
         ArrayList<String> sections = new ArrayList();
 
         try {
-            String content = Translator.getFullText(path);
+            String content = new Translator().getFullText(path);
             Scanner input = new Scanner(content).useDelimiter("\n");
             String line = "";
 
@@ -86,8 +86,8 @@ public class Translator {
      * a leading /)
      * @return the fulltext as a String
      */
-
-    protected static String getFullText(String _resourceName) throws FileNotFoundException, IOException {
+    @Override
+    public String getFullText(String _resourceName) throws FileNotFoundException, IOException {
         String path = "resources/" + _resourceName;
         String content;
         try ( InputStream stream = Translator.class.getResourceAsStream(path);  InputStreamReader reader = new InputStreamReader(stream)) {
@@ -110,14 +110,15 @@ public class Translator {
      * @return a List of courses (as Strings) available for the semester
      *
      */
-    public static List<String> getCourses(String _semesterName)  {
+    @Override
+    public List<String> getCourses(String _semesterName)  {
 
         List<String> courses = new ArrayList();
         try {
-        String contents = Translator.getFullText("DB/" + _semesterName + "/courses");
+        String contents = new Translator().getFullText("DB/" + _semesterName + "/courses");
         courses = Arrays.asList(contents.split("\n"));
         }
-        catch (Exception ex) {}
+        catch (IOException ex) {}
 
         return courses;
     }
@@ -131,7 +132,8 @@ public class Translator {
      * @return requested info as a String
      * @throws java.io.FileNotFoundException
      */
-    protected static String getSectionInfo(Translator.choice _choice, String _semesterName, String _section) throws FileNotFoundException, IOException {
+    @Override
+    public String getSectionInfo(Translator.choice _choice, String _semesterName, String _section) throws FileNotFoundException, IOException {
         String regex = null;
         String dataFileType = "all_info";
 
@@ -157,7 +159,7 @@ public class Translator {
         }
 
         // get fulltext of the data we need
-        String text = Translator.getFullText("DB/" + _semesterName + "/" + dataFileType);
+        String text = new Translator().getFullText("DB/" + _semesterName + "/" + dataFileType);
 
         // create a List<String> of the lines
         List<String> lines = Arrays.asList(text.split("\n"));
@@ -193,10 +195,10 @@ public class Translator {
      * database.
      *
      * @param _course
-     * @throws Exception
+     * @param _semester
      */
-
-    public static void saveCourse(String _course, String _semester) {
+    @Override
+    public void saveCourse(String _course, String _semester) {
 
         //Adds new selected course to new line.
         selectedCourseFile = new File(_semester + "_selected_courses.txt");
@@ -213,10 +215,11 @@ public class Translator {
     /**
      * Removes the selected course from the database.
      *
-     * @param _course, _semester
-     * @throws Exception
+     * @param _course
+     * @param _semester
      */
-    public static void removeCourse(String _course, String _semester) {
+    @Override
+    public void removeCourse(String _course, String _semester) {
 
         selectedCourseFile = new File(_semester + "_selected_courses.txt");
 
@@ -246,10 +249,11 @@ public class Translator {
     /**
      * Returns a list of the selected courses.
      *
-     * @return
-     * @throws Exception
+     * @param _semester
+     * @return A List (of Strings) of the selected courses.
      */
-    public static List<String> getSelectedCourses(String _semester) {
+    @Override
+    public List<String> getSelectedCourses(String _semester) {
 
         ArrayList<String> selectedCourses = new ArrayList();
         //Load courses from text file to be returned as a list.

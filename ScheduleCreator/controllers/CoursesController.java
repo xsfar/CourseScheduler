@@ -3,10 +3,11 @@ package ScheduleCreator.controllers;
 /**
  * This class controls interactions in the Courses View.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
  *
  * Last Updated: 4/6/2020
  */
+import ScheduleCreator.Adapter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -84,6 +85,7 @@ public class CoursesController implements Initializable {
     protected Semester currentSemester;
     protected Course focusedCourse;
     protected Course currentCourse;
+    protected Adapter adapter = new Adapter();
 
     protected int NUM_ROWS;
     protected int NUM_COLS;
@@ -101,7 +103,7 @@ public class CoursesController implements Initializable {
             grid = new BorderPane[NUM_ROWS][NUM_COLS];
             this.drawGrid();
             this.CRNPane.toFront();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(CoursesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -345,7 +347,7 @@ public class CoursesController implements Initializable {
     }
 
     public void loadSemesters() throws IOException {
-        List<String> semesters = Translator.getSemesters();
+        List<String> semesters = adapter.getSemesters();
 
         List<String> newList = new ArrayList();
         Pattern p = Pattern.compile("([a-z]*)([0-9]{4})");
