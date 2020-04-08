@@ -19,6 +19,11 @@ import org.json.JSONObject;
 
 public class EmailAPI implements APIInterface {
 
+    private static final String apiPublicKey = "4ed58dd4eac88294f8decd6ebcb37802";
+    private static final String apiPrivateKey = "2ebe9765bf49eeac4c25fa0436edbcbf";
+    private static final String clientVersion = "v3.1";
+    private static final String sendEmail = "ScheduleCreatorUNCG@gmail.com";
+
     /**
      * Send email's using an API.
      *
@@ -29,19 +34,19 @@ public class EmailAPI implements APIInterface {
      * @throws MailjetSocketTimeoutException
      */
     @Override
-    public void SendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
+    public void sendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
         //Initalize the API requirements
         MailjetClient client;
         MailjetRequest request;
         MailjetResponse response;
         //Create a new client to send emails, using public and private api keys, and speify which version of the client is being used
-        client = new MailjetClient(("4ed58dd4eac88294f8decd6ebcb37802"), ("2ebe9765bf49eeac4c25fa0436edbcbf"), new ClientOptions("v3.1"));
+        client = new MailjetClient((apiPublicKey), (apiPrivateKey), new ClientOptions(clientVersion));
         request = new MailjetRequest(Emailv31.resource)
                 .property(Emailv31.MESSAGES, new JSONArray()
                         .put(new JSONObject()
                                 //The email that is being used to send, this is controled from the mailjet webiste
                                 .put(Emailv31.Message.FROM, new JSONObject()
-                                        .put("Email", "ScheduleCreatorUNCG@gmail.com")
+                                        .put("Email", sendEmail)
                                         .put("Name", "Schedule Creator"))
                                 //The email that is being send to
                                 .put(Emailv31.Message.TO, new JSONArray()

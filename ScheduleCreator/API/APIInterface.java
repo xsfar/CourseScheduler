@@ -20,5 +20,5 @@ public interface APIInterface {
      * @throws MailjetException
      * @throws MailjetSocketTimeoutException
      */
-    public void SendEmail(String _email, String _message)throws MailjetException, MailjetSocketTimeoutException;
+    public void sendEmail(String _email, String _message)throws MailjetException, MailjetSocketTimeoutException;
 }

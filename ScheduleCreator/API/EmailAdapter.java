@@ -24,8 +24,8 @@ public class EmailAdapter implements APIInterface {
      * @throws MailjetSocketTimeoutException
      */
     @Override
-    public void SendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
-        EmailAdapter.thisApi.SendEmail(_email, _message);
+    public void sendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
+        EmailAdapter.thisApi.sendEmail(_email, _message);
     }
 
 }
