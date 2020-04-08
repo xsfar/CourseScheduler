@@ -3,7 +3,7 @@ package ScheduleCreator.controllers;
 /**
  * This class controls interactions in the Courses View.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
  * Last Updated: 4/6/2020
  */
@@ -419,8 +419,11 @@ public class CoursesController implements Initializable {
         int index = this.sectionTabPane.getSelectionModel().getSelectedIndex();
         Tab currentTab = this.sectionTabPane.getTabs().get(index);
 
-        if (this.allUnselected(currentTab)) this.setSelectAll(true, currentTab);
-        else this.setSelectAll(false, currentTab);
+        if (this.allUnselected(currentTab)) {
+            this.setSelectAll(true, currentTab);
+        } else {
+            this.setSelectAll(false, currentTab);
+        }
     }
 
     /**
@@ -463,8 +466,12 @@ public class CoursesController implements Initializable {
     }
 
     public void showCRNs(ActionEvent _event) {
-        if (this.currentSemester == null) return; 
-        if (this.currentSemester.getSelectedCourses().size() == 0) return;
+        if (this.currentSemester == null) {
+            return;
+        }
+        if (this.currentSemester.getSelectedCourses().size() == 0) {
+            return;
+        }
         this.CRNContainer.getChildren().clear();
         StringBuilder content = new StringBuilder();
         for (Section section : this.currentSemester.getSchedules().get(this.currentScheduleIndex).getAddedSections()) {
@@ -617,7 +624,7 @@ public class CoursesController implements Initializable {
             this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
         }
     }
-    
+
     //Calls popup fxml for the email api
     public void popupAction(ActionEvent event) {
         try {

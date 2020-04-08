@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Tests {
-    
+
     protected static Adapter adapter = new Adapter();
 
     public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {

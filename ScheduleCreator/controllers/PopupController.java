@@ -28,7 +28,7 @@ public class PopupController {
     @FXML
     public void sendEmail(ActionEvent event) throws MailjetException, MailjetSocketTimeoutException {
         EmailAdapter testAPI = new EmailAdapter();
-        testAPI.SendEmail(emailTF.getText(), "This is a temp UI API test call");
+        testAPI.sendEmail(emailTF.getText(), "This is a temp UI API test call");
         Stage stage = (Stage) sendBtn.getScene().getWindow();
         stage.close();
     }

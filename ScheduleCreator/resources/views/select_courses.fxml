@@ -142,9 +142,6 @@
                                  </BorderPane.margin>
                               </Button>
                            </center>
-                           <right>
-                              <Button mnemonicParsing="false" onAction="#popupAction" text="Email CRNs" BorderPane.alignment="CENTER" />
-                           </right>
                         </BorderPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <center>
@@ -163,7 +160,8 @@
                         <RowConstraints maxHeight="27.33331298828125" minHeight="10.0" prefHeight="27.33331298828125" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <Button mnemonicParsing="false" onAction="#showCRNs" text="Show CRNs" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#showCRNs" text="Show CRNs" translateX="-50.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#popupAction" prefHeight="27.0" prefWidth="97.0" text="Email CRNs" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
