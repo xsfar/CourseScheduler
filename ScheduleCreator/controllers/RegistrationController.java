@@ -30,6 +30,7 @@ public class RegistrationController {
 
     private WebEngine engine;
 
+    //Button to take user back to the main screen
     @FXML
     void backToPrimary(ActionEvent _event) {
 
@@ -46,6 +47,7 @@ public class RegistrationController {
         }
     }
 
+    //loads the uncg geine webpage as soon as the user acesses the registration screen
     public void initialize() {
         engine = webview.getEngine();
         engine.load("https://ssb.uncg.edu/");
@@ -53,6 +55,7 @@ public class RegistrationController {
     }
 
     //Forward and Backwards buttons based on https://stackoverflow.com/questions/18928333
+    //Button to go back to pervious web page
     @FXML
     void goBackWeb(ActionEvent event) {
         final WebHistory history = engine.getHistory();
@@ -66,6 +69,7 @@ public class RegistrationController {
         engine.load(entryList.get(currentIndex > 0 ? currentIndex - 1 : currentIndex).getUrl());
     }
 
+    //Button to go forward to pervious web page
     @FXML
     void goForwardWeb(ActionEvent event) {
         final WebHistory history = engine.getHistory();
@@ -80,6 +84,7 @@ public class RegistrationController {
 
     }
 
+    //Button to reload current web page
     @FXML
     void reloadWeb(ActionEvent event) {
         engine.reload();
