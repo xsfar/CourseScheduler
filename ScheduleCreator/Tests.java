@@ -12,10 +12,9 @@ import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Tests {
-    
+
     protected static Adapter adapter = new Adapter();
 
     public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {
