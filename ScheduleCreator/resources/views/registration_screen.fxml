@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" prefHeight="560" prefWidth="1090" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.PrimaryController">
+<AnchorPane id="AnchorPane" prefHeight="560" prefWidth="1090" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.RegistrationController">
    <children>
-      <AnchorPane layoutX="151.0" layoutY="100.0" prefHeight="200.0" prefWidth="285.0">
-         <children>
-            <Label layoutX="23.0" layoutY="108.0" text="Advising Code:" />
-            <Label layoutX="23.0" layoutY="56.0" text="Registration Date and Time:" />
-            <Label layoutX="23.0" layoutY="83.0" text="My Advisor:" />
-            <Button onAction="#backToPrimary" text="Back" />
-         </children>
-      </AnchorPane>
+      <Button layoutX="14.0" layoutY="14.0" onAction="#backToPrimary" prefHeight="27.0" prefWidth="163.0" text="Back To Main Screen" />
+      <WebView fx:id="webview" layoutX="6.0" layoutY="46.0" prefHeight="484.0" prefWidth="1088.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="46.0" />
+      <Button layoutX="14.0" layoutY="525.0" mnemonicParsing="false" onAction="#goBackWeb" prefHeight="27.0" prefWidth="318.0" text="Back" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" />
+      <Button layoutX="594.0" layoutY="535.0" mnemonicParsing="false" onAction="#goForwardWeb" prefHeight="27.0" prefWidth="329.0" text="Forward" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" />
+      <Button layoutX="318.0" layoutY="529.0" mnemonicParsing="false" onAction="#reloadWeb" prefHeight="27.0" prefWidth="442.0" text="Reload" AnchorPane.bottomAnchor="1.0" />
    </children>
 </AnchorPane>
