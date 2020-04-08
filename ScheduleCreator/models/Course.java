@@ -8,7 +8,7 @@ package ScheduleCreator.models;
  * Last Updated: 3/27/2020
  */
 
-import ScheduleCreator.Translator;
+import ScheduleCreator.Adapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,6 +21,7 @@ public class Course {
     protected final String abbreviation;
     protected final String courseNumber;
     protected List<Section> sections;
+    protected Adapter adapter = new Adapter();
 
     public Course(String _name, String _semester) {
         this.fullText = _name;
@@ -53,7 +54,7 @@ public class Course {
     }
 
     private void loadSectionsFromFile(String _semester) {
-        List<String> sectionStrings = Translator.getSections(this.id, _semester);
+        List<String> sectionStrings = this.adapter.getSections(this.id, _semester);
         this.sections = new ArrayList();
         Pattern p = Pattern.compile(".*([0-9]{5}).*- ([0-9]{2})\\s*(\\S* [ap]m - \\S* [ap]m)\\s*(\\S*)(.*)=(.*)");
 
