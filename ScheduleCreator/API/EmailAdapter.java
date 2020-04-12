@@ -5,7 +5,7 @@ package ScheduleCreator.API;
  *
  * @author Ilyass Sfar
  *
- * Last Updated: 3/29/2020
+ * Last Updated: 4/12/2020
  */
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
@@ -26,6 +26,14 @@ public class EmailAdapter implements APIInterface {
     @Override
     public void sendEmail(String _email, String _message) throws MailjetException, MailjetSocketTimeoutException {
         EmailAdapter.thisApi.sendEmail(_email, _message);
+    }
+
+    public static boolean validate(String _email) {
+        if (EmailAPI.validate(_email)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

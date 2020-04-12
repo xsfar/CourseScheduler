@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 4/6/2020
+ * Last Updated: 4/12/2020
  */
 import ScheduleCreator.Adapter;
 import java.io.IOException;
@@ -35,7 +35,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -82,14 +84,14 @@ public class CoursesController implements Initializable {
     // List of courses for current semester.
     FilteredList<String> courseList;
 
-    protected Semester currentSemester;
+    protected static Semester currentSemester;
     protected Course focusedCourse;
     protected Course currentCourse;
     protected Adapter adapter = new Adapter();
 
     protected int NUM_ROWS;
     protected int NUM_COLS;
-    protected int currentScheduleIndex;
+    protected static int currentScheduleIndex;
 
     BorderPane[][] grid;
     List<BorderPane> entries = new ArrayList();
@@ -627,17 +629,29 @@ public class CoursesController implements Initializable {
 
     //Calls popup fxml for the email api
     public void popupAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ScheduleCreator/resources/views/email_popup.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 450, 150);
-            Stage stage = new Stage();
-            stage.setTitle("Email Course Information");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        //if no courses are selected, and the email button is pressed then thier is nothing to email, an error box is thrown
+        if (this.currentSemester == null || this.currentSemester.getSelectedCourses().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.OK);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You have not selected any courses yet");
+            alert.setContentText("Select a semseter and courses and try again!");
+            alert.showAndWait();
+            System.out.println("No semster or courses choosen.");
+
+            //if the user does have a course selected and the email button is pressed, it shows as normal
+        } else {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/ScheduleCreator/resources/views/email_popup.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 450, 150);
+                Stage stage = new Stage();
+                stage.setTitle("Email Course Information");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                Logger logger = Logger.getLogger(getClass().getName());
+                logger.log(Level.SEVERE, "Failed to create new Window.", e);
+            }
         }
     }
 
