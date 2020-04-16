@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
@@ -8,26 +14,61 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="560" prefWidth="1090" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.PrimaryController">
-    <children>
-         <Button layoutX="366.0" layoutY="256.0" onAction="#changeToSelectClasses" prefHeight="39.0" prefWidth="286.0" text="Schedule Generator">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <Button layoutX="366.0" layoutY="322.0" onAction="#changeToRegistrationScreen" prefHeight="39.0" prefWidth="286.0" text="My Registration Details">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <Text layoutX="349.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNCG Schedule Creator" wrappingWidth="451.1748046875">
-         <font>
-            <Font name="System Italic" size="37.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="114.0" fitWidth="66.0" layoutX="696.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../uncg_emblem_3-color-174x300.png" />
-         </image>
-      </ImageView>
+<GridPane prefHeight="726.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScheduleCreator.controllers.PrimaryController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <GridPane alignment="CENTER" prefWidth="468.0" GridPane.columnIndex="1" GridPane.vgrow="ALWAYS" HBox.hgrow="NEVER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="200.0" minHeight="0.0" prefHeight="60.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="666.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text layoutX="186.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNCG Schedule Creator" wrappingWidth="451.1748046875" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="37.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="169.0" prefWidth="275.0" spacing="10.0" GridPane.rowIndex="1">
+               <children>
+                   <StackPane fx:id="mainContent" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                       <children>
+                           
+                       </children>
+                   </StackPane>
+                  
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
       <ToggleButton fx:id="darkmode" layoutX="999.0" layoutY="525.0" mnemonicParsing="false" onAction="#toggleDarkMode" text="Dark Mode" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-    </children>
-</AnchorPane>
+      <VBox alignment="CENTER" layoutX="57.0" layoutY="39.0" maxWidth="200.0" minHeight="200.0" minWidth="100.0" prefHeight="509.0" prefWidth="100.0" style="-fx-background-color: lightblue;" GridPane.vgrow="ALWAYS" SplitPane.resizableWithParent="false">
+         <children>
+            <HBox alignment="CENTER" minHeight="50.0" onMouseClicked="#changeToSelectClasses" style="-fx-background-color: lightblue; -fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Build Schedule" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" minHeight="50.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Contact Advisor" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" minHeight="50.0" onMouseClicked="#changeToRegistrationScreen" style="-fx-background-color: lightblue; -fx-border-color: black;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Registration" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</GridPane>

@@ -20,38 +20,35 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.StackPane;
 
 public class PrimaryController implements Initializable {
 
     @FXML
     private ToggleButton darkmode;
 
-    public void changeToSelectClasses(ActionEvent _event) throws Exception {
+    @FXML
+    protected StackPane mainContent;
+
+    public void changeToSelectClasses() throws Exception {
 
         //new FXML loader and scene for new screen
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
-        Scene classViewScene = new Scene(root);
+        mainContent.getChildren().clear();
+        mainContent.getChildren().add(root);
 
-        //Get window object and refresh to show the new scene
-        Stage window = (Stage) ((Node) _event.getSource()).getScene().getWindow();
-        window.setScene(classViewScene);
-        window.show();
+
     }
 
-    public void changeToRegistrationScreen(ActionEvent _event) throws Exception {
-
+    public void changeToRegistrationScreen() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
-        Scene scene = new Scene(root);
-
-        //Get window object and refresh to show the new scene
-        Stage stage = (Stage) ((Node) _event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        mainContent.getChildren().clear();
+        mainContent.getChildren().add(root);
     }
 
     //toggle and untoggle darkmode css to defult theme from button
     @FXML
-    void toggleDarkMode(ActionEvent event) {
+    public void toggleDarkMode(ActionEvent event) {
         if (darkmode.isSelected()) {
             Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
             StyleManager.getInstance().addUserAgentStylesheet("ScheduleCreator/resources/Darkmode.css");
@@ -63,6 +60,9 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        try {
+            this.changeToSelectClasses();
+        }
+        catch (Exception e) {}
     }
 }
