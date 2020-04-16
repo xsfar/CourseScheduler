@@ -54,13 +54,13 @@ public class PrimaryController implements Initializable {
     @FXML
     public void toggleMenu(ActionEvent _event) {
         if (!this.showMenu) {
-            this.mainBox.getColumnConstraints().get(0).setPrefWidth(100);
+            this.mainBox.getColumnConstraints().get(0).setMaxWidth(200);
             this.menuBox.setVisible(true);
             this.showMenu = true;
         }
         else {
             this.menuBox.setVisible(false);
-            this.mainBox.getColumnConstraints().get(0).setMinWidth(0);
+            this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
             this.showMenu = false;
         }
     }
@@ -86,7 +86,9 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
             this.changeToSelectClasses();
+
         }
         catch (Exception e) {}
     }

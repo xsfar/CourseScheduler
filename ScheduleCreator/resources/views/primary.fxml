@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import java.lang.*?>
@@ -20,8 +21,8 @@
    <children>
       <GridPane fx:id="mainBox" prefHeight="726.0" prefWidth="911.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="200.0" minWidth="0.0" prefWidth="65.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="63.0" minWidth="0.0" prefWidth="63.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="906.0" minWidth="-Infinity" prefWidth="848.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -29,7 +30,7 @@
          <children>
             <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" HBox.hgrow="NEVER">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="ALWAYS" />
                   <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
@@ -50,7 +51,7 @@
                            </children>
                          </StackPane>
       
-                     </children>
+                           </children>
                   </VBox>
                </children>
             </GridPane>
