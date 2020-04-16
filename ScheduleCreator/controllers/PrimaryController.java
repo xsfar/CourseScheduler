@@ -20,7 +20,9 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class PrimaryController implements Initializable {
 
@@ -30,14 +32,37 @@ public class PrimaryController implements Initializable {
     @FXML
     protected StackPane mainContent;
 
+    @FXML
+    protected ToggleButton toggleMenu;
+
+    @FXML
+    protected VBox menuBox;
+
+    @FXML
+    protected GridPane mainBox;
+
+    protected boolean showMenu = false;
+
     public void changeToSelectClasses() throws Exception {
 
         //new FXML loader and scene for new screen
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
         mainContent.getChildren().clear();
         mainContent.getChildren().add(root);
+    }
 
-
+    @FXML
+    public void toggleMenu(ActionEvent _event) {
+        if (!this.showMenu) {
+            this.mainBox.getColumnConstraints().get(0).setPrefWidth(100);
+            this.menuBox.setVisible(true);
+            this.showMenu = true;
+        }
+        else {
+            this.menuBox.setVisible(false);
+            this.mainBox.getColumnConstraints().get(0).setMinWidth(0);
+            this.showMenu = false;
+        }
     }
 
     public void changeToRegistrationScreen() throws Exception {
