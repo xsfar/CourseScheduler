@@ -35,7 +35,7 @@ public class RegistrationController {
     void backToPrimary(ActionEvent _event) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/primary.fxml"));
             Scene primaryScene = new Scene(root);
 
             //Get window object and refresh to show the new scene

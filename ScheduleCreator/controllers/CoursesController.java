@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 4/6/2020
+ * Last Updated: 4/13/2020
  */
 import ScheduleCreator.Adapter;
 import java.io.IOException;
@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import ScheduleCreator.Translator;
 import ScheduleCreator.models.Course;
 import ScheduleCreator.models.Schedule;
 import ScheduleCreator.models.Section;
@@ -37,7 +36,9 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -84,14 +85,14 @@ public class CoursesController implements Initializable {
     // List of courses for current semester.
     FilteredList<String> courseList;
 
-    protected Semester currentSemester;
+    protected static Semester currentSemester;
     protected Course focusedCourse;
     protected Course currentCourse;
     protected Adapter adapter = new Adapter();
 
     protected int NUM_ROWS;
     protected int NUM_COLS;
-    protected int currentScheduleIndex;
+    protected static int currentScheduleIndex;
 
     BorderPane[][] grid;
     List<BorderPane> entries = new ArrayList();
@@ -100,9 +101,9 @@ public class CoursesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             this.loadSemesters();
-            NUM_ROWS = scheduleGridPane.getRowConstraints().size();
-            NUM_COLS = scheduleGridPane.getColumnConstraints().size();
-            grid = new BorderPane[NUM_ROWS][NUM_COLS];
+            this.NUM_ROWS = this.scheduleGridPane.getRowConstraints().size();
+            this.NUM_COLS = this.scheduleGridPane.getColumnConstraints().size();
+            this.grid = new BorderPane[NUM_ROWS][NUM_COLS];
             this.drawGrid();
             this.CRNPane.toFront();
         } catch (Exception ex) {
@@ -189,7 +190,7 @@ public class CoursesController implements Initializable {
      */
     public void clearScheduleGrid() {
         for (BorderPane entry : this.entries) {
-            scheduleGridPane.getChildren().remove(entry);
+            this.scheduleGridPane.getChildren().remove(entry);
         }
         this.entries.clear();
     }
@@ -242,10 +243,10 @@ public class CoursesController implements Initializable {
         this.clearScheduleGrid();
 
         if (this.currentSemester.getNumberOfSchedules() == 0) {
-            scheduleLabel.setText("0/0");
+            this.scheduleLabel.setText("0/0");
         } else if (this.currentSemester.getNumberOfSchedules() > 0) {
             this.loadSchedule(this.currentSemester.getSchedules().get(0));
-            scheduleLabel.setText("1/" + this.currentSemester.getNumberOfSchedules());
+            this.scheduleLabel.setText("1/" + this.currentSemester.getNumberOfSchedules());
         }
     }
 
@@ -298,7 +299,7 @@ public class CoursesController implements Initializable {
         this.availableCourses.setItems(this.courseList);
 
         // make up or down arrow on the keyboard begin to scroll the search results
-        searchField.setOnKeyReleased(new javafx.event.EventHandler<KeyEvent>() {
+        this.searchField.setOnKeyReleased(new javafx.event.EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -349,7 +350,7 @@ public class CoursesController implements Initializable {
     }
 
     public void loadSemesters() throws IOException {
-        List<String> semesters = adapter.getSemesters();
+        List<String> semesters = this.adapter.getSemesters();
 
         List<String> newList = new ArrayList();
         Pattern p = Pattern.compile("([a-z]*)([0-9]{4})");
@@ -372,9 +373,9 @@ public class CoursesController implements Initializable {
         this.sectionTabPane.getTabs().clear();
         this.selectedCoursesListView.setItems(FXCollections.observableList(this.currentSemester.getSelectedCourseStrings()));
 
-        for (Course course : this.currentSemester.getSelectedCourses()) {
+        CoursesController.currentSemester.getSelectedCourses().forEach((course) -> {
             this.createNewTab(course);
-        }
+        });
 
         this.regenerateSchedules();
     }
@@ -457,8 +458,8 @@ public class CoursesController implements Initializable {
 
     public void drawGrid() {
 
-        for (int i = 1; i < NUM_ROWS; i++) {
-            for (int j = 1; j < NUM_COLS; j++) {
+        for (int i = 1; i < this.NUM_ROWS; i++) {
+            for (int j = 1; j < this.NUM_COLS; j++) {
                 BorderPane region = new BorderPane();
                 region.setStyle(("-fx-border-color: black; -fx-border-width: .5;"));
                 this.grid[i][j] = region;
@@ -499,7 +500,7 @@ public class CoursesController implements Initializable {
         for (Integer col : getDays(_section)) {
             Label label = new Label(_section.getCourseID() + " - " + _section.getSectionNumber());
             BorderPane entryContainer = new BorderPane();
-            entryContainer.paddingProperty().set(new Insets(grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
+            entryContainer.paddingProperty().set(new Insets(this.grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
             StackPane pane = new StackPane();
 
             Rectangle rect = new Rectangle();
@@ -510,12 +511,12 @@ public class CoursesController implements Initializable {
             pane.getChildren().addAll(rect, label);
             entryContainer.setTop(pane);
 
-            scheduleGridPane.getChildren().add(entryContainer);
+            this.scheduleGridPane.getChildren().add(entryContainer);
             GridPane.setConstraints(entryContainer, col, row, 1, GridPane.REMAINING, HPos.CENTER, VPos.TOP);
             BorderPane region = grid[row][col];
             rect.heightProperty().bind(region.heightProperty().subtract(2).multiply(_section.getDurationHours()));
             rect.widthProperty().bind(region.widthProperty().subtract(2));
-            entries.add(entryContainer);
+            this.entries.add(entryContainer);
         }
     }
 
@@ -629,17 +630,29 @@ public class CoursesController implements Initializable {
 
     //Calls popup fxml for the email api
     public void popupAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ScheduleCreator/resources/views/email_popup.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 450, 150);
-            Stage stage = new Stage();
-            stage.setTitle("Email Course Information");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        //if no courses are selected, and the email button is pressed then thier is nothing to email, an error box is thrown
+        if (this.currentSemester == null || this.currentSemester.getSelectedCourses().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.OK);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You have not selected any courses yet");
+            alert.setContentText("Select a semseter and courses and try again!");
+            alert.showAndWait();
+            System.out.println("No semster or courses choosen.");
+
+            //if the user does have a course selected and the email button is pressed, it shows as normal
+        } else {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/ScheduleCreator/resources/views/email_popup.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 450, 150);
+                Stage stage = new Stage();
+                stage.setTitle("Email Course Information");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                Logger logger = Logger.getLogger(getClass().getName());
+                logger.log(Level.SEVERE, "Failed to create new Window.", e);
+            }
         }
     }
     
