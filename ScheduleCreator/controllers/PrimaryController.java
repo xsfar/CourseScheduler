@@ -46,7 +46,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Set's the current view of the app to the course selection view.
-     * @throws Exception 
+     * @throws Exception
      */
     public void changeToSelectCourses() throws Exception {
 
@@ -59,7 +59,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Sets the current menu item to the given argument.
-     * @param _menuItem 
+     * @param _menuItem
      */
     public void setCurrentItem(HBox _menuItem) {
         if (this.currentMenuItem != null) this.unhighlight(this.currentMenuItem);
@@ -69,7 +69,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Changes the appropriate text color to white to indicate current focus.
-     * @param _menuItem 
+     * @param _menuItem
      */
     public void highlight(HBox _menuItem) {
         Label label = this.menuItems.get(_menuItem);
@@ -78,7 +78,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Undoes highlighting of previously focused item.
-     * @param _menuItem 
+     * @param _menuItem
      */
     public void unhighlight(HBox _menuItem) {
         Label label = this.menuItems.get(_menuItem);
@@ -87,7 +87,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Changes application view to registration
-     * @throws Exception 
+     * @throws Exception
      */
     public void changeToRegistrationScreen() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
@@ -96,11 +96,19 @@ public class PrimaryController implements Initializable {
         this.setCurrentItem(this.regMenuItem);
     }
 
+    /**
+     * Highlights the appropriate menu item on mouse hover.
+     * @param _event
+     */
     public void hoverItem(MouseEvent _event) {
         HBox item = (HBox) _event.getSource();
         this.highlight(item);
     }
 
+    /**
+     * Undoes highlight from mouse hover.
+     * @param _event
+     */
     public void unhoverItem(MouseEvent _event) {
         HBox item = (HBox) _event.getSource();
         if (item != this.currentMenuItem)
@@ -108,6 +116,10 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
+    /**
+     * Expands or closes the menu.
+     * @param _event
+     */
     public void toggleMenu(ActionEvent _event) {
         if (!this.showMenu) {
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(200);
@@ -120,7 +132,10 @@ public class PrimaryController implements Initializable {
         }
     }
 
-    //toggle and untoggle darkmode css to defult theme from button
+    /**
+     * Toggle and untoggle darkmode css to defult theme from button.
+     * @param event
+     */
     @FXML
     public void toggleDarkMode(ActionEvent event) {
         if (darkmode.isSelected()) {
