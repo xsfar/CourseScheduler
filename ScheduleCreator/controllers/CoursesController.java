@@ -33,6 +33,8 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -79,6 +81,8 @@ public class CoursesController implements Initializable {
     protected TabPane sectionTabPane;
     @FXML
     protected VBox CRNContainer, CRNPane;
+    @FXML
+    protected StackPane mainContent;
 
     // List of courses for current semester.
     FilteredList<String> courseList;
@@ -107,6 +111,31 @@ public class CoursesController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(CoursesController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+
+    public void changeToSelectClasses(ActionEvent _event) throws Exception {
+
+        //new FXML loader and scene for new screen
+        Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
+        Scene classViewScene = new Scene(root);
+        
+
+        //Get window object and refresh to show the new scene
+        Stage window = (Stage) ((Node) _event.getSource()).getScene().getWindow();
+        window.setScene(classViewScene);
+        window.show();
+    }
+
+    public void changeToRegistrationScreen(ActionEvent _event) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
+        Scene scene = new Scene(root);
+
+        //Get window object and refresh to show the new scene
+        Stage stage = (Stage) ((Node) _event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
