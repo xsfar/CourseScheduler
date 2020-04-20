@@ -44,31 +44,28 @@
                   </Text>
                   <VBox prefHeight="169.0" prefWidth="275.0" spacing="10.0" GridPane.rowIndex="1">
                      <children>
-                         <StackPane fx:id="mainContent" prefHeight="150.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <ToggleButton fx:id="darkmode" mnemonicParsing="false" onAction="#toggleDarkMode" text="Dark Mode" StackPane.alignment="BOTTOM_RIGHT" />
-                           </children>
-                         </StackPane>
-      
+                         <StackPane fx:id="mainContent" prefHeight="150.0" VBox.vgrow="ALWAYS" />
+
                            </children>
                   </VBox>
+                  <ToggleButton fx:id="darkmode" mnemonicParsing="false" onAction="#toggleDarkMode" text="Dark Mode" GridPane.halignment="RIGHT" />
                </children>
             </GridPane>
-            <VBox fx:id="menuBox" alignment="CENTER" fillWidth="false" layoutX="57.0" layoutY="39.0" maxWidth="200.0" minHeight="200.0" minWidth="0.0" prefHeight="727.0" prefWidth="34.0" spacing="10.0" style="-fx-background-color: lightblue;" visible="false" SplitPane.resizableWithParent="false">
+            <VBox fx:id="menuBox" alignment="CENTER" fillWidth="false" layoutX="57.0" layoutY="39.0" maxWidth="200.0" minHeight="200.0" minWidth="0.0" prefHeight="727.0" prefWidth="34.0" spacing="10.0" style="-fx-background-color:rgb(6,42,87);" visible="false" SplitPane.resizableWithParent="false">
                <children>
-                  <HBox alignment="CENTER" onMouseClicked="#changeToSelectClasses" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
+                  <HBox fx:id="schedMenuItem" alignment="CENTER" onMouseClicked="#changeToSelectCourses" onMouseEntered="#hoverItem" onMouseExited="#unhoverItem" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: rgb(229,191,16); -fx-border-color: black;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Build Schedule" />
+                        <Label fx:id="schedMenuItemLabel" alignment="CENTER" contentDisplay="CENTER" text="Build Schedule" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: lightblue; -fx-border-color: black;">
+                  <HBox fx:id="advMenuItem" alignment="CENTER" maxWidth="1.7976931348623157E308" onMouseEntered="#hoverItem" onMouseExited="#unhoverItem" style="-fx-background-color: rgb(229,191,16); -fx-border-color: black;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" text="Contact Advisor" />
+                        <Label fx:id="advMenuItemLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" text="Contact Advisor" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" onMouseClicked="#changeToRegistrationScreen" style="-fx-background-color: lightblue; -fx-border-color: black;">
+                  <HBox fx:id="regMenuItem" alignment="CENTER" onMouseClicked="#changeToRegistrationScreen" onMouseEntered="#hoverItem" onMouseExited="#unhoverItem" style="-fx-background-color: rgb(229,191,16); -fx-border-color: black;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="Registration" />
+                        <Label fx:id="regMenuItemLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="Registration" />
                      </children>
                   </HBox>
                </children>

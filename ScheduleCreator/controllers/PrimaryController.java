@@ -5,22 +5,23 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 3/18/2020
+ * Last Updated: 4/19/2020
  */
 import com.sun.javafx.css.StyleManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -28,27 +29,82 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private ToggleButton darkmode;
-
     @FXML
     protected StackPane mainContent;
-
     @FXML
     protected ToggleButton toggleMenu;
-
     @FXML
     protected VBox menuBox;
-
     @FXML
     protected GridPane mainBox;
-
+    @FXML
+    protected HBox schedMenuItem, advMenuItem, regMenuItem, currentMenuItem;
+    @FXML
+    protected Label schedMenuItemLabel, advMenuItemLabel, regMenuItemLabel;
+    protected HashMap<HBox, Label> menuItems = new HashMap();
     protected boolean showMenu = false;
 
-    public void changeToSelectClasses() throws Exception {
+    /**
+     * Set's the current view of the app to the course selection view.
+     * @throws Exception 
+     */
+    public void changeToSelectCourses() throws Exception {
 
-        //new FXML loader and scene for new screen
+        //New FXML Loader to render the next view.
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
         mainContent.getChildren().clear();
         mainContent.getChildren().add(root);
+        this.setCurrentItem(this.schedMenuItem);
+    }
+
+    /**
+     * Sets the current menu item to the given argument.
+     * @param _menuItem 
+     */
+    public void setCurrentItem(HBox _menuItem) {
+        if (this.currentMenuItem != null) this.unhighlight(this.currentMenuItem);
+        this.currentMenuItem = _menuItem;
+        this.highlight(this.currentMenuItem);
+    }
+
+    /**
+     * Changes the appropriate text color to white to indicate current focus.
+     * @param _menuItem 
+     */
+    public void highlight(HBox _menuItem) {
+        Label label = this.menuItems.get(_menuItem);
+        label.setStyle("-fx-text-fill: white");
+    }
+
+    /**
+     * Undoes highlighting of previously focused item.
+     * @param _menuItem 
+     */
+    public void unhighlight(HBox _menuItem) {
+        Label label = this.menuItems.get(_menuItem);
+        label.setStyle("-fx-text-fill:black");
+    }
+
+    /**
+     * Changes application view to registration
+     * @throws Exception 
+     */
+    public void changeToRegistrationScreen() throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
+        mainContent.getChildren().clear();
+        mainContent.getChildren().add(root);
+        this.setCurrentItem(this.regMenuItem);
+    }
+
+    public void hoverItem(MouseEvent _event) {
+        HBox item = (HBox) _event.getSource();
+        this.highlight(item);
+    }
+
+    public void unhoverItem(MouseEvent _event) {
+        HBox item = (HBox) _event.getSource();
+        if (item != this.currentMenuItem)
+            this.unhighlight(item);
     }
 
     @FXML
@@ -57,18 +113,11 @@ public class PrimaryController implements Initializable {
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(200);
             this.menuBox.setVisible(true);
             this.showMenu = true;
-        }
-        else {
+        } else {
             this.menuBox.setVisible(false);
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
             this.showMenu = false;
         }
-    }
-
-    public void changeToRegistrationScreen() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
-        mainContent.getChildren().clear();
-        mainContent.getChildren().add(root);
     }
 
     //toggle and untoggle darkmode css to defult theme from button
@@ -86,10 +135,15 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            this.menuItems.put(this.schedMenuItem, this.schedMenuItemLabel);
+            this.menuItems.put(this.advMenuItem, this.advMenuItemLabel);
+            this.menuItems.put(this.regMenuItem, this.regMenuItemLabel);
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
-            this.changeToSelectClasses();
+            this.changeToSelectCourses();
+            System.out.println("initialized");
 
+        } catch (Exception e) {
+            System.out.println("Something went wrong");
         }
-        catch (Exception e) {}
     }
 }
