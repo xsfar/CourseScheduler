@@ -5,9 +5,8 @@ package ScheduleCreator.models;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 4/19/2020
+ * Last Updated: 4/21/2020
  */
-
 import ScheduleCreator.Adapter;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +27,13 @@ public class Course {
         this.courseNumber = _name.substring(4, 7);
         this.abbreviation = _name.substring(0, 4);
         this.id = this.abbreviation + this.courseNumber;
-        this.loadSectionsFromFile( _semester);
+        this.loadSectionsFromFile(_semester);
     }
 
     //=================  GETTERS ===============
-
     /**
      * Returns course abbreviation and number.
+     *
      * @return
      */
     public String getID() {
@@ -42,8 +41,9 @@ public class Course {
     }
 
     /**
-     * Returns course abbreviation, number, and title
-     * such as "CSC 340 - Software Engineering"
+     * Returns course abbreviation, number, and title such as "CSC 340 -
+     * Software Engineering"
+     *
      * @return
      */
     public String getFullText() {
@@ -52,7 +52,8 @@ public class Course {
 
     /**
      * Returns department/course abbreviation (i.e. CSC)
-     * @return 
+     *
+     * @return
      */
     public String getAbbreviation() {
         return abbreviation;
@@ -60,7 +61,8 @@ public class Course {
 
     /**
      * Returns appropriate course number by itself.
-     * @return 
+     *
+     * @return
      */
     public String getCourseNumber() {
         return courseNumber;
@@ -68,14 +70,16 @@ public class Course {
 
     /**
      * Returns available sections corresponding to this course.
+     *
      * @return
      */
     public List<Section> getSections() {
         return this.sections;
     }
 
-    /** Loads available sections corresponding to this class for the
-     * given semester
+    /**
+     * Loads available sections corresponding to this class for the given
+     * semester
      *
      * @param _semester
      */
@@ -107,8 +111,7 @@ public class Course {
                 Section newSection = new Section(this.id, sectionNumber, daysAndTimes, location, instructor, CRN, false);
 
                 this.sections.add(newSection);
-            }
-            else if ((m2.matches())) {
+            } else if ((m2.matches())) {
                 CRN = m2.group(1).trim();
                 sectionNumber = m2.group(2).trim();
                 instructor = m2.group(4).trim();

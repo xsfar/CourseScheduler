@@ -5,9 +5,8 @@ package ScheduleCreator.models;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 4/19/2020
+ * Last Updated: 4/21/2020
  */
-
 import java.util.Scanner;
 
 public class Section {
@@ -37,7 +36,6 @@ public class Section {
         this.setTimes();
     }
 
-
 //=================  GETTERS ===============
     public String getID() {
         return this.id;
@@ -45,6 +43,7 @@ public class Section {
 
     /**
      * Return class time as a decimal (i.e. 1.5 hours)
+     *
      * @return
      */
     public double getDurationHours() {
@@ -97,7 +96,7 @@ public class Section {
 
     @Override
     public String toString() {
-        String string = "";
+        String string;
 
         if (!this.isOnline) {
             string = this.sectionNumber + " | " + this.daysAndTimes + " | "
@@ -110,7 +109,6 @@ public class Section {
     }
 
 //========================= SETTERS =============================
-
     /**
      * Extracts time from string with course meeting days and time information.
      */
