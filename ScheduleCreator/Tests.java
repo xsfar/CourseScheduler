@@ -19,11 +19,11 @@ public class Tests {
 
     public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {
 
-        //regen databse
-        Admin.regenDB();
+        // uncomment and run this once when we add a new semester
+        // Admin.regenDB();
 
         //test validate method
-        //emailMethodTestData();
+        emailMethodTestData();
 
     }
 
@@ -32,21 +32,21 @@ public class Tests {
      */
     private static void emailMethodTestData() {
         //edge cases
-        emailValidationTest(" ", "FAIL");
-        emailValidationTest("@", "FAIL");
-        emailValidationTest(".com", "FAIL");
-        emailValidationTest("@.com", "FAIL");
-        emailValidationTest("@.com", "FAIL");
-        emailValidationTest("!@#.gov", "FAIL");
-        emailValidationTest("123!ABC@test.co", "FAIL");
-        emailValidationTest("aBCdE@12AbC.edu", "PASS");
+        emailValidationTest(" ", false);
+        emailValidationTest("@", false);
+        emailValidationTest(".com", false);
+        emailValidationTest("@.com", false);
+        emailValidationTest("@.com", false);
+        emailValidationTest("!@#.gov", false);
+        emailValidationTest("123!ABC@test.co", false);
+        emailValidationTest("aBCdE@12AbC.edu", true);
         //normal cases
-        emailValidationTest("test@test.edu", "PASS");
-        emailValidationTest("test@test.gov", "PASS");
-        emailValidationTest("123@123.co", "PASS");
-        emailValidationTest("ABC@123.io", "PASS");
-        emailValidationTest("123@ABC.net", "PASS");
-        emailValidationTest("123@ABC.org", "PASS");
+        emailValidationTest("test@test.edu", true);
+        emailValidationTest("test@test.gov", true);
+        emailValidationTest("123@123.co", true);
+        emailValidationTest("ABC@123.io", true);
+        emailValidationTest("123@ABC.net", true);
+        emailValidationTest("123@ABC.org", true);
 
     }
 
@@ -58,48 +58,12 @@ public class Tests {
      * @param _expectedResults What the result should be.
      * @return
      */
-    private static String emailValidationTest(String _email, String _expectedResults) {
+    private static void emailValidationTest(String _email, Boolean _expectedResults) {
 
-        if (ScheduleCreator.API.EmailAPI.validate(_email)) {
-            System.out.println("PASSED : \"" + _email + "\"  Is a valid email. EXPECTED: " + _expectedResults);
-        } else {
-            System.out.println("FAILED : \"" + _email + "\" Is NOT a valid email. EXPECTED: " + _expectedResults);
-        }
-        return null;
+        String status = (ScheduleCreator.API.EmailAPI.validate(_email) == _expectedResults) ? "Test Passed:"
+                : "Test Failed:";
 
-    }
-
-    public static void testSemester() throws IOException {
-
-        // Example usage of DBAdapter
-        List<String> semesters = new Translator().getSemesters();
-
-        System.out.println("Current Semesters are:");
-        for (int i = 0; i < semesters.size(); i++) {
-            System.out.println(semesters.get(i));
-        }
-
-        // choose a semester
-        String semester = semesters.get(0);
-
-        // get courses
-        List<String> courses = Tests.adapter.getCourses(semester);
-
-        // example course from the semester
-        String exampleCourse = courses.get(20);
-
-        System.out.println("Example course is: " + exampleCourse);
-
-        // dummy method - we still need to implement this (I think?)
-        List<String> sections = new Translator().getSections(exampleCourse, semester);
-        String section = sections.get(0);
-
-        //should return real info for CSC 250 - 01
-        System.out.println("Building for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.BUILDING, semester, section));
-
-        System.out.println("CRN for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.CRN, semester, section));
+        System.out.println(status + " value of EmailAPI.validate(\"" + _email + "\")" + "should be " + _expectedResults);
 
     }
 }
