@@ -1,14 +1,15 @@
 package ScheduleCreator.models;
 
-import java.util.Scanner;
-
 /**
  * This class models information for course sections.
  *
  * @author Jamison Valentine
  *
- * Last Updated: 3/31/2020
+ * Last Updated: 4/19/2020
  */
+
+import java.util.Scanner;
+
 public class Section {
 
     protected final String courseID;
@@ -23,7 +24,8 @@ public class Section {
     protected final String sectionNumber;
     protected final Boolean isOnline;
 
-    public Section(String _courseID, String _sectionNumber, String _daysAndTimes, String _location, String _instructor, String _CRN, Boolean _isOnline) {
+    public Section(String _courseID, String _sectionNumber, String _daysAndTimes,
+            String _location, String _instructor, String _CRN, Boolean _isOnline) {
         this.courseID = _courseID;
         this.location = _location;
         this.instructor = _instructor;
@@ -41,6 +43,10 @@ public class Section {
         return this.id;
     }
 
+    /**
+     * Return class time as a decimal (i.e. 1.5 hours)
+     * @return
+     */
     public double getDurationHours() {
         double difference = this.endTime - this.startTime;
         double hours = (int) (difference / 100);
@@ -94,14 +100,20 @@ public class Section {
         String string = "";
 
         if (!this.isOnline) {
-            string = this.sectionNumber + " | " + this.daysAndTimes + " | " + this.location + " | " + this.instructor + " | " + this.CRN;
+            string = this.sectionNumber + " | " + this.daysAndTimes + " | "
+                    + this.location + " | " + this.instructor + " | " + this.CRN;
         } else {
-            string = this.sectionNumber + " | Online | " + this.instructor + " | " + this.CRN;
+            string = this.sectionNumber + " | Online | " + this.instructor + " | "
+                    + this.CRN;
         }
         return string;
     }
 
 //========================= SETTERS =============================
+
+    /**
+     * Extracts time from string with course meeting days and time information.
+     */
     private void setTimes() {
 
         if (this.isOnline) {
