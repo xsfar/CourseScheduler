@@ -1,4 +1,12 @@
 package ScheduleCreator;
+/**
+ * This class is used to retrieve and modify persistent data for the
+ * application.
+ *
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
+ *
+ * Last Updated: 4/21/2020
+ */
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,14 +23,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * This class is used to retrieve and modify persistent data for the
- * application.
- *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
- *
- * Last Updated: 3/17/2020
- */
 public class Translator implements TranslatorInterface {
 
     // this is in the working directory, not the .jar
@@ -201,7 +201,7 @@ public class Translator implements TranslatorInterface {
     public void saveCourse(String _course, String _semester) {
 
         //Adds new selected course to new line.
-        selectedCourseFile = new File(_semester + "_selected_courses.txt");
+        Translator.selectedCourseFile = new File(_semester + "_selected_courses.txt");
         try ( //Open file to add new classes.
                  FileWriter output = new FileWriter(new File(_semester + "_selected_courses.txt"), true)) {
             //Adds new selected course to new line.
@@ -221,10 +221,10 @@ public class Translator implements TranslatorInterface {
     @Override
     public void removeCourse(String _course, String _semester) {
 
-        selectedCourseFile = new File(_semester + "_selected_courses.txt");
+        Translator.selectedCourseFile = new File(_semester + "_selected_courses.txt");
 
         try {
-            List<String> courses = Files.readAllLines(selectedCourseFile.toPath());
+            List<String> courses = Files.readAllLines(Translator.selectedCourseFile.toPath());
             for (String course : courses) {
                 if (course.equals(_course)) {
                     courses.remove(course);
@@ -232,7 +232,7 @@ public class Translator implements TranslatorInterface {
                 }
             }
 
-            try ( FileWriter writer = new FileWriter(selectedCourseFile)) {
+            try ( FileWriter writer = new FileWriter(Translator.selectedCourseFile)) {
                 for (String course : courses) {
                     writer.append(course + "\n");
                 }

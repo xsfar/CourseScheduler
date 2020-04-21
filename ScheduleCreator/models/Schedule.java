@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * This class keeps track of added course sections and produces CRNs.
  *
- * @author Jamison Valentine
+ * @author Jamison Valentine, Nathan Tolodziecki
  *
- * Last Updated: 3/31/2020
+ * Last Updated: 4/21/2020
  */
 public class Schedule {
 
@@ -20,8 +20,9 @@ public class Schedule {
     }
 
     /**
-     * Checks to see if this _newSection can be added to the schedule
-     * without incident
+     * Checks to see if this _newSection can be added to the schedule without
+     * incident
+     *
      * @param _newSection
      * @return
      */
@@ -29,13 +30,17 @@ public class Schedule {
         if (this.addedSections.size() > 0 && !_newSection.isOnline) {
 
             List<Section> campusSections = new ArrayList();
-            for (Section section : addedSections) if (!section.isOnline) campusSections.add(section);
+            this.addedSections.stream().filter((section) -> (!section.isOnline)).forEachOrdered((section) -> {
+                campusSections.add(section);
+            });
 
             for (Section existingSection : campusSections) {
 
                 Boolean sameDay = false;
                 for (char day : _newSection.getDays().toCharArray()) {
-                    if (existingSection.getDays().contains("" + day)) sameDay = true;
+                    if (existingSection.getDays().contains("" + day)) {
+                        sameDay = true;
+                    }
                 }
 
                 if (sameDay) {
@@ -58,11 +63,11 @@ public class Schedule {
     }
 
     @Override
-        public String toString() {
+    public String toString() {
         StringBuilder string = new StringBuilder();
-        for (Section section : this.addedSections) {
-            string.append("(" + section.getCourseID() + " - " + section.getSectionNumber() + ")\n");
-        }
+        this.addedSections.forEach((section) -> {
+            string.append("(").append(section.getCourseID()).append(" - ").append(section.getSectionNumber()).append(")\n");
+        });
         return string.toString();
     }
 }

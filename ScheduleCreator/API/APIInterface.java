@@ -5,7 +5,7 @@ package ScheduleCreator.API;
  *
  * @author Ilyass Sfar
  *
- * Last Updated: 3/18/2020
+ * Last Updated: 4/21/2020
  */
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
@@ -16,7 +16,6 @@ public interface APIInterface {
      *
      * @param _email The email that is being sent to, this comes from the user.
      * @param _message This is what is being sent in the email.
-     * @return
      * @throws MailjetException
      * @throws MailjetSocketTimeoutException
      */
