@@ -3,7 +3,7 @@ package ScheduleCreator.API;
 /**
  * Makes direct calls to the MailJet API.
  *
- * @author Ilyass Sfar, 
+ * @author Ilyass Sfar
  *
  * Last Updated: 4/21/2020
  */
