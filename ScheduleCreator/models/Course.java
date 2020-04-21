@@ -5,7 +5,7 @@ package ScheduleCreator.models;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 3/27/2020
+ * Last Updated: 4/19/2020
  */
 
 import ScheduleCreator.Adapter;
@@ -33,32 +33,58 @@ public class Course {
 
     //=================  GETTERS ===============
 
+    /**
+     * Returns course abbreviation and number.
+     * @return
+     */
     public String getID() {
         return this.id;
     }
 
+    /**
+     * Returns course abbreviation, number, and title
+     * such as "CSC 340 - Software Engineering"
+     * @return
+     */
     public String getFullText() {
         return this.fullText;
     }
 
-    public String getabbreviation() {
+    /**
+     * Returns department/course abbreviation (i.e. CSC)
+     * @return 
+     */
+    public String getAbbreviation() {
         return abbreviation;
     }
 
+    /**
+     * Returns appropriate course number by itself.
+     * @return 
+     */
     public String getCourseNumber() {
         return courseNumber;
     }
 
+    /**
+     * Returns available sections corresponding to this course.
+     * @return
+     */
     public List<Section> getSections() {
         return this.sections;
     }
 
+    /** Loads available sections corresponding to this class for the
+     * given semester
+     *
+     * @param _semester
+     */
     private void loadSectionsFromFile(String _semester) {
         List<String> sectionStrings = this.adapter.getSections(this.id, _semester);
         this.sections = new ArrayList();
         Pattern p = Pattern.compile(".*([0-9]{5}).*- ([0-9]{2})\\s*(\\S* [ap]m - \\S* [ap]m)\\s*(\\S*)(.*)=(.*)");
 
-        //This pattern is to be matched with Courses with "TBA" as location and meeting times"
+        //This pattern is to be matched with Courses with "TBA" as location and meeting times" such as online classes
         Pattern p2 = Pattern.compile(".*([0-9]{5}).*- ([0-9]{2})\\s*(TBA\\s*TBA )=(.*)");
         Matcher m, m2;
 

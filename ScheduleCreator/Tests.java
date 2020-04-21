@@ -19,45 +19,51 @@ public class Tests {
 
     public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {
 
-        //regen databse
-        Admin.regenDB();
-        //
-        //Test api call,
-        //EmailAdapter testAPI = new EmailAdapter();
-        //testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
+        // uncomment and run this once when we add a new semester
+        // Admin.regenDB();
+
+        //test validate method
+        emailMethodTestData();
+
     }
 
-    public static void testSemester() throws IOException {
+    /**
+     * Test data for method testing.
+     */
+    private static void emailMethodTestData() {
+        //edge cases
+        emailValidationTest(" ", false);
+        emailValidationTest("@", false);
+        emailValidationTest(".com", false);
+        emailValidationTest("@.com", false);
+        emailValidationTest("@.com", false);
+        emailValidationTest("!@#.gov", false);
+        emailValidationTest("123!ABC@test.co", false);
+        emailValidationTest("aBCdE@12AbC.edu", true);
+        //normal cases
+        emailValidationTest("test@test.edu", true);
+        emailValidationTest("test@test.gov", true);
+        emailValidationTest("123@123.co", true);
+        emailValidationTest("ABC@123.io", true);
+        emailValidationTest("123@ABC.net", true);
+        emailValidationTest("123@ABC.org", true);
 
-        // Example usage of DBAdapter
-        List<String> semesters = new Translator().getSemesters();
+    }
 
-        System.out.println("Current Semesters are:");
-        for (int i = 0; i < semesters.size(); i++) {
-            System.out.println(semesters.get(i));
-        }
+    /**
+     * Calls the "validate" method with test data and prints what was returned
+     * and what was expected.
+     *
+     * @param _email Email that is being tested for validity.
+     * @param _expectedResults What the result should be.
+     * @return
+     */
+    private static void emailValidationTest(String _email, Boolean _expectedResults) {
 
-        // choose a semester
-        String semester = semesters.get(0);
+        String status = (ScheduleCreator.API.EmailAPI.validate(_email) == _expectedResults) ? "Test Passed:"
+                : "Test Failed:";
 
-        // get courses
-        List<String> courses = Tests.adapter.getCourses(semester);
-
-        // example course from the semester
-        String exampleCourse = courses.get(20);
-
-        System.out.println("Example course is: " + exampleCourse);
-
-        // dummy method - we still need to implement this (I think?)
-        List<String> sections = new Translator().getSections(exampleCourse, semester);
-        String section = sections.get(0);
-
-        //should return real info for CSC 250 - 01
-        System.out.println("Building for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.BUILDING, semester, section));
-
-        System.out.println("CRN for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.CRN, semester, section));
+        System.out.println(status + " value of EmailAPI.validate(\"" + _email + "\")" + "should be " + _expectedResults);
 
     }
 }
