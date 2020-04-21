@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 4/19/2020
+ * Last Updated: 4/20/2020
  */
 
 import com.sun.javafx.css.StyleManager;
@@ -99,7 +99,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Highlight menu item when user mouses over it
-     * @param _event 
+     * @param _event
      */
     public void hoverItem(MouseEvent _event) {
         HBox item = (HBox) _event.getSource();
@@ -108,7 +108,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Unhighlight menu item when user mouses over it
-     * @param _event 
+     * @param _event
      */
     public void unhoverItem(MouseEvent _event) {
         HBox item = (HBox) _event.getSource();
@@ -117,23 +117,27 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Toggle visibility of menu with the toggleMenu ToggleButton
-     * @param _event 
+     * Toggle visibility of menu with the toggleMenu ToggleButton.
+     * @param _event
      */
     @FXML
     private void toggleMenu(ActionEvent _event) {
+
         if (!this.showMenu) {
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(200);
             this.menuBox.setVisible(true);
             this.showMenu = true;
+            this.toggleMenu.setText("Close");
         } else {
             this.menuBox.setVisible(false);
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
             this.showMenu = false;
+            this.toggleMenu.setText("Menu");
         }
     }
 
     /**
+
      * Toggle darkMode css with the toggleDarkMode ToggleButton
      */
     @FXML

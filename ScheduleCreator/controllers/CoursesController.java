@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 4/13/2020
+ * Last Updated: 4/20/2020
  */
 import ScheduleCreator.Adapter;
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class CoursesController implements Initializable {
     @FXML
     private ListView availableCourses, selectedCoursesListView, sectionListView;
     @FXML
-    private Button courseButton, removeCourseButton;
+    private Button removeCourseButton;
     @FXML
     private GridPane scheduleGridPane;
     @FXML
@@ -72,8 +72,6 @@ public class CoursesController implements Initializable {
     private TabPane sectionTabPane;
     @FXML
     private VBox CRNContainer, CRNPane;
-    @FXML
-    private StackPane mainContent;
 
     // the following buttons are only here for the buttonSetup() method
     @FXML
@@ -85,7 +83,6 @@ public class CoursesController implements Initializable {
 
     protected static Semester currentSemester;
     private Course focusedCourse;
-    private Course currentCourse;
     private Adapter adapter = new Adapter();
 
     private int NUM_ROWS;
