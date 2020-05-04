@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Nick Econopouly, Jamison Valentine
  *
- * Last Updated: 3/31/2020
+ * Last Updated: 4/21/2020
  */
 public class Semester {
 
@@ -36,8 +36,7 @@ public class Semester {
         if (this.selectedSections.get(_course) == null) {
             list.add(_section);
             this.selectedSections.put(_course, list);
-        }
-        else {
+        } else {
 
             //Checks to see if this section is already selected.
             List<Section> sectionList = this.selectedSections.get(_course);
@@ -86,22 +85,18 @@ public class Semester {
                 newSchedule.addSection(section);
                 validSchedules.add(newSchedule);
             }
-        }
-
-        //If there is more than one course in the list
+        } //If there is more than one course in the list
         else {
 
             //Remove the current course from the remaining list
             List<Course> remainingCourses = new ArrayList(selectedCourses);
             remainingCourses.remove(course);
 
-            for (Section section : this.selectedSections.get(course)) {
-                for (Schedule schedule : generateSchedules(remainingCourses)) {
-                    if (schedule.addSection(section)) {
-                        validSchedules.add(schedule);
-                    }
-                }
-            }
+            this.selectedSections.get(course).forEach((section) -> {
+                generateSchedules(remainingCourses).stream().filter((schedule) -> (schedule.addSection(section))).forEachOrdered((schedule) -> {
+                    validSchedules.add(schedule);
+                });
+            });
         }
         return validSchedules;
     }
@@ -110,13 +105,18 @@ public class Semester {
 
         List<String> list = this.adapter.getSelectedCourses(this.name);
         if (!list.isEmpty()) {
-            for (String courseName : list) {
+            list.forEach((courseName) -> {
                 Course course = new Course(courseName, this.name);
                 this.selectedSections.put(new Course(courseName, this.name), course.getSections());
-            }
+            });
         }
     }
 
+    /**
+     * Removes the course from the Semester.
+     *
+     * @param _course
+     */
     public void removeCourse(String _course) {
 
         for (Course course : this.selectedSections.keySet()) {
@@ -130,6 +130,9 @@ public class Semester {
 
     @Override
     public boolean equals(Object _obj) {
+        if (!(_obj instanceof Semester)) {
+            return false;
+        }
         Semester otherSemester = (Semester) _obj;
         return this.name.equalsIgnoreCase(otherSemester.getName());
     }

@@ -5,7 +5,7 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
  *
- * Last Updated: 4/20/2020
+ * Last Updated: 4/21/2020
  */
 import ScheduleCreator.Adapter;
 import java.io.IOException;
@@ -94,6 +94,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Set up the "Build Schedule" view and load the semesters.
+     *
      * @param url
      * @param rb
      */
@@ -103,7 +104,7 @@ public class CoursesController implements Initializable {
             this.loadSemesters();
             this.NUM_ROWS = this.scheduleGridPane.getRowConstraints().size();
             this.NUM_COLS = this.scheduleGridPane.getColumnConstraints().size();
-            this.grid = new BorderPane[NUM_ROWS][NUM_COLS];
+            this.grid = new BorderPane[this.NUM_ROWS][this.NUM_COLS];
             this.drawGrid();
             this.CRNPane.toFront();
 
@@ -116,15 +117,18 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Run the action for each button if it's selected and the user types "Enter"
+     * Run the action for each button if it's selected and the user types
+     * "Enter"
      */
     private void buttonSetup() {
-        Arrays.asList(addCourseButton, removeCourseButton, removeAllCoursesButton, selectAllButton,
-                sectionsButton, previousButton, nextButton, showCRNButton, emailCRNButton).forEach((button) -> {
-            // temporarily set the button as the default button (only while the button is in focus)
-            // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html#defaultButtonProperty
-            button.defaultButtonProperty().bind(button.focusedProperty());
-        });
+        Arrays.asList(this.addCourseButton, this.removeCourseButton,
+                this.removeAllCoursesButton, this.selectAllButton,
+                this.sectionsButton, this.previousButton, this.nextButton,
+                this.showCRNButton, this.emailCRNButton).forEach((button) -> {
+                    // temporarily set the button as the default button (only while the button is in focus)
+                    // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html#defaultButtonProperty
+                    button.defaultButtonProperty().bind(button.focusedProperty());
+                });
     }
 
     /**
@@ -148,8 +152,9 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Called when "Submit" button is clicked; update the list of selected sections
-     * for generating schedules.
+     * Called when "Submit" button is clicked; update the list of selected
+     * sections for generating schedules.
+     *
      * @param _event
      */
     public void setSections(ActionEvent _event) {
@@ -174,13 +179,14 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Called when a different semester is chosen and loads semester and course list.
+     * Called when a different semester is chosen and loads semester and course
+     * list.
      *
      * @param _event
      */
     public void switchSemester(ActionEvent _event) {
 
-        String currentSemesterString = semesterComboBox.getValue();
+        String currentSemesterString = this.semesterComboBox.getValue();
         this.currentSemester = new Semester(semesterDirName(currentSemesterString));
 
         this.loadAllCourses();
@@ -272,6 +278,7 @@ public class CoursesController implements Initializable {
     /**
      * Gets sections for a selected course and adds them to the sections
      * listview.
+     *
      * @param _event
      */
     public void loadCourseSections(ActionEvent _event) {
@@ -323,7 +330,7 @@ public class CoursesController implements Initializable {
         // )
         searchField.textProperty().addListener(obs -> {
 
-            String filter = searchField.getText().toLowerCase();
+            String filter = this.searchField.getText().toLowerCase();
             // when there's nothing entered yet
             if (filter == null || filter.length() == 0) {
                 // show all courses
@@ -338,6 +345,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Load list of semesters and show them in the dropdown menu
+     *
      * @throws IOException
      */
     public void loadSemesters() throws IOException {
@@ -425,6 +433,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Returns true if all sections checkboxes are unchecked
+     *
      * @param _tab
      */
     public boolean allUnselected(Tab _tab) {
@@ -442,6 +451,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Check all of the section checkboxes
+     *
      * @param _option
      * @param _tab
      */
@@ -471,7 +481,9 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Show the current list of CRNs to the user when they click on the "Show CRNs" button
+     * Show the current list of CRNs to the user when they click on the "Show
+     * CRNs" button
+     *
      * @param _event
      */
     public void showCRNs(ActionEvent _event) {
@@ -502,6 +514,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Draw a colored box for a course in the week schedule.
+     *
      * @param _section
      * @param _numberOfCampusCourses
      */
@@ -527,7 +540,7 @@ public class CoursesController implements Initializable {
 
             this.scheduleGridPane.getChildren().add(entryContainer);
             GridPane.setConstraints(entryContainer, col, row, 1, GridPane.REMAINING, HPos.CENTER, VPos.TOP);
-            BorderPane region = grid[row][col];
+            BorderPane region = this.grid[row][col];
             rect.heightProperty().bind(region.heightProperty().subtract(2).multiply(_section.getDurationHours()));
             rect.widthProperty().bind(region.widthProperty().subtract(2));
             this.entries.add(entryContainer);
@@ -606,8 +619,9 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Update the grid and other UI elements on the right side to reflect
-     * the currently selected sections.
+     * Update the grid and other UI elements on the right side to reflect the
+     * currently selected sections.
+     *
      * @param _schedule
      */
     public void loadSchedule(Schedule _schedule) {
@@ -633,6 +647,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Load schedule for the next semester
+     *
      * @param _event
      */
     public void loadNextSchedule(ActionEvent _event) {
@@ -646,6 +661,7 @@ public class CoursesController implements Initializable {
 
     /**
      * Load schedule for the previous semester
+     *
      * @param _event
      */
     public void loadPrevSchedule(ActionEvent _event) {
@@ -656,7 +672,8 @@ public class CoursesController implements Initializable {
     }
 
     /**
-     * Open the popup for when the user clicks "Email CRN"
+     * Open the email popup for when the user clicks "Email CRN".
+     *
      * @param event
      */
     public void popupAction(ActionEvent event) {

@@ -5,9 +5,8 @@ package ScheduleCreator.controllers;
  *
  * @author Jamison Valentine
  *
- * Last Updated: 4/20/2020
+ * Last Updated: 4/21/2020
  */
-
 import com.sun.javafx.css.StyleManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -39,37 +38,54 @@ public class PrimaryController implements Initializable {
     @FXML
     private GridPane mainBox;
     @FXML
-    private HBox schedMenuItem, advMenuItem, regMenuItem, currentMenuItem;
+    private HBox schedMenuItem, regMenuItem, currentMenuItem, dbItem;
     @FXML
-    private Label schedMenuItemLabel, advMenuItemLabel, regMenuItemLabel;
+    private Label schedMenuItemLabel, regMenuItemLabel, dbItemLabel;
     private HashMap<HBox, Label> menuItems = new HashMap();
     private boolean showMenu = false;
 
     /**
      * Sets the current view of the app to the course selection view.
+     *
      * @throws Exception
      */
     public void changeToSelectCourses() throws Exception {
 
         //New FXML Loader to render the next view.
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/select_courses.fxml"));
-        mainContent.getChildren().clear();
-        mainContent.getChildren().add(root);
+        this.mainContent.getChildren().clear();
+        this.mainContent.getChildren().add(root);
         this.setCurrentItem(this.schedMenuItem);
     }
 
     /**
+     * Change current view to the user updated database screen.
+     *
+     * @throws Exception
+     */
+    public void changeToDBScreen() throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/user_updated_DB.fxml"));
+        mainContent.getChildren().clear();
+        mainContent.getChildren().add(root);
+        this.setCurrentItem(this.dbItem);
+    }
+
+    /**
      * Sets the current menu item to the given argument.
+     *
      * @param _menuItem
      */
     private void setCurrentItem(HBox _menuItem) {
-        if (this.currentMenuItem != null) this.unhighlight(this.currentMenuItem);
+        if (this.currentMenuItem != null) {
+            this.unhighlight(this.currentMenuItem);
+        }
         this.currentMenuItem = _menuItem;
         this.highlight(this.currentMenuItem);
     }
 
     /**
      * Changes the appropriate text color to white to indicate current focus.
+     *
      * @param _menuItem
      */
     private void highlight(HBox _menuItem) {
@@ -79,6 +95,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Undoes highlighting of previously focused item.
+     *
      * @param _menuItem
      */
     private void unhighlight(HBox _menuItem) {
@@ -87,18 +104,20 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Changes application view to registration
+     * Changes application view to registration.
+     *
      * @throws Exception
      */
     public void changeToRegistrationScreen() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ScheduleCreator/resources/views/registration_screen.fxml"));
-        mainContent.getChildren().clear();
-        mainContent.getChildren().add(root);
+        this.mainContent.getChildren().clear();
+        this.mainContent.getChildren().add(root);
         this.setCurrentItem(this.regMenuItem);
     }
 
     /**
-     * Highlight menu item when user mouses over it
+     * Highlight menu item when user mouses over it.
+     *
      * @param _event
      */
     public void hoverItem(MouseEvent _event) {
@@ -107,17 +126,20 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Unhighlight menu item when user mouses over it
+     * Un-highlight menu item when user mouses over it.
+     *
      * @param _event
      */
     public void unhoverItem(MouseEvent _event) {
         HBox item = (HBox) _event.getSource();
-        if (item != this.currentMenuItem)
+        if (item != this.currentMenuItem) {
             this.unhighlight(item);
+        }
     }
 
     /**
      * Toggle visibility of menu with the toggleMenu ToggleButton.
+     *
      * @param _event
      */
     @FXML
@@ -137,12 +159,11 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-
-     * Toggle darkMode css with the toggleDarkMode ToggleButton
+     * Toggle darkMode css with the toggleDarkMode ToggleButton.
      */
     @FXML
     private void toggleDarkMode(ActionEvent event) {
-        if (darkMode.isSelected()) {
+        if (this.darkMode.isSelected()) {
             Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
             StyleManager.getInstance().addUserAgentStylesheet("ScheduleCreator/resources/Darkmode.css");
         } else {
@@ -152,7 +173,9 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Set up the primary view with the menu and the "Build Schedule" window visible by default
+     * Set up the primary view with the menu and the "Build Schedule" window
+     * visible by default.
+     *
      * @param url
      * @param rb
      */
@@ -160,8 +183,8 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             this.menuItems.put(this.schedMenuItem, this.schedMenuItemLabel);
-            this.menuItems.put(this.advMenuItem, this.advMenuItemLabel);
             this.menuItems.put(this.regMenuItem, this.regMenuItemLabel);
+            this.menuItems.put(this.dbItem, this.dbItemLabel);
             this.mainBox.getColumnConstraints().get(0).setMaxWidth(0);
             this.changeToSelectCourses();
             System.out.println("initialized");

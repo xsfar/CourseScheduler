@@ -5,13 +5,11 @@ package ScheduleCreator;
  *
  * @author Nick Econopouly, Ilyass Sfar
  *
- * Last Updated: 4/6/2020
+ * Last Updated: 4/21/2020
  */
-import ScheduleCreator.API.EmailAdapter;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import java.io.IOException;
-import java.util.List;
 
 public class Tests {
 
@@ -21,7 +19,6 @@ public class Tests {
 
         // uncomment and run this once when we add a new semester
         // Admin.regenDB();
-
         //test validate method
         emailMethodTestData();
 
@@ -31,23 +28,30 @@ public class Tests {
      * Test data for method testing.
      */
     private static void emailMethodTestData() {
-        //edge cases
+        //edge cases with some error cases
+        emailValidationTest("", false);
         emailValidationTest(" ", false);
         emailValidationTest("@", false);
         emailValidationTest(".com", false);
         emailValidationTest("@.com", false);
-        emailValidationTest("@.com", false);
+        emailValidationTest("a@.com", false);
         emailValidationTest("!@#.gov", false);
         emailValidationTest("123!ABC@test.co", false);
         emailValidationTest("aBCdE@12AbC.edu", true);
+        emailValidationTest("test@test", false);
+        emailValidationTest("@test.com", false);
+        emailValidationTest("abc@", false);
+        emailValidationTest("abc.com", false);
+        emailValidationTest("abc.com", false);
         //normal cases
         emailValidationTest("test@test.edu", true);
         emailValidationTest("test@test.gov", true);
         emailValidationTest("123@123.co", true);
         emailValidationTest("ABC@123.io", true);
-        emailValidationTest("123@ABC.net", true);
-        emailValidationTest("123@ABC.org", true);
-
+        emailValidationTest("123@test.net", true);
+        emailValidationTest("123ABC@ABC.org", true);
+        emailValidationTest("123ABC@ABC123.org", true);
+        emailValidationTest("abc@123.net", true);
     }
 
     /**
