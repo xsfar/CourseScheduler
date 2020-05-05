@@ -1,5 +1,13 @@
 package ScheduleCreator;
 
+/**
+ * Utility classes for generating the DB (these do NOT work at runtime) TODO: -
+ * pull out hardcoded paths -
+ *
+ * @author Nick Econopouly, Jamison Valentine, Ilyass Sfar
+ *
+ * Last Updated: 3/16/2020
+ */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,14 +23,6 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Utility classes for generating the DB (these do NOT work at runtime) TODO: -
- * pull out hardcoded paths -
- *
- * @author Nick Econopouly, Jamison Valentine, Ilyass Sfar
- *
- * Last Updated: 3/16/2020
- */
 public class Admin {
 
     /**
@@ -56,7 +56,7 @@ public class Admin {
         String[] pathnames = rawDir.list();
 
         // 'pathnames.length - 1' so we don't count the raw directory itself
-        try ( FileWriter outputFile = new FileWriter(semesterListFile.getPath())) {
+        try (FileWriter outputFile = new FileWriter(semesterListFile.getPath())) {
             for (String pathname : pathnames) {
                 // add filename to list of semesters
                 outputFile.append(pathname);
@@ -101,6 +101,15 @@ public class Admin {
         }
     }
 
+    /**
+     * Given a raw course data file, this generates a text file with only the
+     * course name and day and time. Made for speed since its less information
+     * to go through, but currently not used.
+     *
+     * @param _inputFilepath Raw File
+     * @param _outputFilepath Generate text file
+     * @throws IOException
+     */
     protected static void generateDayTime(String _inputFilepath, String _outputFilepath) throws IOException {
         // initial regex
         String regex = "(\\b[A-Z]{3}\\b.((\\b[0-9]{3}\\b)|(\\b[0-9]{3}\\w)).+ (([0-9]{2}\\b)))|[	](((?:(?:[0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9].(?:[AaPp][Mm])\\b).-.(?:[0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9].(?:[AaPp][Mm])\\b))|[	](\\b((TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA.*TBA\\b)))\\b)[	]";
@@ -116,6 +125,15 @@ public class Admin {
 
     }
 
+    /**
+     * Given a raw course data file, this generates a text file with all
+     * prevalent information to a course (name, time, day, building, and
+     * instructor)
+     *
+     * @param _inputFilepath Raw File
+     * @param _outputFilepath Generate text file
+     * @throws IOException
+     */
     protected static void generateAllInfo(String _inputFilepath, String _outputFilepath) throws IOException {
         // initial regex
         String regex = "(.+?(?= - (?:[0-9]{5}))[ ])|([ ][0-9]{5}[ ])|([ ]\\b[A-Z]{3}\\b.\\b[0-9]{3}\\b.+ [0-9]{2}\\b)|([\\t](?:(?:(?:[0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9].(?:[AaPp][Mm])\\\\b).-.(?:[0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9].(?:[AaPp][Mm])\\b))|(\\b([\\t](TR\\b|MW\\b|MWF\\b|M\\b|T\\b|W\\b|R\\b|F\\b|(TBA.*TBA\\b)))\\b)|(\\t.*([0-9]{3}))(?=\\t[A-z]{3} [0-9]{2})|((?=(\\tLecture|\\tLab|\\tIndividual Study|\\tSeminar|\\tClinical|Colloquia|\\tDissertation or Thesis|\\tEnsemble|\\tInternship, Field Exp, Coop Ed|\\tLecture and lab|\\tPerformance|\\tPhysical Activity|\\tPracticum - Dlvrd Ind Setting|\\tPracticum - Dlvrd Org Course|\\tRecitations|\\tStudent Teaching|\\tStudio|\\tLecture and Lab|\\tDissertation or Thesis)).+?(?<=(((\\(P\\)E-mail)|(\\(P\\))|(TBA)))))";
@@ -137,6 +155,13 @@ public class Admin {
         Admin.writeNewFile(_outputFilepath, finalOutput);
     }
 
+    /**
+     * Generates a text file with avaliable semesters in the database.
+     *
+     * @param _inputFilepath
+     * @param _outputFilepath
+     * @throws IOException
+     */
     protected static void generateCourseList(String _inputFilepath, String _outputFilepath) throws IOException {
 
         File file = new File(_inputFilepath);
@@ -161,13 +186,21 @@ public class Admin {
             }
         }
         File outputFile = new File(_outputFilepath);
-        try ( FileWriter output = new FileWriter(outputFile)) {
+        try (FileWriter output = new FileWriter(outputFile)) {
             for (String s : allCourses) {
                 output.append(s + '\n');
             }
         }
     }
 
+    /**
+     * Runs a regex on a file.
+     *
+     * @param _regex
+     * @param _filepath
+     * @return
+     * @throws IOException
+     */
     protected static String runRegexOnFile(String _regex, String _filepath) throws IOException {
         // get fulltext of the semester text file.
         String content = Admin.getFullText(_filepath);
@@ -186,6 +219,14 @@ public class Admin {
 
     }
 
+    /**
+     * Returns everything within a file.
+     *
+     * @param _filepath
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     protected static String getFullText(String _filepath) throws FileNotFoundException, IOException {
         String content;
         File file = new File(_filepath);
@@ -203,6 +244,13 @@ public class Admin {
         return content;
     }
 
+    /**
+     * Creates new files given location and content.
+     *
+     * @param _filepath
+     * @param _contents
+     * @throws IOException
+     */
     protected static void writeNewFile(String _filepath, String _contents) throws IOException {
         // Open file and make parent directories
         File file = new File(_filepath);
@@ -214,7 +262,12 @@ public class Admin {
         }
     }
 
-// copied from https://www.baeldung.com/java-delete-directory
+    /**
+     * Delete things from the directory, copied from
+     * https://www.baeldung.com/java-delete-directory.
+     *
+     * @param _dir Directory
+     */
     protected static void deleteDirectory(File _dir) {
         File[] allContents = _dir.listFiles();
         if (allContents != null) {
