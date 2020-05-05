@@ -12,7 +12,7 @@ package ScheduleCreator;
  * This class is used to retrieve and modify persistent data for the
  * application.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
  *
  * Last Updated: 4/21/2020
  */
@@ -53,6 +53,7 @@ public class Translator implements TranslatorInterface {
      * in all other DBAdapter methods
      * @throws java.io.FileNotFoundException
      */
+    @Override
     public List<String> getSemesters() throws FileNotFoundException, IOException {
         String path = "DB/semester_list";
 
@@ -73,7 +74,7 @@ public class Translator implements TranslatorInterface {
         try {
             String content = new Translator().getFullText(path);
             Scanner input = new Scanner(content).useDelimiter("\n");
-            String line = "";
+            String line;
 
             while (input.hasNext()) {
                 line = input.next();

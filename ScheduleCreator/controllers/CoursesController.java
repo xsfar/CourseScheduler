@@ -3,9 +3,9 @@ package ScheduleCreator.controllers;
 /**
  * This class controls interactions in the Courses View.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
  *
- * Last Updated: 4/21/2020
+ * Last Updated: 5/05/2020
  */
 import ScheduleCreator.Adapter;
 import java.io.IOException;
@@ -141,10 +141,10 @@ public class CoursesController implements Initializable {
 
         if (this.availableCourses.getFocusModel().getFocusedItem() != null) {
             String selectedCourse = this.availableCourses.getFocusModel().getFocusedItem().toString();
-            Course newCourse = new Course(selectedCourse, this.currentSemester.getName());
-            if (this.currentSemester.addCourse(newCourse)) {
+            Course newCourse = new Course(selectedCourse, CoursesController.currentSemester.getName());
+            if (CoursesController.currentSemester.addCourse(newCourse)) {
                 this.selectedCoursesListView.getItems().add(selectedCourse);
-                this.currentSemester.generateSchedules();
+                CoursesController.currentSemester.generateSchedules();
                 this.createNewTab(newCourse);
             }
             this.regenerateSchedules();
@@ -163,7 +163,7 @@ public class CoursesController implements Initializable {
         Tab tab;
         for (int i = 0; i < this.sectionTabPane.getTabs().size(); i++) {
             tab = this.sectionTabPane.getTabs().get(i);
-            course = this.currentSemester.getSelectedCourses().get(i);
+            course = CoursesController.currentSemester.getSelectedCourses().get(i);
             List<Section> selected = new ArrayList();
             VBox container = (VBox) ((ScrollPane) tab.getContent()).getContent();
             for (int j = 0; j < container.getChildren().size(); j++) {
@@ -173,7 +173,7 @@ public class CoursesController implements Initializable {
                     selected.add(course.getSections().get(j));
                 }
             }
-            this.currentSemester.getSelectedSections().put(course, selected);
+            CoursesController.currentSemester.getSelectedSections().put(course, selected);
         }
         this.regenerateSchedules();
     }
@@ -187,14 +187,14 @@ public class CoursesController implements Initializable {
     public void switchSemester(ActionEvent _event) {
 
         String currentSemesterString = this.semesterComboBox.getValue();
-        this.currentSemester = new Semester(semesterDirName(currentSemesterString));
+        CoursesController.currentSemester = new Semester(semesterDirName(currentSemesterString));
 
         this.loadAllCourses();
         this.loadSelectedCourses();
 
         // Renders the first generated schedule if there is at least 1 selected course.
-        if (this.currentSemester.getSelectedCourses().size() > 0) {
-            this.loadSchedule(this.currentSemester.getSchedules().get(0));
+        if (CoursesController.currentSemester.getSelectedCourses().size() > 0) {
+            this.loadSchedule(CoursesController.currentSemester.getSchedules().get(0));
         }
     }
 
@@ -215,9 +215,9 @@ public class CoursesController implements Initializable {
      * Clears the current displayed schedule.
      */
     public void clearScheduleGrid() {
-        for (BorderPane entry : this.entries) {
+        this.entries.forEach((entry) -> {
             this.scheduleGridPane.getChildren().remove(entry);
-        }
+        });
         this.entries.clear();
     }
 
@@ -233,14 +233,14 @@ public class CoursesController implements Initializable {
             this.sectionTabPane.getTabs().remove(index);
             String courseToRemove = ((String) this.selectedCoursesListView.getSelectionModel().getSelectedItem()).trim();
             this.selectedCoursesListView.getItems().remove(courseToRemove);
-            this.currentSemester.removeCourse(courseToRemove);
+            CoursesController.currentSemester.removeCourse(courseToRemove);
 
             // Clears the section listview if the focus is on the course to be removed.
             if (this.focusedCourse != null && this.focusedCourse.getFullText().equalsIgnoreCase(courseToRemove)) {
                 this.sectionListView.getItems().clear();
             }
 
-            this.currentSemester.generateSchedules();
+            CoursesController.currentSemester.generateSchedules();
             this.regenerateSchedules();
         }
     }
@@ -249,13 +249,13 @@ public class CoursesController implements Initializable {
      * Remove all selected courses from the ListView (and reload the UI)
      */
     public void removeAllCourses(ActionEvent _event) {
-        List<String> courses = this.currentSemester.getSelectedCourseStrings();
+        List<String> courses = CoursesController.currentSemester.getSelectedCourseStrings();
 
-        for (String course : courses) {
-            this.currentSemester.removeCourse(course);
-        }
+        courses.forEach((course) -> {
+            CoursesController.currentSemester.removeCourse(course);
+        });
 
-        this.currentSemester.generateSchedules();
+        CoursesController.currentSemester.generateSchedules();
         this.regenerateSchedules();
         this.loadSelectedCourses();
     }
@@ -264,14 +264,14 @@ public class CoursesController implements Initializable {
      * Generates all possible schedules consisting of selected sections.
      */
     public void regenerateSchedules() {
-        this.currentSemester.generateSchedules();
+        CoursesController.currentSemester.generateSchedules();
         this.clearScheduleGrid();
 
-        if (this.currentSemester.getNumberOfSchedules() == 0) {
+        if (CoursesController.currentSemester.getNumberOfSchedules() == 0) {
             this.scheduleLabel.setText("0/0");
-        } else if (this.currentSemester.getNumberOfSchedules() > 0) {
-            this.loadSchedule(this.currentSemester.getSchedules().get(0));
-            this.scheduleLabel.setText("1/" + this.currentSemester.getNumberOfSchedules());
+        } else if (CoursesController.currentSemester.getNumberOfSchedules() > 0) {
+            this.loadSchedule(CoursesController.currentSemester.getSchedules().get(0));
+            this.scheduleLabel.setText("1/" + CoursesController.currentSemester.getNumberOfSchedules());
         }
     }
 
@@ -291,7 +291,7 @@ public class CoursesController implements Initializable {
         String currentSelection = this.selectedCoursesListView.getSelectionModel().getSelectedItem().toString();
 
         // Get the corresponding course to reference for sections
-        for (Course course : this.currentSemester.getSelectedCourses()) {
+        for (Course course : CoursesController.currentSemester.getSelectedCourses()) {
             if (course.getFullText().equals(currentSelection)) {
                 this.focusedCourse = course;
                 break;
@@ -300,9 +300,9 @@ public class CoursesController implements Initializable {
 
         List<String> listCellLabels = new ArrayList();
 
-        for (Section section : this.focusedCourse.getSections()) {
+        this.focusedCourse.getSections().forEach((section) -> {
             listCellLabels.add(section.toString());
-        }
+        });
 
         this.sectionListView.setItems(FXCollections.observableList(listCellLabels));
 
@@ -314,7 +314,7 @@ public class CoursesController implements Initializable {
     public void loadAllCourses() {
 
         // intermediary ObservableList of the courses
-        ObservableList<String> OList = FXCollections.observableList(this.currentSemester.getAllCourses());
+        ObservableList<String> OList = FXCollections.observableList(CoursesController.currentSemester.getAllCourses());
 
         // create FilteredList that we'll actually use
         this.courseList = new FilteredList<>(OList, s -> true);
@@ -373,7 +373,7 @@ public class CoursesController implements Initializable {
      */
     public void loadSelectedCourses() {
         this.sectionTabPane.getTabs().clear();
-        this.selectedCoursesListView.setItems(FXCollections.observableList(this.currentSemester.getSelectedCourseStrings()));
+        this.selectedCoursesListView.setItems(FXCollections.observableList(CoursesController.currentSemester.getSelectedCourseStrings()));
 
         CoursesController.currentSemester.getSelectedCourses().forEach((course) -> {
             this.createNewTab(course);
@@ -392,7 +392,7 @@ public class CoursesController implements Initializable {
         tab.setText(_course.getID());
         VBox content = new VBox();
         ScrollPane pane = new ScrollPane();
-        for (Section section : _course.getSections()) {
+        _course.getSections().stream().map((section) -> {
             VBox sectionEntry = new VBox();
             sectionEntry.setPrefHeight(30);
             sectionEntry.setMinHeight(30);
@@ -404,8 +404,10 @@ public class CoursesController implements Initializable {
             VBox.setMargin(checkBox, new Insets(0, 0, 0, 10));
             checkBox.setText(section.toString());
             sectionEntry.getChildren().add(checkBox);
+            return sectionEntry;
+        }).forEachOrdered((sectionEntry) -> {
             content.getChildren().add(sectionEntry);
-        }
+        });
         pane.setContent(content);
         tab.setContent(pane);
         this.sectionTabPane.getTabs().add(tab);
@@ -487,17 +489,17 @@ public class CoursesController implements Initializable {
      * @param _event
      */
     public void showCRNs(ActionEvent _event) {
-        if (this.currentSemester == null) {
+        if (CoursesController.currentSemester == null) {
             return;
         }
-        if (this.currentSemester.getSelectedCourses().size() == 0) {
+        if (CoursesController.currentSemester.getSelectedCourses().isEmpty()) {
             return;
         }
         this.CRNContainer.getChildren().clear();
         StringBuilder content = new StringBuilder();
-        for (Section section : this.currentSemester.getSchedules().get(this.currentScheduleIndex).getAddedSections()) {
+        CoursesController.currentSemester.getSchedules().get(CoursesController.currentScheduleIndex).getAddedSections().forEach((section) -> {
             content.append(section.getID() + " - " + section.getCRN() + "\n");
-        }
+        });
         TextArea textArea = new TextArea(content.toString());
         textArea.setEditable(false);
         this.CRNContainer.getChildren().add(textArea);
@@ -524,7 +526,7 @@ public class CoursesController implements Initializable {
 
         int row = (int) _section.getStartTime() / 100 - 7;
         double topMargin = (_section.getStartTime() % 100) / 60;
-        for (Integer col : getDays(_section)) {
+        getDays(_section).forEach((col) -> {
             Label label = new Label(_section.getCourseID() + " - " + _section.getSectionNumber());
             BorderPane entryContainer = new BorderPane();
             entryContainer.paddingProperty().set(new Insets(this.grid[row][col].heightProperty().multiply(topMargin).doubleValue(), 0, 0, 0));
@@ -544,7 +546,7 @@ public class CoursesController implements Initializable {
             rect.heightProperty().bind(region.heightProperty().subtract(2).multiply(_section.getDurationHours()));
             rect.widthProperty().bind(region.widthProperty().subtract(2));
             this.entries.add(entryContainer);
-        }
+        });
     }
 
     /**
@@ -585,7 +587,7 @@ public class CoursesController implements Initializable {
      * @return
      */
     public String assignColor(int _numberOfCampusCourses) {
-        String color = "";
+        String color;
         switch (_numberOfCampusCourses) {
             case 1:
                 // green
@@ -641,7 +643,7 @@ public class CoursesController implements Initializable {
                 onlineCourses++;
             }
         }
-        this.scheduleLabel.setText(this.currentScheduleIndex + 1 + "/" + this.currentSemester.getNumberOfSchedules());
+        this.scheduleLabel.setText(CoursesController.currentScheduleIndex + 1 + "/" + CoursesController.currentSemester.getNumberOfSchedules());
         this.onlineClassesLabel.setText(label.toString());
     }
 
@@ -651,10 +653,10 @@ public class CoursesController implements Initializable {
      * @param _event
      */
     public void loadNextSchedule(ActionEvent _event) {
-        if (this.currentSemester != null) {
-            if (this.currentScheduleIndex < this.currentSemester.getSchedules().size() - 1) {
-                this.currentScheduleIndex++;
-                this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
+        if (CoursesController.currentSemester != null) {
+            if (CoursesController.currentScheduleIndex < CoursesController.currentSemester.getSchedules().size() - 1) {
+                CoursesController.currentScheduleIndex++;
+                this.loadSchedule(CoursesController.currentSemester.getSchedules().get(CoursesController.currentScheduleIndex));
             }
         }
     }
@@ -665,9 +667,9 @@ public class CoursesController implements Initializable {
      * @param _event
      */
     public void loadPrevSchedule(ActionEvent _event) {
-        if (this.currentScheduleIndex > 0) {
-            this.currentScheduleIndex--;
-            this.loadSchedule(this.currentSemester.getSchedules().get(this.currentScheduleIndex));
+        if (CoursesController.currentScheduleIndex > 0) {
+            CoursesController.currentScheduleIndex--;
+            this.loadSchedule(CoursesController.currentSemester.getSchedules().get(CoursesController.currentScheduleIndex));
         }
     }
 
@@ -678,7 +680,7 @@ public class CoursesController implements Initializable {
      */
     public void popupAction(ActionEvent event) {
         //if no courses are selected, and the email button is pressed then thier is nothing to email, an error box is thrown
-        if (this.currentSemester == null || this.currentSemester.getSelectedCourses().size() == 0) {
+        if (CoursesController.currentSemester == null || CoursesController.currentSemester.getSelectedCourses().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.OK);
             alert.setTitle("Warning");
             alert.setHeaderText("You have not selected any courses yet");
