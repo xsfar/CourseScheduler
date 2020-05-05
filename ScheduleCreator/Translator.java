@@ -1,5 +1,13 @@
 package ScheduleCreator;
 
+/**
+ * This class is used to retrieve and modify persistent data for the
+ * application.
+ *
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
+ *
+ * Last Updated: 4/21/2020
+ */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,14 +23,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * This class is used to retrieve and modify persistent data for the
- * application.
- *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
- *
- * Last Updated: 3/17/2020
- */
 public class Translator implements TranslatorInterface {
 
     // this is in the working directory, not the .jar
@@ -45,6 +45,7 @@ public class Translator implements TranslatorInterface {
      * in all other DBAdapter methods
      * @throws java.io.FileNotFoundException
      */
+    @Override
     public List<String> getSemesters() throws FileNotFoundException, IOException {
         String path = "DB/semester_list";
 
@@ -54,6 +55,7 @@ public class Translator implements TranslatorInterface {
 
         return semesters;
     }
+
     // DUMMY
     @Override
     public List<String> getSections(String _courseNumber, String _semester) {
@@ -64,7 +66,7 @@ public class Translator implements TranslatorInterface {
         try {
             String content = new Translator().getFullText(path);
             Scanner input = new Scanner(content).useDelimiter("\n");
-            String line = "";
+            String line;
 
             while (input.hasNext()) {
                 line = input.next();
@@ -72,8 +74,8 @@ public class Translator implements TranslatorInterface {
                     sections.add(line);
                 }
             }
+        } catch (IOException ex) {
         }
-        catch (IOException ex) {}
 
         return sections;
     }
@@ -90,7 +92,7 @@ public class Translator implements TranslatorInterface {
     public String getFullText(String _resourceName) throws FileNotFoundException, IOException {
         String path = "resources/" + _resourceName;
         String content;
-        try ( InputStream stream = Translator.class.getResourceAsStream(path);  InputStreamReader reader = new InputStreamReader(stream)) {
+        try (InputStream stream = Translator.class.getResourceAsStream(path); InputStreamReader reader = new InputStreamReader(stream)) {
             BufferedReader bufreader = new BufferedReader(reader);
             StringBuilder sb = new StringBuilder();
             String str;
@@ -111,20 +113,21 @@ public class Translator implements TranslatorInterface {
      *
      */
     @Override
-    public List<String> getCourses(String _semesterName)  {
+    public List<String> getCourses(String _semesterName) {
 
         List<String> courses = new ArrayList();
         try {
-        String contents = new Translator().getFullText("DB/" + _semesterName + "/courses");
-        courses = Arrays.asList(contents.split("\n"));
+            String contents = new Translator().getFullText("DB/" + _semesterName + "/courses");
+            courses = Arrays.asList(contents.split("\n"));
+        } catch (IOException ex) {
         }
-        catch (IOException ex) {}
 
         return courses;
     }
 
     /**
-     * Get specific information about a section
+     * Get specific information about a section, this is a backup method if
+     * necessary in the future, since the models package uses its own regex.
      *
      * @param _choice type of info wanted about section
      * @param _semesterName semester name from getSemesters()
@@ -188,8 +191,6 @@ public class Translator implements TranslatorInterface {
         return "Error: Check ScheduleCreator.DBAdapter.getInfoBase";
     }
 
-    // ===============================================
-    // (DELETE THIS) methods above this point don't modify files
     /**
      * Saves the selected course (abbreviation and number) to persistent
      * database.
@@ -201,13 +202,12 @@ public class Translator implements TranslatorInterface {
     public void saveCourse(String _course, String _semester) {
 
         //Adds new selected course to new line.
-        selectedCourseFile = new File(_semester + "_selected_courses.txt");
+        Translator.selectedCourseFile = new File(_semester + "_selected_courses.txt");
         try ( //Open file to add new classes.
-                 FileWriter output = new FileWriter(new File(_semester + "_selected_courses.txt"), true)) {
+                FileWriter output = new FileWriter(new File(_semester + "_selected_courses.txt"), true)) {
             //Adds new selected course to new line.
             output.append(_course + "\n");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("Course was not saved succesfully");
         }
     }
@@ -221,10 +221,10 @@ public class Translator implements TranslatorInterface {
     @Override
     public void removeCourse(String _course, String _semester) {
 
-        selectedCourseFile = new File(_semester + "_selected_courses.txt");
+        Translator.selectedCourseFile = new File(_semester + "_selected_courses.txt");
 
         try {
-            List<String> courses = Files.readAllLines(selectedCourseFile.toPath());
+            List<String> courses = Files.readAllLines(Translator.selectedCourseFile.toPath());
             for (String course : courses) {
                 if (course.equals(_course)) {
                     courses.remove(course);
@@ -232,16 +232,14 @@ public class Translator implements TranslatorInterface {
                 }
             }
 
-            try ( FileWriter writer = new FileWriter(selectedCourseFile)) {
+            try (FileWriter writer = new FileWriter(Translator.selectedCourseFile)) {
                 for (String course : courses) {
                     writer.append(course + "\n");
                 }
                 writer.close();
+            } catch (Exception ex) {
             }
-            catch (Exception ex) {}
-        }
-
-        catch (IOException ex) {
+        } catch (IOException ex) {
         }
 
     }
@@ -257,18 +255,16 @@ public class Translator implements TranslatorInterface {
 
         ArrayList<String> selectedCourses = new ArrayList();
         //Load courses from text file to be returned as a list.
-        try ( Scanner input = new Scanner(new File(_semester + "_selected_courses.txt"))) {
+        try (Scanner input = new Scanner(new File(_semester + "_selected_courses.txt"))) {
             //Load courses from text file to be returned as a list.
             String line;
             while (input.hasNext()) {
                 line = input.nextLine();
                 selectedCourses.add(line);
             }
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println(_semester + "user_selected_courses.txt file does not exist yet (no selected courses for semester)");
-        }
-        finally {
+        } finally {
             return selectedCourses;
         }
     }

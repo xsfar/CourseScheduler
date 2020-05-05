@@ -5,13 +5,11 @@ package ScheduleCreator;
  *
  * @author Nick Econopouly, Ilyass Sfar
  *
- * Last Updated: 4/6/2020
+ * Last Updated: 4/21/2020
  */
-import ScheduleCreator.API.EmailAdapter;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import java.io.IOException;
-import java.util.List;
 
 public class Tests {
 
@@ -19,45 +17,57 @@ public class Tests {
 
     public static void main(String[] args) throws IOException, MailjetException, MailjetSocketTimeoutException {
 
-        //regen databse
-        Admin.regenDB();
-        //
-        //Test api call,
-        //EmailAdapter testAPI = new EmailAdapter();
-        //testAPI.SendEmail("isfar314@gmail.com", "Testing Email API Call");
+        // uncomment and run this once when we add a new semester
+         Admin.regenDB();
+        //test validate method
+        emailMethodTestData();
+
     }
 
-    public static void testSemester() throws IOException {
+    /**
+     * Test data for method testing.
+     */
+    private static void emailMethodTestData() {
+        //edge cases with some error cases
+        emailValidationTest("", false);
+        emailValidationTest(" ", false);
+        emailValidationTest("@", false);
+        emailValidationTest(".com", false);
+        emailValidationTest("@.com", false);
+        emailValidationTest("a@.com", false);
+        emailValidationTest("!@#.gov", false);
+        emailValidationTest("123!ABC@test.co", false);
+        emailValidationTest("aBCdE@12AbC.edu", true);
+        emailValidationTest("test@test", false);
+        emailValidationTest("@test.com", false);
+        emailValidationTest("abc@", false);
+        emailValidationTest("abc.com", false);
+        emailValidationTest("abc.com", false);
+        //normal cases
+        emailValidationTest("test@test.edu", true);
+        emailValidationTest("test@test.gov", true);
+        emailValidationTest("123@123.co", true);
+        emailValidationTest("ABC@123.io", true);
+        emailValidationTest("123@test.net", true);
+        emailValidationTest("123ABC@ABC.org", true);
+        emailValidationTest("123ABC@ABC123.org", true);
+        emailValidationTest("abc@123.net", true);
+    }
 
-        // Example usage of DBAdapter
-        List<String> semesters = new Translator().getSemesters();
+    /**
+     * Calls the "validate" method with test data and prints what was returned
+     * and what was expected.
+     *
+     * @param _email Email that is being tested for validity.
+     * @param _expectedResults What the result should be.
+     * @return
+     */
+    private static void emailValidationTest(String _email, Boolean _expectedResults) {
 
-        System.out.println("Current Semesters are:");
-        for (int i = 0; i < semesters.size(); i++) {
-            System.out.println(semesters.get(i));
-        }
+        String status = (ScheduleCreator.API.EmailAPI.validate(_email) == _expectedResults) ? "Test Passed:"
+                : "Test Failed:";
 
-        // choose a semester
-        String semester = semesters.get(0);
-
-        // get courses
-        List<String> courses = Tests.adapter.getCourses(semester);
-
-        // example course from the semester
-        String exampleCourse = courses.get(20);
-
-        System.out.println("Example course is: " + exampleCourse);
-
-        // dummy method - we still need to implement this (I think?)
-        List<String> sections = new Translator().getSections(exampleCourse, semester);
-        String section = sections.get(0);
-
-        //should return real info for CSC 250 - 01
-        System.out.println("Building for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.BUILDING, semester, section));
-
-        System.out.println("CRN for " + section + " is: ");
-        System.out.println(new Translator().getSectionInfo(Translator.choice.CRN, semester, section));
+        System.out.println(status + " value of EmailAPI.validate(\"" + _email + "\")" + "should be " + _expectedResults);
 
     }
 }
