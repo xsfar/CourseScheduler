@@ -1,12 +1,4 @@
 package ScheduleCreator;
-/**
- * This class is used to retrieve and modify persistent data for the
- * application.
- *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly
- *
- * Last Updated: 4/21/2020
- */
 
 /**
  * This class is used to retrieve and modify persistent data for the
