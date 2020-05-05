@@ -3,8 +3,10 @@ package ScheduleCreator;
 /**
  * An adapter that passes method calls to the translator.
  *
- * @author Nathan Tolodziecki Last Updated: 4/21/2020
+ * @author Nathan Tolodziecki
+ * Last Updated: 4/21/2020
  */
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;

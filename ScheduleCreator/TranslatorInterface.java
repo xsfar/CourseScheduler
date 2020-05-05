@@ -1,11 +1,11 @@
 package ScheduleCreator;
-
 /**
  * An interface to allow easier modularity of the adapter.
  *
- * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodzieki
+ * @author Jamison Valentine, Ilyass Sfar, Nick Econopouly, Nathan Tolodziecki
  * Last updated 04/21/2020
  */
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
