@@ -10,20 +10,16 @@ This project is an interactive visual course scheduler specifically for students
 ## Features
 
 - All possible conflict-free schedules of sections from a pool of courses the user has selected can be seen in a weekly calendar
-
 <p align="center">
-  <b></b><br>
+    <br><br>
   <img src="demo/ExampleScheduleRegular.png">
   <a href="#">Note: There are 804 possible schedules with the  6 currently selected courses</a> 
-  <br><br>
+    <br><br>
 </p>
 
 - Database of courses for new semesters can be updatable by the user
-
 - Registration codes for courses can be emailed to the user
-
 - Built-in web browser that directly goes to the university registration website
-
 - Dark mode option
 
 ![Alt text](demo/ExampleScheduleDark.png)
